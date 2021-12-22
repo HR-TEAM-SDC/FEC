@@ -1,4 +1,5 @@
 import React from 'react';
+import QAapp from './QAapp.jsx';
 
 const App = () => {
   return (
