@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../apis/atelier.js';
 import ReviewList from './ReviewList.jsx'
 
-const RRIndex = () => {
+const RRIndex = (props) => {
   const [data, setData] = useState(null);
+
+  var id = 40344;
 
   useEffect(() => {
     axios.get('reviews/', {params: {
-      page: 1,
-      count: 5,
-      product_id:40344,
-      sort:"newest"
+      product_id:id,
+      sort:"relevant"
     }}).then(res => setData(res.data));
   }, []);
 
@@ -23,7 +23,7 @@ const RRIndex = () => {
     <div>
       <h2>RATINGS AND REVIEWS</h2>
       <div className="reviewList" style={divStyle}>
-        {data? <ReviewList data={data.results}/>:null}
+        {data? <ReviewList data={data.results} count={data.count}/>:null}
       </div>
     </div>
   );
