@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ProductTitle from './ProductTitle';
-import ProductRating from './ProductRating';
-import ProductPrice from './ProductPrice';
-import ProductOverview from './ProductOverview';
+import React, { useState, useEffect } from "react";
+import ProductTitle from "./ProductTitle";
+import ProductRating from "./ProductRating";
+import ProductPrice from "./ProductPrice";
+import ProductOverview from "./ProductOverview";
 
 const ProductInfo = () => {
-
   return (
     <div>
       <h3>Product Info Component</h3>
