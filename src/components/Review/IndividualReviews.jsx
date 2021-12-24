@@ -52,11 +52,6 @@ const IndividualReviews = (props) => {
 
   return (
     <div className="IndividualReviews" style={divStyle}>
-        {/* <span class="fa fa-star checked" style={{color:'orange'}}></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span> */}
         {stars(props.data.rating)}
       <div className="date">{dateConvert(props.data.date)}</div>
       <div className="summary">{props.data.summary}</div>
