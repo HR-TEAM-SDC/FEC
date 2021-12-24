@@ -22,6 +22,7 @@ const RRIndex = (props) => {
   return (
     <div>
       <h2>RATINGS AND REVIEWS</h2>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       <div className="reviewList" style={divStyle}>
         {data? <ReviewList data={data.results} count={data.count}/>:null}
       </div>

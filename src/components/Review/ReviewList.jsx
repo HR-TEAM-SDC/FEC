@@ -4,47 +4,34 @@ import axios from '../../apis/atelier.js';
 
 
 const ReviewList = (props) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    setData(props.data)
-  }, []);
-
-  var relevantSelect = () => {
-    axios.get('reviews/', {params: {
-      product_id:40344, // need to change, will import data from main part.
-      sort:"relevant"
-    }}).then(res => setData(res.data.results));
-  };
-
-  var helpfulSelect = () => {
-    axios.get('reviews/', {params: {
-      product_id:40344, // need to change, will import data from main part.
-      sort:"helpful"
-    }}).then(res => setData(res.data.results));
-  };
-
-  var newestSelect = () => {
-    axios.get('reviews/', {params: {
-      product_id:40344, // need to change, will import data from main part.
-      sort:"newest"
-    }}).then(res => setData(res.data.results));
-  };
+  const [data, setData] = useState(props.data);
+  const [showmore, setShowmore] = useState(false)
 
   var sort = (e) => {
     if (e.target.value ==="relevant") {
-      relevantSelect();
+      axios.get('reviews/', {params: {
+        product_id:40344, // need to change, will import data from main part.
+        sort:"relevant"
+      }}).then(res => setData(res.data.results));
     };
 
     if (e.target.value ==="helpful") {
-      helpfulSelect();
-
+      axios.get('reviews/', {params: {
+        product_id:40344, // need to change, will import data from main part.
+        sort:"helpful"
+      }}).then(res => setData(res.data.results));
     };
     if (e.target.value ==="newest") {
-      newestSelect();
+      axios.get('reviews/', {params: {
+        product_id:40344, // need to change, will import data from main part.
+        sort:"newest"
+      }}).then(res => setData(res.data.results));
     };
   };
 
+  var showmoreOnclick = () => {
+    showmore? setShowmore(false) : setShowmore(true);
+  }
 
   const divStyle = {
     color: 'blue',
@@ -55,11 +42,12 @@ const ReviewList = (props) => {
     <div className="ReviewList" style={divStyle}>
       <label >{props.count} reviews, sorted by </label>
       <select id="sort" onChange={sort}>
-        <option value="relevant" onSelect={relevantSelect}>relevance</option>
-        <option value="helpful" onSelect={helpfulSelect}>helpful</option>
-        <option value="newest" onSelect={newestSelect}>newest</option>
+        <option value="relevant" >relevance</option>
+        <option value="helpful" >helpful</option>
+        <option value="newest" >newest</option>
       </select>
-     {data? data.map(data => <IndividualReviews data={data} />) : props.data.map(data => <IndividualReviews data={data} />)}
+     {showmore? data.map(data => <IndividualReviews data={data} />): data.slice(0,2).map(data => <IndividualReviews data={data} />)}
+     <div id="morereviews" onClick={showmoreOnclick}>more reviews</div>
     </div>
   );
 };
