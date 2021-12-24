@@ -7,10 +7,10 @@ const RelatedItems = () => {
   const [relatedItems, setRelatedItems] = useState(null);
 
   useEffect(() => {
-    fetchData();
+    useFetch();
   }, []);
 
-  const fetchData = async () => {
+  const useFetch = async () => {
     const { data: relatedIds } = await axios.get('/products/40344/related');
 
     const promiseArray = relatedIds.map(async productId => {
