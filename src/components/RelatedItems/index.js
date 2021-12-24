@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../../apis/atelier.js';
-import ItemCard from './ItemCard';
+import React, { useState, useEffect } from "react";
+import axios from "../../apis/atelier.js";
+import ItemCard from "./ItemCard";
 
 const RelatedItems = () => {
   const [item, setItem] = useState(null);
@@ -11,9 +11,9 @@ const RelatedItems = () => {
   }, []);
 
   const useFetch = async () => {
-    const { data: relatedIds } = await axios.get('/products/40344/related');
+    const { data: relatedIds } = await axios.get("/products/40344/related");
 
-    const promiseArray = relatedIds.map(async productId => {
+    const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
       const { data: productReviews } = await axios.get(`reviews`, {
@@ -34,7 +34,7 @@ const RelatedItems = () => {
 
   const renderCards = () => {
     return relatedItems ? (
-      relatedItems.map(item => <ItemCard item={item} key={item.id} />)
+      relatedItems.map((item) => <ItemCard item={item} key={item.id} />)
     ) : (
       <div>Loading...</div>
     );
