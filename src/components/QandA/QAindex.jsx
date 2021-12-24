@@ -9,7 +9,7 @@ export default function QAapp() {
   const [questions, addQuestion] = useState([]);
 
   useEffect(() => {
-    axios.get('qa/questions', {params: {product_id: 40344}})
+    axios.get('qa/questions', {params: {product_id: 40344, count: 4}})
       .then(res => {
         addQuestion(res.data.results)
         console.log(res.data);
@@ -23,8 +23,8 @@ export default function QAapp() {
     <div>
       <h2>QUESTIONS AND ANSWERS</h2>
       <div>
-        <Context.Provider value ={{questions, addQuestion}}>
-          <QuestionsList questions={questions}/>
+        <Context.Provider value ={{questions}}>
+          <QuestionsList />
         </Context.Provider>
       </div>
     </div>
