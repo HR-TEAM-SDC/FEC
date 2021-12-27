@@ -16,9 +16,11 @@ const RelatedItems = () => {
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
+
       const { data: productReviews } = await axios.get(`reviews`, {
         params: { count: 100, product_id: productId },
       });
+
       const finalProduct = productDetails.data;
       finalProduct.styles = productStyles.data.results;
       finalProduct.avgRating =
