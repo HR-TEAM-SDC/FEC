@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
+import CompareModal from "./CompareModal";
 
 const ItemCard = ({ item }) => {
+  const modal = useRef(null);
   const cardStyles = {
     border: `1px black solid`,
   };
   return (
     <section style={cardStyles}>
-      <button>Compare</button>
+      <CompareModal ref={modal}>Hello, I'm a modal</CompareModal>
+      <button onClick={() => modal.current.open()}>Compare</button>
       {item.styles[0].photos[0].thumbnail_url ? (
         <img src={item.styles[0].photos[0].thumbnail_url} />
       ) : null}
