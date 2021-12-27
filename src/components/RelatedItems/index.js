@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../apis/atelier.js";
-import ItemCard from "./ItemCard";
+import RelatedItemsContainer from "./RelatedItemsContainer";
 
 const RelatedItems = () => {
   const [item, setItem] = useState(null);
@@ -32,18 +32,10 @@ const RelatedItems = () => {
     setRelatedItems(productArray);
   };
 
-  const renderCards = () => {
-    return relatedItems ? (
-      relatedItems.map((item) => <ItemCard item={item} key={item.id} />)
-    ) : (
-      <div>Loading...</div>
-    );
-  };
-
   return (
     <>
       <h3>Related Items</h3>
-      {renderCards()}
+      <RelatedItemsContainer items={relatedItems} />
     </>
   );
 };
