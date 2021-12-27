@@ -3,7 +3,7 @@ import axios from "../../apis/atelier.js";
 import RelatedItemsContainer from "./RelatedItemsContainer";
 
 const RelatedItems = () => {
-  const [item, setItem] = useState(null);
+  const [item, setItem] = useState("40344");
   const [relatedItems, setRelatedItems] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const RelatedItems = () => {
   }, []);
 
   const useFetch = async () => {
-    const { data: relatedIds } = await axios.get("/products/40344/related");
+    const { data: relatedIds } = await axios.get(`/products/${item}/related`);
 
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);

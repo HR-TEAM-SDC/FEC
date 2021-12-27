@@ -6,7 +6,7 @@ const RelatedItemsContainer = ({ items }) => {
     return items ? (
       items.map((item) => <ItemCard item={item} key={item.id} />)
     ) : (
-      <div>Loading...</div>
+      <p>Loading...</p>
     );
   };
 

@@ -36,12 +36,7 @@ export function CompareModal({ children }, ref) {
     isOpen ? (
       <div className="modal">
         <div className="modal-overlay" onClick={close} />
-        <section className="modal-body">
-          {children}
-          <button className="modal-close" onClick={close}>
-            x
-          </button>
-        </section>
+        <section className="modal-body">{children}</section>
       </div>
     ) : null,
     document.getElementById("compareModal")
