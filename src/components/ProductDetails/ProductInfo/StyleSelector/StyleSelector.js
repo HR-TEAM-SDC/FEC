@@ -29,6 +29,12 @@ const StyleSelector = () => {
   //   }
   // });
   console.log(currentStyle);
+
+  const styleClickHandler = (style) => {
+    console.log("Style Clicked...");
+    setCurrentStyle(style);
+  };
+
   return (
     <h4>
       Style Selector Component. <br></br>
@@ -41,9 +47,10 @@ const StyleSelector = () => {
         {styles.map((style) => {
           return (
             <Style
-              currentStyle={currentStyle}
               style={style}
+              currentStyle={currentStyle}
               key={style.style_id}
+              styleClickHandler={styleClickHandler}
             />
           );
         })}
