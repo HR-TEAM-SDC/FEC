@@ -1,7 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const SRC_DIR = path.join(__dirname, 'src');
+
 module.exports = {
+  entry: path.join(SRC_DIR, 'index.js'),
+
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, '/dist'),
@@ -17,7 +21,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /nodeModules/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         },
@@ -28,5 +32,6 @@ module.exports = {
       },
     ],
   },
+  mode: 'development',
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 };
