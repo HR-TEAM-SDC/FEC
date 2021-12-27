@@ -24,7 +24,7 @@ const AnswersList = ({ answers }) => {
 
   const handleHelp = () => {
     if (helpfulStatus === true) {
-      console.log("Don't submit multiple counts of helpness.");
+      console.log("Don't submit multiple counts of helpfulness.");
       return;
     } else {
       setHelpful(!helpfulStatus);
