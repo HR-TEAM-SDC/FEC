@@ -6,12 +6,12 @@ import { Context } from '../context/context.js';
 
 export default function QAapp() {
   // Declare a new state variable
-  const [questions, addQuestion] = useState([]);
+  const [questions, setQuestion] = useState([]);
 
   useEffect(() => {
     axios.get('qa/questions', {params: {product_id: 40344, count: 4}})
       .then(res => {
-        addQuestion(res.data.results)
+        setQuestion(res.data.results)
         console.log(res.data);
       })
       .catch(err => {
