@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import axios from '../apis/atelier';
+
+import React, { useState, useEffect } from "react";
+import axios from "../apis/atelier";
+import ProductDetails from "./ProductDetails/ProductDetails";
+import RelatedItems from "./RelatedItems";
 import QAapp from '../components/QandA/QAindex.jsx';
 
 const App = () => {
-
-  // const [test, setTest] = useState(null);
-
-  // useEffect(() => {
-  //   axios.get('qa/questions').then(res => { setTest(res.data);});
-  // }, []);
+  useEffect(() => {
+    axios.get("products").then((res) => setTest(res.data));
+  }, []);
 
   return (
-    <div>
-      {/* <h2>Hi guys !!!</h2>
-      <h3>Date : {new Date().toDateString()}</h3> */}
-      <div><QAapp /></div>
-    </div>
+    <main>
+      <ProductDetails />
+      <RelatedItems />
+      <QAapp />
+    </main>
+
   );
 };
 

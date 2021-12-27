@@ -1,5 +1,4 @@
 node_modules
-config.js
-webpack.config.js
-dist/index.bundle.js
-dist/index.bundle.js.LICENSE.txt
+
+src/apis/config.js
+
