@@ -28,17 +28,15 @@ const StyleSelector = () => {
   //     );
   //   }
   // });
-  console.log(currentStyle);
 
   const styleClickHandler = (style) => {
-    console.log("Style Clicked...");
     setCurrentStyle(style);
   };
 
   return (
     <h4>
       Style Selector Component. <br></br>
-      Current Style: {currentStyle.name}
+      Current Style: {currentStyle.name} <br></br>
       Current Style Photo: <br></br>
       <img
         src={currentStyle.photos ? currentStyle.photos[0].thumbnail_url : null}
