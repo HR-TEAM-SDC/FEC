@@ -6,6 +6,7 @@ const ItemCard = ({ item }) => {
   };
   return (
     <section style={cardStyles}>
+      <button>Compare</button>
       {item.styles[0].photos[0].thumbnail_url ? (
         <img src={item.styles[0].photos[0].thumbnail_url} />
       ) : null}
