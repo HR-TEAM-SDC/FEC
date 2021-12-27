@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import axios from "../../../../apis/atelier";
 import Style from "./Style";
+import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
+
+// export const StylesContext = createContext();
 
 const StyleSelector = () => {
-  const [styles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({});
+  // const [styles, setStyles] = useState([]);
+  // const [currentStyle, setCurrentStyle] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const styles = await axios.get(`products/40344/styles`);
-      setStyles(styles.data.results);
-      setCurrentStyle(styles.data.results[0]);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const styles = await axios.get(`products/40344/styles`);
+  //     setStyles(styles.data.results);
+  //     setCurrentStyle(styles.data.results[0]);
+  //   };
+  //   fetchData();
+  // }, []);
   // let content = [];
   // styles.forEach( (style, index) => {
   //   if ( (index + 1) % 4 === 0) {
@@ -28,6 +31,8 @@ const StyleSelector = () => {
   //     );
   //   }
   // });
+  const styles = useContext(StylesContext);
+  const currentStyle = useContext(CurrentStyleContext);
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);

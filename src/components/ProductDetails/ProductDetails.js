@@ -5,11 +5,15 @@ import ImageGallery from "./ImageGallery/ImageGallery";
 
 export const ProductContext = createContext();
 export const ReviewsContext = createContext();
+export const StylesContext = createContext();
+export const CurrentStyleContext = createContext();
 
 const ProductDetails = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [styles, setStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +24,9 @@ const ProductDetails = () => {
         params: { product_id: 40344 },
       });
       setReviews(reviews.data.results);
+      const styles = await axios.get(`products/40344/styles`);
+      setStyles(styles.data.results);
+      setCurrentStyle(styles.data.results[0]);
     };
     fetchData();
   }, []);
@@ -29,7 +36,11 @@ const ProductDetails = () => {
       <h2>Product Details Component</h2>
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
-          <ProductInfo />
+          <StylesContext.Provider value={styles}>
+            <CurrentStyleContext.Provider value={currentStyle}>
+              <ProductInfo />
+            </CurrentStyleContext.Provider>
+          </StylesContext.Provider>
         </ReviewsContext.Provider>
       </ProductContext.Provider>
     </div>
