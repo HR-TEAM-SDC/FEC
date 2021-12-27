@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../apis/atelier";
 import AnswersList from "./AnswersList.jsx";
+import LoadMoreAns from "./LoadMoreAns.jsx";
 
 const QuestionEntry = ({ question, answersList }) => {
   const [answers, setAnswer] = useState([]);
@@ -40,14 +41,10 @@ const QuestionEntry = ({ question, answersList }) => {
       <div onClick={handleLoad} style={LoadMoreStyle}>
         {moreAnswers ? "Collapse answers" : "See more answers"}
       </div>
-      {moreAnswers
-        ? ("show the rest of answers list",
-          answers
-            .slice(2)
-            .map((answers) => (
-              <AnswersList key={answers.answer_id} answers={answers} />
-            )))
-        : null}
+
+      <div>
+        {moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}
+      </div>
     </div>
   );
 };
