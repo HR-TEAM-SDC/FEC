@@ -1,18 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import ProductTitle from "./ProductTitle";
 import ProductRating from "./ProductRating";
 import ProductPrice from "./ProductPrice";
 import ProductOverview from "./ProductOverview";
+import ProductCategory from "./ProductCategory";
+import ShareProduct from "./ShareProduct";
+import StyleSelector from "./StyleSelector/StyleSelector";
+import AddToCart from "../AddToCart/AddToCart";
 
 const ProductInfo = () => {
+  const infoStyles = {
+    borderStyle: "solid",
+    borderWidth: "1px",
+  };
+
   return (
-    <div>
+    <div style={infoStyles}>
       <h3>Product Info Component</h3>
       <ProductTitle />
+      <ProductCategory />
       <ProductRating />
       <ProductPrice />
       <ProductOverview />
-      <h4>[Style Selector here]</h4>
+      <StyleSelector />
+      <AddToCart />
+      <ShareProduct />
     </div>
   );
 };
