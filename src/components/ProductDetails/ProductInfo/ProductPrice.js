@@ -1,9 +1,30 @@
 import React, { useState, useContext } from "react";
-import { ProductContext } from "../ProductDetails";
+import { CurrentStyleContext } from "../ProductDetails";
 const ProductPrice = () => {
-  const product = useContext(ProductContext);
+  const { currentStyle } = useContext(CurrentStyleContext);
 
-  return <h4>Product Price: {product.default_price}</h4>;
+  const salePriceStyle = {
+    color: "red",
+  };
+  const oldPriceStyle = {
+    color: "black",
+    textDecoration: "line-through",
+  };
+
+  return (
+    <h4>
+      Product Price:
+      {currentStyle.sale_price ? (
+        <span style={salePriceStyle}>
+          {" "}
+          {currentStyle.sale_price}
+          <span style={oldPriceStyle}>{currentStyle.original_price} </span>
+        </span>
+      ) : (
+        currentStyle.original_price
+      )}
+    </h4>
+  );
 };
 
 export default ProductPrice;

@@ -32,11 +32,12 @@ const StyleSelector = () => {
   //   }
   // });
   const styles = useContext(StylesContext);
-  const currentStyle = useContext(CurrentStyleContext);
-
+  const { currentStyle, setCurrentStyle } = useContext(CurrentStyleContext);
+  // const setCurrentStyle = useContext(CurrentStyleContext);
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
   };
+  console.log("currentStyle:", currentStyle);
 
   return (
     <h4>

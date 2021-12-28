@@ -37,7 +37,9 @@ const ProductDetails = () => {
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
           <StylesContext.Provider value={styles}>
-            <CurrentStyleContext.Provider value={currentStyle}>
+            <CurrentStyleContext.Provider
+              value={{ currentStyle, setCurrentStyle }}
+            >
               <ProductInfo />
             </CurrentStyleContext.Provider>
           </StylesContext.Provider>
