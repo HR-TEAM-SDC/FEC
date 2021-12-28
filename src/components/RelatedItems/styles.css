@@ -16,6 +16,7 @@
   animation: fade-in 1s 1 linear;
   animation-fill-mode: forwards;
   opacity: 0;
+  z-index: 9999;
 }
 
 .modal > .modal-overlay {
@@ -24,29 +25,6 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.modal > .modal-close {
-  color: #5e5e5e;
-  cursor: pointer;
-  font-size: 1.25em;
-  padding: 7px;
-  background: rgba(255, 255, 255, 0.749);
-  border: 1px solid #c3c0c0;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-}
-
-.modal > .modal-close:hover {
-  background: rgba(255, 255, 255, 0.989);
 }
 
 .modal > .modal-body {
@@ -101,6 +79,7 @@
 
 .card-button {
   position: absolute;
+  cursor: pointer;
   top: 0px;
   right: 0px;
   margin-top: 5px;
