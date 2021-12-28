@@ -7,7 +7,6 @@ const ProductPrice = () => {
     color: "red",
   };
   const oldPriceStyle = {
-    color: "black",
     textDecoration: "line-through",
   };
 
