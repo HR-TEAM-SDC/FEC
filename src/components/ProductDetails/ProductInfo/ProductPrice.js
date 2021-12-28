@@ -15,10 +15,10 @@ const ProductPrice = () => {
     <h4>
       Product Price:
       {currentStyle.sale_price ? (
-        <span style={salePriceStyle}>
-          {" "}
-          {currentStyle.sale_price}
-          <span style={oldPriceStyle}>{currentStyle.original_price} </span>
+        <span>
+          <span style={salePriceStyle}>{currentStyle.sale_price}</span>
+          {" Original Price: "}
+          <span style={oldPriceStyle}>{currentStyle.original_price}</span>
         </span>
       ) : (
         currentStyle.original_price
