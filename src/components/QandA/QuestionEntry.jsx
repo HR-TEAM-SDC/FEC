@@ -60,6 +60,10 @@ const QuestionEntry = ({ question, answersList }) => {
     color: helpQuesStatus ? "orange" : "black",
   };
 
+  const addAnswerStyle = {
+    textDecoration: "underline",
+  };
+
   return (
     <div style={questionStyle}>
       <div className="individualQuestion">
@@ -74,7 +78,8 @@ const QuestionEntry = ({ question, answersList }) => {
           >
             Yes
           </span>{" "}
-          ({question.question_helpfulness})
+          ({question.question_helpfulness}) |{" "}
+          <span style={addAnswerStyle}>Add Answer</span>
         </span>
       </div>
 

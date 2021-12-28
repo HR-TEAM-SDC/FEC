@@ -62,6 +62,13 @@ const AnswersList = ({ answers }) => {
     <div className="individualAnswer">
       <div>
         A: {answers ? answers.body : "This problem has no answers yet."}
+        <div>
+          {answers
+            ? answers.photos.map((photo) => (
+                <img src={photo.url} width="100" height="100" key={photo.id} />
+              ))
+            : null}{" "}
+        </div>
       </div>
       <div>
         by: {answers ? answers.answerer_name : null} {date} | Helpful?
