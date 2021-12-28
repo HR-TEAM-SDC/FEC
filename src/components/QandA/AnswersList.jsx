@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "../../apis/atelier";
+import { Context } from "../context/context.js";
 
 const AnswersList = ({ answers }) => {
   const [reportStatus, setReport] = useState(false);
   const [helpfulStatus, setHelpful] = useState(false);
+  const { handleHelpfulness } = useContext(Context);
 
   var date;
   if (answers) {
@@ -28,15 +30,7 @@ const AnswersList = ({ answers }) => {
       return;
     } else {
       setHelpful(!helpfulStatus);
-
-      axios
-        .put(`qa/answers/${answers.answer_id}/helpful`)
-        .then((res) => {
-          console.log("Your feedback has been submitted!");
-        })
-        .catch((err) => {
-          console.log("Failed to submit a feedback: ", err);
-        });
+      handleHelpfulness(answers.answer_id);
     }
   };
 

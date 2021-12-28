@@ -13,12 +13,12 @@ const QuestionEntry = ({ question, answersList }) => {
       .get(`qa/questions/${question.question_id}/answers`)
       .then((res) => {
         setAnswer(res.data.results);
-        console.log(res.data.results);
+        console.log("answers:", res.data.results);
       })
       .catch((err) => {
         console.log("This problem doesn't have any answers", err);
       });
-  }, []);
+  }, [question]);
 
   const handleLoad = () => {
     setLoadMore(!moreAnswers);
