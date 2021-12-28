@@ -1,25 +1,21 @@
 import React, { useContext } from "react";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
+import { CurrentSizeContext } from "../../ProductDetails";
 
 const Quantity = () => {
   const styles = useContext(StylesContext);
   const currentStyle = useContext(CurrentStyleContext);
+  const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
 
   const renderQuantity = () => {
-    let maxQuantity = 0;
     let content = [];
     let quantity = 1;
     console.log(
       "currentStyle.currentStyle.skus:",
       currentStyle.currentStyle.skus
     );
-    for (let key in currentStyle.currentStyle.skus) {
-      if (maxQuantity < currentStyle.currentStyle.skus[key].quantity) {
-        maxQuantity = currentStyle.currentStyle.skus[key].quantity;
-      }
-    }
-    console.log("maxQuantity:", maxQuantity);
-    for (let i = 0; i < maxQuantity; i++) {
+
+    for (let i = 0; i < currentStyle.currentStyle.skus; i++) {
       content.push(<option>{quantity}</option>);
       quantity++;
     }

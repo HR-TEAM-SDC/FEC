@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
+import { CurrentSizeContext } from "../../ProductDetails";
 
 const SizesSelector = () => {
   const styles = useContext(StylesContext);
   const currentStyle = useContext(CurrentStyleContext);
-  // console.log("styles context:", styles);
-  // if (currentStyle.currentStyle.skus) {
-  //   console.log("currentStyle context:", currentStyle.currentStyle.skus);
-  // }
-  // for (let key in currentStyle.currentStyle.skus) {
-  //   console.log('currentStyle.currentStyle.skus[key]:', currentStyle.currentStyle.skus[key].size);
-  // }
+  const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
+
   const renderSizes = () => {
     let content = [];
     for (let key in currentStyle.currentStyle.skus) {
@@ -21,10 +17,15 @@ const SizesSelector = () => {
     return content;
   };
 
+  const handleSizeChange = () => {
+    setCurrentSize(event.target.value);
+    console.log("current size:", currentSize);
+  };
+
   return (
     <div>
       <h4>Sizes Component</h4>
-      Select Size: <select>{renderSizes()}</select>
+      Select Size: <select onChange={handleSizeChange}>{renderSizes()}</select>
     </div>
   );
 };
