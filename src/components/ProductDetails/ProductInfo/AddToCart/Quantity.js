@@ -1,31 +1,31 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
-import { CurrentSizeContext } from "../../ProductDetails";
+import { CurrentSkuContext } from "../../ProductDetails";
 
 const Quantity = () => {
   const styles = useContext(StylesContext);
-  const currentStyle = useContext(CurrentStyleContext);
-  const { currentSize } = useContext(CurrentSizeContext);
+  const { currentStyle } = useContext(CurrentStyleContext);
+  const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
+
+  useEffect(() => {
+    for (let key in currentStyle.skus) {
+      if (currentStyle.skus[key].size === currentSize) {
+        setCurrentSku(key);
+      }
+    }
+  }, []);
 
   const renderQuantity = () => {
     let content = [];
     let quantity = 1;
-    let sku = 1394769;
-    console.log(
-      "currentStyle.currentStyle.skus:",
-      currentStyle.currentStyle.skus
-    );
-    for (let key in currentStyle.currentStyle.skus) {
-      if (currentStyle.currentStyle.skus[key].size === currentSize) {
-        sku = key;
-      }
-    }
-    if (currentStyle.currentStyle.skus) {
-      for (let i = 0; i < currentStyle.currentStyle.skus[sku].quantity; i++) {
+    console.log("currentStyle.skus:", currentStyle.skus);
+    if (currentStyle.skus && currentSku) {
+      for (let i = 0; i < currentStyle.skus[currentSku].quantity; i++) {
         content.push(<option>{quantity}</option>);
         quantity++;
       }
     }
+
     return content;
   };
 

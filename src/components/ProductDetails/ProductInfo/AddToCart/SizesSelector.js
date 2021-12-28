@@ -1,31 +1,32 @@
 import React, { useContext } from "react";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
-import { CurrentSizeContext } from "../../ProductDetails";
+import { CurrentSkuContext } from "../../ProductDetails";
 
 const SizesSelector = () => {
   const styles = useContext(StylesContext);
-  const currentStyle = useContext(CurrentStyleContext);
-  const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
+  const { currentStyle } = useContext(CurrentStyleContext);
+  const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
+  // console.log('currentStyle:', currentStyle);
+  // console.log('currentSku:', currentSku);
 
   const renderSizes = () => {
     let content = [];
-    for (let key in currentStyle.currentStyle.skus) {
+    for (let key in currentStyle.skus) {
       content.push(
-        <option> {currentStyle.currentStyle.skus[key].size} </option>
+        <option value={key}> {currentStyle.skus[key].size} </option>
       );
     }
     return content;
   };
 
-  const handleSizeChange = () => {
-    setCurrentSize(event.target.value);
-    console.log("current size:", currentSize);
+  const handleSkuChange = () => {
+    setCurrentSku(event.target.value);
   };
 
   return (
     <div>
       <h4>Sizes Component</h4>
-      Select Size: <select onChange={handleSizeChange}>{renderSizes()}</select>
+      Select Size: <select onChange={handleSkuChange}>{renderSizes()}</select>
     </div>
   );
 };
