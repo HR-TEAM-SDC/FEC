@@ -51,6 +51,12 @@ const QuestionEntry = ({ question, answersList }) => {
     borderWidth: 1,
   };
 
+  const answerStyle = {
+    border: "solid",
+    borderColor: `#d3d3d3`,
+    borderWidth: 1,
+  };
+
   const helpfulStyle = {
     float: "right",
   };
@@ -83,8 +89,10 @@ const QuestionEntry = ({ question, answersList }) => {
         </span>
       </div>
 
-      <div style={questionStyle}>
+      <div style={answerStyle}>
         <AnswersList answers={answers[0]} />
+      </div>
+      <div style={answerStyle}>
         <AnswersList answers={answers[1]} />
       </div>
 
