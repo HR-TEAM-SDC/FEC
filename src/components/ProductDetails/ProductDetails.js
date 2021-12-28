@@ -9,7 +9,6 @@ export const StylesContext = createContext();
 export const CurrentStyleContext = createContext();
 
 const ProductDetails = () => {
-  const [products, setProducts] = useState([]);
   const [product, setProduct] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [styles, setStyles] = useState([]);
@@ -18,7 +17,6 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       const products = await axios.get("products");
-      setProducts(products.data);
       setProduct(products.data[0]);
       const reviews = await axios.get("reviews", {
         params: { product_id: 40344 },
