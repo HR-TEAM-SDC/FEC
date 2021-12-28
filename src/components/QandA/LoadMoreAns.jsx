@@ -11,10 +11,18 @@ const LoadMoreAns = ({ answers }) => {
     borderWidth: 1,
   };
 
+  const answerStyle = {
+    border: "solid",
+    borderColor: `#d3d3d3`,
+    borderWidth: 1,
+  };
+
   return (
     <div style={handleScroll}>
       {answers.map((answers) => (
-        <AnswersList key={answers.answer_id} answers={answers} />
+        <div style={answerStyle} key={answers.answer_id}>
+          <AnswersList answers={answers} />
+        </div>
       ))}
     </div>
   );
