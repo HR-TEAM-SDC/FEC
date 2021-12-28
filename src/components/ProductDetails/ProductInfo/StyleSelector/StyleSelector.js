@@ -3,8 +3,6 @@ import axios from "../../../../apis/atelier";
 import Style from "./Style";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
 
-// export const StylesContext = createContext();
-
 const StyleSelector = () => {
   const styles = useContext(StylesContext);
   const { currentStyle, setCurrentStyle } = useContext(CurrentStyleContext);
