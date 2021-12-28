@@ -8,6 +8,7 @@ export const ReviewsContext = createContext();
 export const StylesContext = createContext();
 export const CurrentStyleContext = createContext();
 export const CurrentSkuContext = createContext();
+export const CurrentSizeContext = createContext();
 
 const ProductDetails = () => {
   const [product, setProduct] = useState([]);
@@ -15,6 +16,7 @@ const ProductDetails = () => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSku, setCurrentSku] = useState(null);
+  const [currentSize, setCurrentSize] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,13 +39,19 @@ const ProductDetails = () => {
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
           <StylesContext.Provider value={styles}>
-            <CurrentStyleContext.Provider
-              value={{ currentStyle, setCurrentStyle }}
+            <CurrentSizeContext.Provider
+              value={{ currentSize, setCurrentSize }}
             >
-              <CurrentSkuContext.Provider value={{ currentSku, setCurrentSku }}>
-                <ProductInfo />
-              </CurrentSkuContext.Provider>
-            </CurrentStyleContext.Provider>
+              <CurrentStyleContext.Provider
+                value={{ currentStyle, setCurrentStyle }}
+              >
+                <CurrentSkuContext.Provider
+                  value={{ currentSku, setCurrentSku }}
+                >
+                  <ProductInfo />
+                </CurrentSkuContext.Provider>
+              </CurrentStyleContext.Provider>
+            </CurrentSizeContext.Provider>
           </StylesContext.Provider>
         </ReviewsContext.Provider>
       </ProductContext.Provider>

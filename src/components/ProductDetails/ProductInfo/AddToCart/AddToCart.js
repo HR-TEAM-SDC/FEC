@@ -1,13 +1,15 @@
 import React from "react";
-import SizesSelector from "./SizesSelector";
-import Quantity from "./Quantity";
+import SizeSelector from "./SizeSelector";
+import QuantitySelector from "./QuantitySelector";
+import AddToCartButton from "./AddToCartButton";
 
 const AddToCart = () => {
   return (
     <div>
       <h4>Add To Cart Component</h4>
-      <SizesSelector />
-      <Quantity />
+      <SizeSelector />
+      <QuantitySelector />
+      <AddToCartButton />
     </div>
   );
 };
