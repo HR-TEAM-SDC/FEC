@@ -50,9 +50,14 @@ const ItemCard = ({ item, selectedItem }) => {
           </tbody>
         </table>
       </CompareModal>
-      <button onClick={() => modal.current.open()}>Compare</button>
+      <button class="card-button" onClick={() => modal.current.open()}>
+        Compare
+      </button>
       {item.styles[0].photos[0].thumbnail_url ? (
-        <img src={item.styles[0].photos[0].thumbnail_url} />
+        <img
+          className="card-image"
+          src={item.styles[0].photos[0].thumbnail_url}
+        />
       ) : null}
       <h4>{item.name}</h4>
       <p>{item.category}</p>

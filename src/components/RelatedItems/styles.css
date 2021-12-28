@@ -90,3 +90,19 @@
   margin: 0px 10px;
   cursor: pointer;
 }
+
+.card-image {
+  height: 200px;
+  width: auto;
+  margin-bottom: 30px;
+  object-fit: contain;
+  object-position: 50% 0;
+}
+
+.card-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-top: 5px;
+  z-index: 10;
+}
