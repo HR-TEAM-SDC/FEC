@@ -1,16 +1,18 @@
 import React from "react";
 import ItemCard from "./ItemCard";
 
-const RelatedItemsContainer = ({ items }) => {
+const RelatedItemsContainer = ({ relatedItems, selectedItem }) => {
   const renderCards = () => {
-    return items ? (
-      items.map((item) => <ItemCard item={item} key={item.id} />)
+    return relatedItems ? (
+      relatedItems.map((item) => (
+        <ItemCard item={item} key={item.id} selectedItem={selectedItem} />
+      ))
     ) : (
       <p>Loading...</p>
     );
   };
 
-  return <>{renderCards()}</>;
+  return <div className="card-container">{renderCards()}</div>;
 };
 
 export default RelatedItemsContainer;

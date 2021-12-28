@@ -3,7 +3,7 @@ import axios from "../../apis/atelier.js";
 import RelatedItemsContainer from "./RelatedItemsContainer";
 
 const RelatedItems = () => {
-  const [item, setItem] = useState("40344");
+  const [selectedItem, setSelectedItem] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const RelatedItems = () => {
   }, []);
 
   const useFetch = async () => {
-    const { data: relatedIds } = await axios.get(`/products/${item}/related`);
-
+    const { data: currentItemDetails } = await axios.get(`/products/40344`);
+    const { data: relatedIds } = await axios.get(`/products/40344/related`);
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -29,13 +29,17 @@ const RelatedItems = () => {
     });
 
     const productArray = await Promise.all(promiseArray);
+    setSelectedItem(currentItemDetails);
     setRelatedItems(productArray);
   };
 
   return (
     <>
       <h3>Related Items</h3>
-      <RelatedItemsContainer items={relatedItems} />
+      <RelatedItemsContainer
+        relatedItems={relatedItems}
+        selectedItem={selectedItem}
+      />
     </>
   );
 };

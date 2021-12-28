@@ -70,3 +70,23 @@
     opacity: 1;
   }
 }
+
+.card-container {
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  position: relative;
+  height: 415px;
+  margin: 0px;
+  padding: 0px;
+  scroll-behavior: smooth;
+}
+
+.card {
+  height: 400px;
+  width: 275px;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0px 10px;
+  cursor: pointer;
+}
