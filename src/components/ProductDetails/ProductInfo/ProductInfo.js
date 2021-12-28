@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import ProductTitle from "./ProductTitle";
 import ProductRating from "./ProductRating";
 import ProductPrice from "./ProductPrice";
