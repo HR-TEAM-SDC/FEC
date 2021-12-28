@@ -29,8 +29,7 @@ export default function QAapp() {
       setInput(query.target.value);
       handleSearch();
     } else {
-      setInput("");
-      handleSearch();
+      setQuestion(storage);
     }
   };
 
