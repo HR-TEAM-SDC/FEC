@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductBreakDown from "./productBreakDown.jsx";
 
 const BreakDown = (props) => {
   var ratingData = props.metaData.ratings;
@@ -38,14 +39,7 @@ const BreakDown = (props) => {
 
   var ratingBarStyle = (starNumber) => {
     var percentage = starPercentage(starNumber);
-    var style = {
-      color: "green",
-      position: "absolute",
-      width: percentage,
-      top: "0",
-      left: "0",
-      overflow: "hidden",
-    };
+    var style = { backgroundColor: "green", height: "10px", width: percentage };
     return style;
   };
 
@@ -73,10 +67,18 @@ const BreakDown = (props) => {
           >
             &#9733;&#9733;&#9733;&#9733;&#9733;
           </span>
-          <span className="bar" style={standardStyle}>
-            <span>&#8213;&#8213;&#8213;</span>
-            <span style={ratingBarStyle(5)}>&#8213;&#8213;&#8213;</span>
-          </span>
+          <div
+            className="bar"
+            style={{
+              backgroundColor: "grey",
+              width: "100px",
+              height: "10px",
+              display: "inline-block",
+              position: "relative",
+            }}
+          >
+            <div style={ratingBarStyle(5)}></div>
+          </div>
           <span>{ratingData[5]}</span>
         </p>
         <p>
@@ -87,43 +89,94 @@ const BreakDown = (props) => {
           >
             &#9733;&#9733;&#9733;&#9733;
           </span>
-          <span className="bar" style={standardStyle}>
-            <span>&#8213;&#8213;&#8213;</span>
-            <span style={ratingBarStyle(4)}>&#8213;&#8213;&#8213;</span>
-          </span>
+          <div
+            className="bar"
+            style={{
+              backgroundColor: "grey",
+              width: "100px",
+              height: "10px",
+              display: "inline-block",
+              position: "relative",
+            }}
+          >
+            <div style={ratingBarStyle(4)}></div>
+          </div>
           <span>{ratingData[4]}</span>
         </p>
         <p>
-          <span className="breakDownStar" style={breakDownStarStyle}>
+          <span
+            className="3star"
+            style={breakDownStarStyle}
+            onClick={props.starClick}
+          >
             &#9733;&#9733;&#9733;
           </span>
-          <span className="bar" style={standardStyle}>
-            <span>&#8213;&#8213;&#8213;</span>
-            <span style={ratingBarStyle(3)}>&#8213;&#8213;&#8213;</span>
-          </span>
+          <div
+            className="bar"
+            style={{
+              backgroundColor: "grey",
+              width: "100px",
+              height: "10px",
+              display: "inline-block",
+              position: "relative",
+            }}
+          >
+            <div style={ratingBarStyle(3)}></div>
+          </div>
           <span>{ratingData[3]}</span>
         </p>
         <p>
-          <span className="breakDownStar" style={breakDownStarStyle}>
+          <span
+            className="2star"
+            style={breakDownStarStyle}
+            onClick={props.starClick}
+          >
             &#9733;&#9733;
           </span>
-          <span className="bar" style={standardStyle}>
-            <span>&#8213;&#8213;&#8213;</span>
-            <span style={ratingBarStyle(2)}>&#8213;&#8213;&#8213;</span>
-          </span>
+          <div
+            className="bar"
+            style={{
+              backgroundColor: "grey",
+              width: "100px",
+              height: "10px",
+              display: "inline-block",
+              position: "relative",
+            }}
+          >
+            <div style={ratingBarStyle(2)}></div>
+          </div>
           <span>{ratingData[2]}</span>
         </p>
         <p>
-          <span className="breakDownStar" style={breakDownStarStyle}>
+          <span
+            className="1star"
+            style={breakDownStarStyle}
+            onClick={props.starClick}
+          >
             &#9733;
           </span>
-          <span className="bar" style={standardStyle}>
-            <span>&#8213;&#8213;&#8213;</span>
-            <span style={ratingBarStyle(1)}>&#8213;&#8213;&#8213;</span>
-          </span>
+          <div
+            className="bar"
+            style={{
+              backgroundColor: "grey",
+              width: "100px",
+              height: "10px",
+              display: "inline-block",
+              position: "relative",
+            }}
+          >
+            <div style={ratingBarStyle(1)}></div>
+          </div>
           <span>{ratingData[1]}</span>
         </p>
+        <p>
+          {" "}
+          {Math.round((props.metaData.recommended.true / totalReviews) * 1000) /
+            10}
+          % recommend
+        </p>
       </div>
+      <ProductBreakDown data={props.metaData.characteristics} />
     </div>
   ); //&#9733 is the star symbol
 };
