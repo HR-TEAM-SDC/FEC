@@ -9,6 +9,7 @@ const AddToCartButton = () => {
   const { currentQuantity } = useContext(CurrentQuantityContext);
   console.log("currentSize:", currentSize);
   console.log("currentQuantity:", currentQuantity);
+  console.log("typeof currentQuantity:", typeof currentQuantity);
 
   const buttonOnClick = () => {
     console.log("button clicked...");

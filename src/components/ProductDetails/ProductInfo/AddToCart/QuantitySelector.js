@@ -24,7 +24,9 @@ const QuantitySelector = () => {
   }, []);
 
   const handleQuantityChange = () => {
-    setCurrentQuantity(event.target.value);
+    let index = event.target.selectedIndex;
+    let quantity = event.target.childNodes[index].getAttribute("quantity");
+    setCurrentQuantity(Number(quantity));
   };
 
   const renderQuantity = () => {
