@@ -11,16 +11,6 @@ const StyleSelector = () => {
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
   const { setCurrentQuantity } = useContext(CurrentQuantityContext);
-  // console.log('styles:', styles);
-
-  useEffect(() => {
-    // setCurrentStyle(styles[0]);
-    // setCurrentSku(styles[0].skus[1394769]);
-    // console.log('currentSku:', currentSku)
-    // setCurrentSize(currentStyle.skus[0].size);
-    // setCurrentQuantity(1);
-    // setCurrentSku();
-  }, []);
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
