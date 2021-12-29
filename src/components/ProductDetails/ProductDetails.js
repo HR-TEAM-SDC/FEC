@@ -9,6 +9,7 @@ export const StylesContext = createContext();
 export const CurrentStyleContext = createContext();
 export const CurrentSkuContext = createContext();
 export const CurrentSizeContext = createContext();
+export const CurrentQuantityContext = createContext();
 
 const ProductDetails = () => {
   const [product, setProduct] = useState([]);
@@ -17,6 +18,7 @@ const ProductDetails = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSku, setCurrentSku] = useState(null);
   const [currentSize, setCurrentSize] = useState(null);
+  const [currentQuantity, setCurrentQuantity] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +50,11 @@ const ProductDetails = () => {
                 <CurrentSkuContext.Provider
                   value={{ currentSku, setCurrentSku }}
                 >
-                  <ProductInfo />
+                  <CurrentQuantityContext.Provider
+                    value={{ currentQuantity, setCurrentQuantity }}
+                  >
+                    <ProductInfo />
+                  </CurrentQuantityContext.Provider>
                 </CurrentSkuContext.Provider>
               </CurrentStyleContext.Provider>
             </CurrentSizeContext.Provider>
