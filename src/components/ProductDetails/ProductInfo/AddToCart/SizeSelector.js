@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import SizeOption from "./SizeOption";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
 import { CurrentSkuContext, CurrentSizeContext } from "../../ProductDetails";
+import { CurrentQuantityContext } from "../../ProductDetails";
 
 const SizeSelector = () => {
   const styles = useContext(StylesContext);
   const { currentStyle } = useContext(CurrentStyleContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
+  const { setCurrentQuantity } = useContext(CurrentQuantityContext);
 
   const renderSizes = () => {
     let content = [];
@@ -33,6 +35,7 @@ const SizeSelector = () => {
 
   const handleSizeChange = () => {
     setCurrentSize(event.target.value);
+    setCurrentQuantity(1);
   };
 
   return (
