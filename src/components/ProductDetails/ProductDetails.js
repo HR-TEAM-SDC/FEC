@@ -17,8 +17,8 @@ const ProductDetails = () => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSku, setCurrentSku] = useState(null);
-  const [currentSize, setCurrentSize] = useState(null);
-  const [currentQuantity, setCurrentQuantity] = useState(null);
+  const [currentSize, setCurrentSize] = useState("XS");
+  const [currentQuantity, setCurrentQuantity] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {

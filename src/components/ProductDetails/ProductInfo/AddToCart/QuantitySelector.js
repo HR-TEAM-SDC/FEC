@@ -12,7 +12,6 @@ const QuantitySelector = () => {
   const { currentQuantity, setCurrentQuantity } = useContext(
     CurrentQuantityContext
   );
-  console.log("currentQuantity:", currentQuantity);
 
   useEffect(() => {
     if (currentSku && currentSize) {
@@ -26,19 +25,14 @@ const QuantitySelector = () => {
 
   const handleQuantityChange = () => {
     setCurrentQuantity(event.target.value);
-    console.log("currentQuantity:", currentQuantity);
   };
 
   const renderQuantity = () => {
     let content = [];
     let quantity = 1;
 
-    console.log("currentStyle.skus:", currentStyle.skus);
     if (currentSku) {
-      console.log(
-        "currentStyle.skus[currentSku]:",
-        currentStyle.skus[currentSku]
-      );
+      // console.log("currentStyle.skus[currentSku]:", currentStyle.skus[currentSku]);
       for (let i = 0; i < currentStyle.skus[currentSku].quantity; i++) {
         content.push(<QuantityOption quantity={quantity} key={quantity} />);
         quantity++;

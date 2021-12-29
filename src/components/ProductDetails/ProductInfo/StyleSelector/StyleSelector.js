@@ -3,17 +3,20 @@ import axios from "../../../../apis/atelier";
 import Style from "./Style";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
 import { CurrentSizeContext, CurrentSkuContext } from "../../ProductDetails";
+import { CurrentQuantityContext } from "../../ProductDetails";
 
 const StyleSelector = () => {
   const styles = useContext(StylesContext);
   const { currentStyle, setCurrentStyle } = useContext(CurrentStyleContext);
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
+  const { setCurrentQuantity } = useContext(CurrentQuantityContext);
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
     setCurrentSize(null);
     setCurrentSku(null);
+    setCurrentQuantity(null);
   };
 
   return (
