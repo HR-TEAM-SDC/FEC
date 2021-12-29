@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "../../apis/atelier";
 import "./styles.css";
 
-const AddForm = ({ product, handleAddQuestion }) => {
+const AddQuestionForm = ({ product, handleAddQuestion }) => {
   return (
     <div>
       <h1>Ask Your Question</h1>
@@ -64,4 +64,4 @@ const AddForm = ({ product, handleAddQuestion }) => {
   );
 };
 
-export default AddForm;
+export default AddQuestionForm;

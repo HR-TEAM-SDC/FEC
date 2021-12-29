@@ -4,7 +4,7 @@ import QuestionsList from "./QuestionsList.jsx";
 import Search from "./Search.jsx";
 import LoadMoreQ from "./LoadMoreQ.jsx";
 import AddModal from "./AddModals.jsx";
-import AddForm from "./AddForm.jsx";
+import AddQuestionForm from "./AddQuestionForm.jsx";
 import { Context } from "../context/context.js";
 import "./styles.css";
 const productId = 40344;
@@ -120,7 +120,7 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider value={{ handleHelpfulness }}>
+        <Context.Provider value={{ handleHelpfulness, product }}>
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>
@@ -145,7 +145,10 @@ export default function QAapp() {
         </button>
       </div>
       <AddModal ref={modal}>
-        <AddForm handleAddQuestion={handleAddQuestion} product={product} />
+        <AddQuestionForm
+          handleAddQuestion={handleAddQuestion}
+          product={product}
+        />
       </AddModal>
     </div>
   );

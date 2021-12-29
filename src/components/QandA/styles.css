@@ -80,6 +80,7 @@
 .button {
   height: 70px;
   width: 400px;
+  border-radius: 10px;
 }
 
 .textarea {
@@ -98,6 +99,7 @@
 
 .input-small {
   width: 70%;
+  height: 40px;
 }
 
 .hightlight {

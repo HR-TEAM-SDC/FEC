@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "../../apis/atelier";
 import AnswersList from "./AnswersList.jsx";
 import LoadMoreAns from "./LoadMoreAns.jsx";
+import AddModal from "./AddModals.jsx";
+import AddAnswerForm from "./AddAnswerForm.jsx";
+import "./styles.css";
 
 const QuestionEntry = ({ question, answersList }) => {
   const [answers, setAnswer] = useState([]);
   const [moreAnswers, setLoadMore] = useState(false);
   const [helpQuesStatus, setHelpQues] = useState(false);
+  const modal = useRef(null);
 
   useEffect(() => {
     axios
@@ -85,8 +89,13 @@ const QuestionEntry = ({ question, answersList }) => {
             Yes
           </span>{" "}
           ({question.question_helpfulness}) |{" "}
-          <span style={addAnswerStyle}>Add Answer</span>
+          <span style={addAnswerStyle} onClick={() => modal.current.open()}>
+            Add Answer
+          </span>
         </span>
+        <AddModal ref={modal}>
+          <AddAnswerForm question={question} />
+        </AddModal>
       </div>
 
       <div style={answerStyle}>
