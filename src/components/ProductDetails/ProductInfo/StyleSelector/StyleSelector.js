@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import axios from "../../../../apis/atelier";
 import Style from "./Style";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
-import { CurrentSizeContext } from "../../ProductDetails";
+import { CurrentSizeContext, CurrentSkuContext } from "../../ProductDetails";
 
 const StyleSelector = () => {
   const styles = useContext(StylesContext);
   const { currentStyle, setCurrentStyle } = useContext(CurrentStyleContext);
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
+  const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
-    // setCurrentSize(null);
-    // setCurrentSku(null);
+    setCurrentSize(null);
+    setCurrentSku(null);
   };
 
   return (
