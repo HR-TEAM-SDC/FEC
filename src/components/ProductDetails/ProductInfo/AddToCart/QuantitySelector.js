@@ -30,7 +30,6 @@ const QuantitySelector = () => {
   const renderQuantity = () => {
     let content = [];
     let quantity = 1;
-
     if (currentSku) {
       // console.log("currentStyle.skus[currentSku]:", currentStyle.skus[currentSku]);
       for (let i = 0; i < currentStyle.skus[currentSku].quantity; i++) {

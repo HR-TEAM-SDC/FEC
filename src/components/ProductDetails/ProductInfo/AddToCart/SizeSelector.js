@@ -11,6 +11,7 @@ const SizeSelector = () => {
 
   const renderSizes = () => {
     let content = [];
+    content.push(<option>Select Size</option>);
     for (let key in currentStyle.skus) {
       content.push(
         <SizeOption value={key} key={key} currentStyle={currentStyle} />
