@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "../../apis/atelier";
 import QuestionsList from "./QuestionsList.jsx";
 import Search from "./Search.jsx";
 import LoadMoreQ from "./LoadMoreQ.jsx";
+import AddModal from "./AddModals.jsx";
+import AddForm from "./AddForm.jsx";
 import { Context } from "../context/context.js";
+import "./styles.css";
 const productId = 40344;
 
 export default function QAapp() {
@@ -14,10 +17,33 @@ export default function QAapp() {
   const [moreQ, setLoadQ] = useState(false);
   const [QuesArrayLength, setLength] = useState(0);
   const [counter, setCount] = useState(0);
+  const [product, setProduct] = useState(0);
+  const modal = useRef(null);
 
   useEffect(() => {
     axios
-      .get("qa/questions", { params: { product_id: productId, count: 4 } })
+      .get("qa/questions", { params: { product_id: productId } })
+      .then((res) => {
+        setQuestion(res.data.results);
+        setSave(res.data.results);
+        setLength(res.data.results.length);
+        console.log(res.data);
+      })
+      .then(() => {
+        return axios.get(`products/${productId}`);
+      })
+      .then((res) => {
+        setProduct(res.data);
+        console.log("Product data: ", res.data);
+      })
+      .catch((err) => {
+        console.log("Failed to get data,", err);
+      });
+  }, []);
+
+  const refreshPage = () => {
+    axios
+      .get("qa/questions", { params: { product_id: productId } })
       .then((res) => {
         setQuestion(res.data.results);
         setSave(res.data.results);
@@ -27,7 +53,7 @@ export default function QAapp() {
       .catch((err) => {
         console.log("Failed to get data,", err);
       });
-  }, []);
+  };
 
   const editSearch = (query) => {
     if (query.target.value.length >= 3) {
@@ -55,13 +81,7 @@ export default function QAapp() {
       .put(`qa/answers/${answerId}/helpful`)
       .then(() => {
         console.log("Your feedback has been submitted!");
-        return axios.get("qa/questions", { params: { product_id: productId } });
-      })
-      .then((res) => {
-        setQuestion(res.data.results);
-        setSave(res.data.results);
-        setLength(res.data.results.length);
-        console.log(res.data);
+        refreshPage();
       })
       .catch((err) => {
         console.log("Failed to submit a feedback: ", err);
@@ -75,9 +95,22 @@ export default function QAapp() {
     setCount(counter + 2);
   };
 
-  const buttonStyle = {
-    height: 70,
-    width: 400,
+  const handleAddQuestion = (event, id) => {
+    event.preventDefault();
+    let name = event.target[0].value;
+    let email = event.target[1].value;
+    let body = event.target[2].value;
+    let product_id = id;
+    //console.log('what is input:', name, email, body, product_id );
+
+    axios
+      .post("qa/questions", { name, email, body, product_id })
+      .then((res) => {
+        console.log("You submit a new question successfully!", res);
+      })
+      .catch((err) => {
+        console.log("Failed to post a new question.", err);
+      });
   };
 
   return (
@@ -94,15 +127,26 @@ export default function QAapp() {
       <div>
         {questions.length > 2 ? (
           counter >= QuesArrayLength - 2 ? null : (
-            <button style={buttonStyle} onClick={handleLoadMoreQ}>
+            <button className="button" onClick={handleLoadMoreQ}>
               MORE ANSWERED QUESTIONS
             </button>
           )
         ) : null}
       </div>
       <div>
-        {moreQ ? <LoadMoreQ questions={questions.slice(2, 2 + 2)} /> : null}
+        {moreQ ? (
+          <LoadMoreQ questions={questions.slice(counter, counter + 2)} />
+        ) : null}
       </div>
+
+      <div>
+        <button className="button" onClick={() => modal.current.open()}>
+          ADD A QUESTION ➕
+        </button>
+      </div>
+      <AddModal ref={modal}>
+        <AddForm handleAddQuestion={handleAddQuestion} product={product} />
+      </AddModal>
     </div>
   );
 }
