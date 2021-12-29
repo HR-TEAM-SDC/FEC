@@ -8,11 +8,9 @@ const AddAnswerForm = ({ question }) => {
   const [photos, setPhoto] = useState([]);
 
   const handlePhoto = (event) => {
-    console.log("what is photo:", event.target.files);
-    // let currPhoto = photos;
-    // currPhoto.push(URL.createObjectURL(event.target.files[0]));
+    //console.log("what is photo:", event.target.files);
     let currPhoto = [...event.target.files];
-    console.log("currPhoto", currPhoto);
+    //console.log('currPhoto', currPhoto);
 
     let newList = currPhoto.map((photo) => {
       return URL.createObjectURL(photo);
