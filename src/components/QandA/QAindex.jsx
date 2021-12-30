@@ -5,6 +5,7 @@ import Search from "./Search.jsx";
 import LoadMoreQ from "./LoadMoreQ.jsx";
 import AddModal from "./AddModals.jsx";
 import AddQuestionForm from "./AddQuestionForm.jsx";
+import AddAnswerForm from "./AddAnswerForm.jsx";
 import { Context } from "../context/context.js";
 import "./styles.css";
 const productId = 40344;
@@ -101,7 +102,9 @@ export default function QAapp() {
     let email = event.target[1].value;
     let body = event.target[2].value;
     let product_id = id;
-    //console.log('what is input:', name, email, body, product_id );
+    event.target.reset();
+    //console.log('what is input:', {name, email, body, product_id} );
+    //a correct format of email is required: aaa@qq.com
 
     axios
       .post("qa/questions", { name, email, body, product_id })
@@ -109,7 +112,27 @@ export default function QAapp() {
         console.log("You submit a new question successfully!", res);
       })
       .catch((err) => {
-        console.log("Failed to post a new question.", err);
+        console.log("Failed to post a new question.", err.response);
+      });
+  };
+
+  const handleAddAnswer = (event, id, photosArray) => {
+    event.preventDefault();
+    //console.log('what is the new answer:', event)
+
+    let name = event.target[0].value;
+    let email = event.target[1].value;
+    let body = event.target[2].value;
+    let photos = photosArray;
+    console.log("what is the new answer:", body, name, email, photos);
+
+    axios
+      .post(`qa/questions/${id}/answers`, { name, email, body, photos })
+      .then((res) => {
+        console.log("You submit a new answer successfully!", res);
+      })
+      .catch((err) => {
+        console.log("Failed to post a new answer.", err.response);
       });
   };
 
@@ -120,7 +143,9 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider value={{ handleHelpfulness, product }}>
+        <Context.Provider
+          value={{ handleHelpfulness, product, handleAddAnswer }}
+        >
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>

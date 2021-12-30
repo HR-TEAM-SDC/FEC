@@ -1,10 +1,11 @@
-import axios from 'axios';
-import key from './config';
+import axios from "axios";
+import key from "./config";
 
 export default axios.create({
-  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
+  baseURL: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/",
   headers: {
     Authorization: key,
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
   },
 });
