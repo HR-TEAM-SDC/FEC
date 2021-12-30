@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../apis/atelier.js";
-import ItemCard from "./ItemCard";
+import CardContainer from "./CardContainer";
 
 const RelatedItems = () => {
-  const [item, setItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const RelatedItems = () => {
   }, []);
 
   const useFetch = async () => {
-    const { data: relatedIds } = await axios.get("/products/40344/related");
-
+    const { data: currentItemDetails } = await axios.get(`/products/40344`);
+    const { data: relatedIds } = await axios.get(`/products/40344/related`);
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -29,22 +29,17 @@ const RelatedItems = () => {
     });
 
     const productArray = await Promise.all(promiseArray);
+    setSelectedItem(currentItemDetails);
     setRelatedItems(productArray);
   };
 
-  const renderCards = () => {
-    return relatedItems ? (
-      relatedItems.map((item) => <ItemCard item={item} key={item.id} />)
-    ) : (
-      <div>Loading...</div>
-    );
-  };
-
   return (
-    <>
+    <section className="related-items">
       <h3>Related Items</h3>
-      {renderCards()}
-    </>
+      <div className="list">
+        <CardContainer cardItems={relatedItems} selectedItem={selectedItem} />
+      </div>
+    </section>
   );
 };
 
