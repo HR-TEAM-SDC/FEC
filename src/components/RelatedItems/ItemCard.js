@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import CompareModal from "./CompareModal";
 
 const ItemCard = ({ item, selectedItem }) => {
-  const modal = useRef(null);
+  const modal = useRef();
 
   const formatFeatures = {};
   item.features.forEach(
@@ -43,26 +43,28 @@ const ItemCard = ({ item, selectedItem }) => {
           <tbody>
             <tr>
               <th key={item.id}>{item.name}</th>
-              <th key="blankspace">{"     "}</th>
+              <th key="blankspace">{"Comparing..."}</th>
               <th key={selectedItem.id}>{selectedItem.name}</th>
             </tr>
             {renderTable()}
           </tbody>
         </table>
       </CompareModal>
-      <button class="card-button" onClick={() => modal.current.open()}>
+      <button className="card-button" onClick={() => modal.current.open()}>
         Compare
       </button>
-      {item.styles[0].photos[0].thumbnail_url ? (
-        <img
-          className="card-image"
-          src={item.styles[0].photos[0].thumbnail_url}
-        />
-      ) : null}
-      <h4>{item.name}</h4>
-      <p>{item.category}</p>
-      <p>{item.default_price}</p>
-      <p>{item.avgRating}</p>
+      <div className="card-image-container">
+        {item.styles[0].photos[0].thumbnail_url ? (
+          <img
+            className="card-image"
+            src={item.styles[0].photos[0].thumbnail_url}
+          />
+        ) : null}
+      </div>
+      <h4 className="card-info">{item.name}</h4>
+      <p className="card-info">{item.category}</p>
+      <p className="card-info">{item.default_price}</p>
+      <p className="card-info">{item.avgRating}</p>
     </section>
   );
 };

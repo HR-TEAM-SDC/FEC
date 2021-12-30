@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../apis/atelier.js";
-import RelatedItemsContainer from "./RelatedItemsContainer";
+import CardContainer from "./CardContainer";
 
 const RelatedItems = () => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -8,6 +8,8 @@ const RelatedItems = () => {
 
   useEffect(() => {
     useFetch();
+    const ac = new AbortController();
+    return ac.abort();
   }, []);
 
   const useFetch = async () => {
@@ -34,13 +36,12 @@ const RelatedItems = () => {
   };
 
   return (
-    <>
+    <section className="related-items">
       <h3>Related Items</h3>
-      <RelatedItemsContainer
-        relatedItems={relatedItems}
-        selectedItem={selectedItem}
-      />
-    </>
+      <div className="list">
+        <CardContainer cardItems={relatedItems} selectedItem={selectedItem} />
+      </div>
+    </section>
   );
 };
 
