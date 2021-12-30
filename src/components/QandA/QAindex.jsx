@@ -96,13 +96,15 @@ export default function QAapp() {
     setCount(counter + 2);
   };
 
+  const handleCloseQModal = () => modal.current.close();
+
   const handleAddQuestion = (event, id) => {
     event.preventDefault();
     let name = event.target[0].value;
     let email = event.target[1].value;
     let body = event.target[2].value;
     let product_id = id;
-    event.target.reset();
+    // event.target.reset();
     //console.log('what is input:', {name, email, body, product_id} );
     //a correct format of email is required: aaa@qq.com
 
@@ -110,29 +112,10 @@ export default function QAapp() {
       .post("qa/questions", { name, email, body, product_id })
       .then((res) => {
         console.log("You submit a new question successfully!", res);
+        handleCloseQModal();
       })
       .catch((err) => {
         console.log("Failed to post a new question.", err.response);
-      });
-  };
-
-  const handleAddAnswer = (event, id, photosArray) => {
-    event.preventDefault();
-    //console.log('what is the new answer:', event)
-
-    let name = event.target[0].value;
-    let email = event.target[1].value;
-    let body = event.target[2].value;
-    let photos = photosArray;
-    console.log("what is the new answer:", body, name, email, photos);
-
-    axios
-      .post(`qa/questions/${id}/answers`, { name, email, body, photos })
-      .then((res) => {
-        console.log("You submit a new answer successfully!", res);
-      })
-      .catch((err) => {
-        console.log("Failed to post a new answer.", err.response);
       });
   };
 
@@ -143,9 +126,7 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider
-          value={{ handleHelpfulness, product, handleAddAnswer }}
-        >
+        <Context.Provider value={{ handleHelpfulness, product }}>
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>

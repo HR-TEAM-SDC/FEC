@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import axios from "../../apis/atelier";
 import AnswersList from "./AnswersList.jsx";
 import LoadMoreAns from "./LoadMoreAns.jsx";
 import AddModal from "./AddModals.jsx";
 import AddAnswerForm from "./AddAnswerForm.jsx";
+import { Context } from "../context/context.js";
 import "./styles.css";
 
 const QuestionEntry = ({ question, answersList }) => {
@@ -11,6 +12,7 @@ const QuestionEntry = ({ question, answersList }) => {
   const [moreAnswers, setLoadMore] = useState(false);
   const [helpQuesStatus, setHelpQues] = useState(false);
   const modal = useRef(null);
+  const { handleClose } = useContext(Context);
 
   useEffect(() => {
     axios
@@ -43,6 +45,30 @@ const QuestionEntry = ({ question, answersList }) => {
           console.log("Failed to mark a question", err);
         });
     }
+  };
+
+  const handleCloseAnsModal = () => modal.current.close();
+
+  const handleAddAnswer = (event, id, photosArray) => {
+    event.preventDefault();
+    //console.log('what is the new answer:', event)
+
+    let name = event.target[0].value;
+    let email = event.target[1].value;
+    let body = event.target[2].value;
+    let photos = photosArray;
+    event.target.reset();
+    console.log("what is the new answer:", body, name, email, photos);
+
+    axios
+      .post(`qa/questions/${id}/answers`, { name, email, body, photos })
+      .then((res) => {
+        console.log("You submit a new answer successfully!", res);
+        handleCloseAnsModal();
+      })
+      .catch((err) => {
+        console.log("Failed to post a new answer.", err.response);
+      });
   };
 
   const LoadMoreStyle = {
@@ -94,7 +120,10 @@ const QuestionEntry = ({ question, answersList }) => {
           </span>
         </span>
         <AddModal ref={modal}>
-          <AddAnswerForm question={question} />
+          <AddAnswerForm
+            question={question}
+            handleAddAnswer={handleAddAnswer}
+          />
         </AddModal>
       </div>
 

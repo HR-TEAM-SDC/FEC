@@ -3,10 +3,10 @@ import axios from "../../apis/atelier";
 import { Context } from "../context/context.js";
 import "./styles.css";
 
-const AddAnswerForm = ({ question }) => {
+const AddAnswerForm = ({ question, handleAddAnswer }) => {
   const { product } = useContext(Context);
   const [photos, setPhoto] = useState([]);
-  const { handleAddAnswer } = useContext(Context);
+  // const { handleAddAnswer } = useContext(Context);
 
   const handlePhoto = (event) => {
     event.preventDefault();
@@ -111,7 +111,7 @@ const AddAnswerForm = ({ question }) => {
         </div>
 
         <div className="form-cell">
-          <button type="submit" className="button">
+          <button type="submit" className="button" data-dismiss="modal">
             Submit
           </button>
         </div>
