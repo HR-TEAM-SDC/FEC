@@ -25,19 +25,18 @@ const ProductBreakDown = (props) => {
     var QualityPercentage = String((props.data.Quality.value / 5) * 100) + "px";
   }
 
+  var greyBarStandardStyle = {
+    backgroundColor: "grey",
+    width: "100px",
+    height: "10px",
+    display: "inline-block",
+    position: "relative",
+  };
   return (
     <div className="productBreakDown">
       <div className="productBreakDownSize">
         <span style={{ display: "block" }}>Size</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",
@@ -52,15 +51,7 @@ const ProductBreakDown = (props) => {
       </div>
       <div className="productBreakDownWidth">
         <span style={{ display: "block" }}>Width</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",
@@ -75,15 +66,7 @@ const ProductBreakDown = (props) => {
       </div>
       <div className="productBreakDownComfort">
         <span style={{ display: "block" }}>Comfort</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",
@@ -98,15 +81,7 @@ const ProductBreakDown = (props) => {
       </div>
       <div className="productBreakDownFit">
         <span style={{ display: "block" }}>Fit</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",
@@ -121,15 +96,7 @@ const ProductBreakDown = (props) => {
       </div>
       <div className="productBreakDownLength">
         <span style={{ display: "block" }}>Length</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",
@@ -144,15 +111,7 @@ const ProductBreakDown = (props) => {
       </div>
       <div className="productBreakDownQuality">
         <span style={{ display: "block" }}>Quality</span>
-        <div
-          style={{
-            backgroundColor: "grey",
-            width: "100px",
-            height: "10px",
-            display: "inline-block",
-            position: "relative",
-          }}
-        >
+        <div style={greyBarStandardStyle}>
           <span
             style={{
               position: "absolute",

@@ -36,17 +36,6 @@ const RRIndex = (props) => {
     border: "1px solid rgba(0, 0, 0, 0.05)",
   };
 
-  // var starClick = (starNumber) => {
-  //   var result = [];
-  //   if (data) {
-  //     for (var i = 0; i < data.results.length; i++) {
-  //       if (data.results[i].rating === starNumber) {
-  //         result.push(data.results[i])
-  //       };
-  //     };
-  //   }
-  //   setData(result);
-  // };
   var starClick = async (e) => {
     var number = Number(e.target.className[0]);
     if (filterRecord[number] === true) {
