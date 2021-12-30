@@ -6,17 +6,11 @@ import QAapp from "../components/QandA/QAindex.jsx";
 import RRIndex from "./Review/RRIndex.jsx";
 
 const App = () => {
-  // useEffect(() => {
-  //   axios.get("products").then((res) => setTest(res.data));
-  // }, []);
-
   return (
     <main>
       <ProductDetails />
       <RelatedItems />
-
       <QAapp />
-
       <RRIndex />
     </main>
   );
