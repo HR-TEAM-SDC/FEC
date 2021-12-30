@@ -13,6 +13,7 @@ const ProductInfo = () => {
     borderStyle: "solid",
     borderWidth: "1px",
     width: "40%",
+    height: "auto",
     marginLeft: "50%",
   };
 

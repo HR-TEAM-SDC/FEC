@@ -44,6 +44,10 @@ const ProductDetails = () => {
   const detailStyles = {
     borderStyle: "solid",
     borderWidth: "1px",
+    width: "90%",
+    height: "auto",
+    margin: "auto",
+    padding: "10px",
   };
 
   return (

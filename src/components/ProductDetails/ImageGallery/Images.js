@@ -11,12 +11,13 @@ const Images = (props) => {
 
   return (
     <div style={imagesStyle}>
-      Images
-      {photos
-        ? photos.map((photo, index) => {
-            return <Image photo={photo} key={index} />;
-          })
-        : null}
+      <span>
+        {photos
+          ? photos.map((photo, index) => {
+              return <Image photo={photo} key={index} />;
+            })
+          : null}
+      </span>
     </div>
   );
 };
