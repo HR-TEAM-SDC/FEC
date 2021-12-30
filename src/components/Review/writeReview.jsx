@@ -1,16 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import "./style.css";
 import Characteristics from "./Characteristics.jsx";
+import Input from "./writeReviewInput.jsx";
+import axios from "../../apis/atelier.js";
 
 const WriteReview = (props) => {
   const [rate, setRate] = useState(null);
   const [recommend, setRecommend] = useState(null);
   const [characteristics, setCharacteristics] = useState({});
-  const [minimumLength, setMinimumLength] = useState(null);
+  const [summary, setSummary] = useState(null);
+  const [body, setBody] = useState(null);
+  const [nickname, setNickname] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
+  const [photoURLs, setPhotoURLs] = useState([]);
 
-  useEffect(() => {
-    console.log(characteristics);
-  }, [characteristics]);
+  // useEffect(() => {
+  //   console.log(characteristics);
+  // }, [characteristics]);
+  var finalSubmit = () => {
+    if (!rate) {
+      var string = "You must enter the following: rating";
+      alert(string);
+      return;
+    }
+    if (!body) {
+      var string = "You must enter the following: body";
+      alert(string);
+      return;
+    }
+    if (!characteristics) {
+      var string = "You must enter the following: characteristics";
+      alert(string);
+      return;
+    }
+    if (!nickname) {
+      var string = "You must enter the following: nickname";
+      alert(string);
+      return;
+    }
+    if (!email) {
+      var string = "You must enter the following: email";
+      alert(string);
+      return;
+    }
+    var finalParam = {
+      product_id: props.id,
+      rating: rate,
+      summary: summary,
+      body: body,
+      recommend: recommend,
+      name: nickname,
+      email: email,
+      photos: photoURLs,
+      characteristics: characteristics,
+    };
+    console.log(finalParam);
+    axios
+      .post("reviews", {
+        params: finalParam,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   var starRate = (e) => {
     setRate(e.target.value);
@@ -22,14 +78,31 @@ const WriteReview = (props) => {
     setRecommend(e.target.value);
   };
 
-  var CharacteristicsRate = (e) => {
+  var CharacteristicsReview = (e) => {
     var result = characteristics;
     result[e.target.id] = e.target.value;
     setCharacteristics(result);
+    forceUpdate();
   };
 
-  var WriteReviewBody = (e) => {
-    setMinimumLength(e.target.value.length);
+  var summaryReview = (e) => {
+    setSummary(e.target.value);
+  };
+
+  var bodyReview = (value) => {
+    setBody(value);
+  };
+
+  var nicknameReview = (e) => {
+    setNickname(e.target.value);
+  };
+
+  var emailReview = (e) => {
+    setEmail(e.target.value);
+  };
+
+  var photoReview = (array) => {
+    setPhotoURLs(array);
   };
 
   return (
@@ -82,34 +155,20 @@ const WriteReview = (props) => {
           No
         </label>
       </div>
-      <Characteristics CharacteristicsRate={CharacteristicsRate} />
-      <p>Review summary: </p>
+      <Characteristics CharacteristicsReview={CharacteristicsReview} />
+      <Input
+        summaryReview={summaryReview}
+        bodyReview={bodyReview}
+        nicknameReview={nicknameReview}
+        emailReview={emailReview}
+        photoReview={photoReview}
+      />
       <input
-        id="reviewSummary"
-        type="text"
-        placeholder="Example: Best purchase ever!"
-        style={{ width: "90%" }}
-        maxlength="60"
+        type="submit"
+        value="submit"
+        style={{ display: "block" }}
+        onClick={finalSubmit}
       ></input>
-      <p>Review Body: </p>
-      <textarea
-        id="reviewBody"
-        type="text"
-        placeholder="Why did you like the product or not?"
-        style={{
-          width: "90%",
-          height: "400px",
-          textAlign: "top",
-          padding: "0",
-        }}
-        maxlength="1000"
-        onChange={WriteReviewBody}
-      ></textarea>
-      <p>
-        {minimumLength >= 50
-          ? "Minimum reached"
-          : "Minimum required characters left: " + (50 - minimumLength)}
-      </p>
     </div>
   );
 };

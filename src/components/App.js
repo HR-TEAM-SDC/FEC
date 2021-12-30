@@ -12,10 +12,10 @@ const App = () => {
 
   return (
     <main>
-      <ProductDetails />
+      {/* <ProductDetails />
       <RelatedItems />
 
-      <QAapp />
+      <QAapp /> */}
 
       <RRIndex />
     </main>

@@ -12,11 +12,80 @@ const BreakDown = (props) => {
     totalReviews = totalReviews + Number(ratingData[key]);
   }
   var result = totalStars / totalReviews;
+
   var rounded = Math.round(result * 10) / 10;
 
   var summaryRating = rounded;
 
   var percentage = String((summaryRating / 5) * 100) + "%";
+
+  var starFiler = (e) => {
+    var number = Number(e.target.className[0]);
+    var record = props.filterRecord;
+    var filterdata = props.filterData;
+
+    if (record[number] === true) {
+      var result = [];
+      for (var i = 0; i < filterdata.length; i++) {
+        if (filterdata[i].rating !== number) {
+          result.push(filterdata[i]);
+        }
+      }
+      if (result.length !== 0) {
+        props.setfilterData(result);
+      } else {
+        props.setfilterData(props.data);
+      }
+      delete record[number];
+      props.setfilterRecord(record);
+    } else {
+      if (filterdata.length === props.data.length) {
+        var result = [];
+        console.log("this has been invoked");
+      } else {
+        var result = filterdata;
+      }
+      for (var i = 0; i < props.data.length; i++) {
+        if (props.data[i].rating === number) {
+          result.push(props.data[i]);
+        }
+      }
+      props.setfilterData(result);
+      record[number] = true;
+      props.setfilterRecord(record);
+    }
+
+    // if (filterRecord[number] === true) {
+    //   var result = [];
+    //   for (let i = 0; i < filterData.length; i++) {
+    //     if (filterData[i].rating !== number) {
+    //       result.push(filterData[i]);
+    //     }
+    //   }
+    //   var record = filterRecord;
+    //   delete record[number];
+    //   setfilterData(result);
+    //   if (filterData.length === 0) {
+    //     setfilterData(data);
+    //   }
+    //   setfilterRecord(record);
+    // } else {
+    //   if (filterData) {
+    //     var result = filterData;
+    //   } else {
+    //     var result = [];
+    //   }
+    //   for (let i = 0; i < data.length; i++) {
+    //     if (data[i].rating === number) {
+    //       result.push(data[i]);
+    //     }
+    //   }
+    //   var record = filterRecord;
+    //   record[number] = true;
+    //   setfilterRecord(record);
+    //   setfilterData(result);
+    // }
+  };
 
   var standardStyle = {
     color: "grey",
@@ -72,7 +141,7 @@ const BreakDown = (props) => {
           <span
             className="5star"
             style={breakDownStarStyle}
-            onClick={props.starClick}
+            onClick={starFiler}
           >
             &#9733;&#9733;&#9733;&#9733;&#9733;
           </span>
@@ -94,7 +163,7 @@ const BreakDown = (props) => {
           <span
             className="4star"
             style={breakDownStarStyle}
-            onClick={props.starClick}
+            onClick={starFiler}
           >
             &#9733;&#9733;&#9733;&#9733;
           </span>
@@ -116,7 +185,7 @@ const BreakDown = (props) => {
           <span
             className="3star"
             style={breakDownStarStyle}
-            onClick={props.starClick}
+            onClick={starFiler}
           >
             &#9733;&#9733;&#9733;
           </span>
@@ -138,7 +207,7 @@ const BreakDown = (props) => {
           <span
             className="2star"
             style={breakDownStarStyle}
-            onClick={props.starClick}
+            onClick={starFiler}
           >
             &#9733;&#9733;
           </span>
@@ -160,7 +229,7 @@ const BreakDown = (props) => {
           <span
             className="1star"
             style={breakDownStarStyle}
-            onClick={props.starClick}
+            onClick={starFiler}
           >
             &#9733;
           </span>
