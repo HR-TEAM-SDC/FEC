@@ -11,11 +11,23 @@ const Style = (props) => {
     margin: "0px 5px",
   };
 
+  const selectedStyle = {
+    borderStyle: "solid",
+    borderWidth: "5px",
+    borderRadius: "100%",
+    width: "75px",
+    height: "75px",
+    margin: "0px 5px",
+  };
+
   return (
     <span>
       <img
-        style={thumbnailStyle}
+        style={
+          props.style === props.currentStyle ? selectedStyle : thumbnailStyle
+        }
         src={props.style.photos[0].thumbnail_url}
+        onClick={() => props.styleClickHandler(props.style)}
       ></img>
     </span>
   );
