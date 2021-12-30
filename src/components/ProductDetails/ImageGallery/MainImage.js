@@ -16,11 +16,10 @@ const MainImage = (props) => {
 
   const mainImageStyle = {
     display: "block",
-    maxWidth: "400px",
-    maxHeight: "500px",
-    width: "100%",
-    height: "100%",
-    marginRight: "40px",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    width: "600px",
+    height: "auto",
   };
 
   return (

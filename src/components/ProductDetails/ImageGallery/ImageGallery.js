@@ -1,13 +1,15 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import MainImage from "./MainImage";
-import Images from "./Images";
+import Thumbnails from "./Thumbnails";
 import { StylesContext, CurrentStyleContext } from "../ProductDetails";
 
 export const CurrentImageContext = createContext();
+export const CurrentIndexContext = createContext();
 
 const ImageGallery = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
   const [currentImage, setCurrentImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   console.log("currentImage:", currentImage);
   const imageGalleryStyle = {
@@ -22,8 +24,10 @@ const ImageGallery = () => {
   return (
     <div style={imageGalleryStyle}>
       <CurrentImageContext.Provider value={{ currentImage, setCurrentImage }}>
-        <MainImage currentStyle={currentStyle} />
-        <Images currentStyle={currentStyle} />
+        <CurrentIndexContext.Provider value={{ currentIndex, setCurrentIndex }}>
+          <MainImage currentStyle={currentStyle} />
+          <Thumbnails currentStyle={currentStyle} />
+        </CurrentIndexContext.Provider>
       </CurrentImageContext.Provider>
     </div>
   );
