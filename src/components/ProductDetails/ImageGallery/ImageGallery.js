@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import MainImage from "./MainImage";
 import Images from "./Images";
 import { StylesContext, CurrentStyleContext } from "../ProductDetails";
 
 const ImageGallery = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const imageGalleryStyle = {
     borderStyle: "solid",
