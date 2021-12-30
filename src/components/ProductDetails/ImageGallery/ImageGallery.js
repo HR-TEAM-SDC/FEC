@@ -1,7 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 import MainImage from "./MainImage";
 import Images from "./Images";
 import { StylesContext, CurrentStyleContext } from "../ProductDetails";
+
+export const CurrentImageContext = createContext();
 
 const ImageGallery = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
@@ -17,8 +19,10 @@ const ImageGallery = () => {
 
   return (
     <div style={imageGalleryStyle}>
-      <MainImage currentStyle={currentStyle} />
-      <Images currentStyle={currentStyle} />
+      <CurrentImageContext.Provider value={{ currentImage }}>
+        <MainImage currentStyle={currentStyle} />
+        <Images currentStyle={currentStyle} />
+      </CurrentImageContext.Provider>
     </div>
   );
 };

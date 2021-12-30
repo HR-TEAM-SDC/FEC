@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
+import { CurrentImageContext } from "./ImageGallery";
 
 const MainImage = (props) => {
+  const currentImage = useContext(CurrentImageContext);
+
   const mainImageStyle = {
     display: "block",
     maxWidth: "400px",
@@ -11,14 +14,16 @@ const MainImage = (props) => {
   };
 
   return (
-    <img
-      style={mainImageStyle}
-      src={
-        props.currentStyle.photos
-          ? props.currentStyle.photos[0].thumbnail_url
-          : null
-      }
-    ></img>
+    <span>
+      <img
+        style={mainImageStyle}
+        src={
+          props.currentStyle.photos
+            ? props.currentStyle.photos[0].thumbnail_url
+            : null
+        }
+      ></img>
+    </span>
   );
 };
 
