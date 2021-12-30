@@ -10,7 +10,7 @@ const App = () => {
     <main>
       <ProductDetails />
       <RelatedItems />
-      <QAapp /> 
+      <QAapp />
       <RRIndex />
     </main>
   );

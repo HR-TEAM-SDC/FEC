@@ -29,8 +29,8 @@ const IndividualReviews = (props) => {
   // }, []);
 
   const divStyle = {
-    color: "black",
-    border: "1px solid black",
+    color: "blue",
+    border: "1px solid rgba(0, 0, 0, 0.05)",
   };
 
   var reportOnClick = (e) => {
@@ -50,33 +50,26 @@ const IndividualReviews = (props) => {
       .catch((err) => console.log(err));
   };
 
-  var percentage = String((props.data.rating / 5) * 100) + "%";
-
-  var ratingStyle = {
-    color: "gold",
-    position: "absolute",
-    width: percentage,
-    top: "0",
-    left: "0",
-    overflow: "hidden",
+  var stars = (rating) => {
+    var checkedStar = (
+      <span className="fa fa-star checked" style={{ color: "orange" }}></span>
+    );
+    var unCheckedStar = <span className="fa fa-star"></span>;
+    var result = [];
+    for (var i = 0; i < rating; i++) {
+      result.push(checkedStar);
+    }
+    for (var i = 0; i < 5 - rating; i++) {
+      result.push(unCheckedStar);
+    }
+    return result;
   };
 
   return (
     <div className="IndividualReviews" style={divStyle}>
-      <span
-        className="star"
-        style={{
-          color: "grey",
-          fontSize: "30px",
-          position: "relative",
-          display: "inline-block",
-        }}
-      >
-        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span style={ratingStyle}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      </span>
-      <p className="date">{dateConvert(props.data.date)}</p>
-      <p className="summary">{props.data.summary}</p>
+      {stars(props.data.rating)}
+      <div className="date">{dateConvert(props.data.date)}</div>
+      <div className="summary">{props.data.summary}</div>
       <div className="body">
         {props.data.body}
         {props.data.photos.length === 0
@@ -88,14 +81,14 @@ const IndividualReviews = (props) => {
       <div className="Recommend">
         {props.data.recommend ? "Recommend!" : null}
       </div>
-      <p className="Reviewer_name ">{props.data.reviewer_name}</p>
-      <p className="response">{props.data.response}</p>
-      <p className="helpfulness">
+      <div className="Reviewer_name ">{props.data.reviewer_name}</div>
+      <div className="response">{props.data.response}</div>
+      <div className="helpfulness">
         Helpful?
         <span onClick={helpfulOnClick}>Yes ({helpfulness})</span>
         <span> | </span>
         <span onClick={reportOnClick}>Report</span>
-      </p>
+      </div>
     </div>
   );
 };

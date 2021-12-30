@@ -6,5 +6,6 @@ export default axios.create({
   headers: {
     Authorization: key,
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
   },
 });
