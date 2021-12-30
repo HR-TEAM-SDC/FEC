@@ -13,11 +13,11 @@ const App = () => {
   return (
     <main>
       <ProductDetails />
-      {/* <RelatedItems />
+      <RelatedItems />
 
       <QAapp />
 
-      <RRIndex /> */}
+      <RRIndex />
     </main>
   );
 };
