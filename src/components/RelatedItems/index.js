@@ -8,8 +8,6 @@ const RelatedItems = () => {
 
   useEffect(() => {
     useFetch();
-    const ac = new AbortController();
-    return ac.abort();
   }, []);
 
   const useFetch = async () => {

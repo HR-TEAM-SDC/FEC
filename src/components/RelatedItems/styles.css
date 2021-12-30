@@ -85,6 +85,7 @@
   cursor: pointer;
 }
 .card-image {
+  height: 180px;
   margin-bottom: 30px;
   object-fit: contain;
 }
