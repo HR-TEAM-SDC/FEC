@@ -19,6 +19,7 @@ const QuantitySelector = () => {
         if (currentStyle.skus[key].size === currentSize) {
           setCurrentSku(key);
         }
+        break;
       }
     }
   }, []);
@@ -34,9 +35,16 @@ const QuantitySelector = () => {
     let quantity = 1;
     if (currentSku) {
       // console.log("currentStyle.skus[currentSku]:", currentStyle.skus[currentSku]);
-      for (let i = 0; i < currentStyle.skus[currentSku].quantity; i++) {
-        content.push(<QuantityOption quantity={quantity} key={quantity} />);
-        quantity++;
+      if (currentStyle.skus[currentSku].quantity > 15) {
+        for (let i = 0; i < 15; i++) {
+          content.push(<QuantityOption key={quantity} quantity={quantity} />);
+          quantity++;
+        }
+      } else {
+        for (let i = 0; i < currentStyle.skus[currentSku].quantity; i++) {
+          content.push(<QuantityOption key={quantity} quantity={quantity} />);
+          quantity++;
+        }
       }
     }
     return content;

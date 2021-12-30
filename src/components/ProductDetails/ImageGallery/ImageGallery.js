@@ -1,9 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import MainImage from "./MainImage";
+import Images from "./Images";
+import { StylesContext, CurrentStyleContext } from "../ProductDetails";
 
 const ImageGallery = () => {
+  const { currentStyle } = useContext(CurrentStyleContext);
+
+  const imageGalleryStyle = {
+    borderStyle: "solid",
+    borderWidth: "1px",
+    width: "40%",
+    float: "left",
+    marginLeft: "100px",
+  };
+
   return (
-    <div>
-      <h3>Image Gallery Component</h3>
+    <div style={imageGalleryStyle}>
+      <MainImage currentStyle={currentStyle} />
+      <Images currentStyle={currentStyle} />
     </div>
   );
 };

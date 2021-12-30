@@ -24,10 +24,6 @@ const StyleSelector = () => {
     <h4>
       Style Selector Component. <br></br>
       Current Style: {currentStyle.name} <br></br>
-      Current Style Photo: <br></br>
-      <img
-        src={currentStyle.photos ? currentStyle.photos[0].thumbnail_url : null}
-      ></img>
       <div>
         {styles.map((style) => {
           return (

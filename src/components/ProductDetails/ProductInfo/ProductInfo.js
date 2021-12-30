@@ -12,6 +12,8 @@ const ProductInfo = () => {
   const infoStyles = {
     borderStyle: "solid",
     borderWidth: "1px",
+    width: "40%",
+    marginLeft: "50%",
   };
 
   return (

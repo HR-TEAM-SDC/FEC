@@ -3,13 +3,17 @@ import {
   CurrentSizeContext,
   CurrentQuantityContext,
 } from "../../ProductDetails";
+import { CurrentSkuContext, CurrentStyleContext } from "../../ProductDetails";
 
 const AddToCartButton = () => {
+  const { currentStyle } = useContext(CurrentStyleContext);
   const { currentSize } = useContext(CurrentSizeContext);
   const { currentQuantity } = useContext(CurrentQuantityContext);
-  console.log("currentSize:", currentSize);
-  console.log("currentQuantity:", currentQuantity);
-  console.log("typeof currentQuantity:", typeof currentQuantity);
+  const { currentSku } = useContext(CurrentSkuContext);
+  // console.log("currentStyle:", currentStyle);
+  // console.log("currentSize:", currentSize);
+  // console.log("currentQuantity:", currentQuantity);
+  // console.log("currentSku:", currentSku);
 
   const buttonOnClick = () => {
     console.log("button clicked...");

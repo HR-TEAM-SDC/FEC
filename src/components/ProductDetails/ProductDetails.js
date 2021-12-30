@@ -33,10 +33,21 @@ const ProductDetails = () => {
       setCurrentStyle(styles.data.results[0]);
     };
     fetchData();
+    // return (() => {
+    //   setProduct({});
+    //   setReviews([]);
+    //   setStyles([]);
+    //   setCurrentStyle({});
+    // });
   }, []);
 
+  const detailStyles = {
+    borderStyle: "solid",
+    borderWidth: "1px",
+  };
+
   return (
-    <div>
+    <div style={detailStyles}>
       <h2>Product Details Component</h2>
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
@@ -53,6 +64,7 @@ const ProductDetails = () => {
                   <CurrentQuantityContext.Provider
                     value={{ currentQuantity, setCurrentQuantity }}
                   >
+                    <ImageGallery />
                     <ProductInfo />
                   </CurrentQuantityContext.Provider>
                 </CurrentSkuContext.Provider>
