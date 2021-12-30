@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import axios from "../../apis/atelier.js";
 import ReviewList from "./ReviewList.jsx";
-import BreakDown from "./ratingBreakDown.jsx";
+import BreakDown from "./RatingBreakDown.jsx";
+import WriteReview from "./writeReview.jsx";
 
 const RRIndex = (props) => {
   const [data, setData] = useState([]);
   const [metaData, setMetaData] = useState(null);
-  const [filterData, setfilterData] = useState(null);
+  const [filterData, setfilterData] = useState([]);
   const [filterRecord, setfilterRecord] = useState({});
+  const [writeReview, setWriteReview] = useState(false);
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  var id = 40344;
+  var id = 40344; //JAKE CHANGE THIS PART TO WHAT YOU WANT TO DO, A
 
   useEffect(() => {
     axios
@@ -19,7 +22,11 @@ const RRIndex = (props) => {
           sort: "relevant",
         },
       })
-      .then((res) => setData(res.data.results));
+      .then((res) => {
+        setData(res.data.results);
+        setfilterData(res.data.results);
+        console.log("this has been invoked");
+      });
     axios
       .get("reviews/meta", {
         params: {
@@ -29,65 +36,51 @@ const RRIndex = (props) => {
       .then((res) => setMetaData(res.data));
   }, []);
 
-  // useEffect(() => {setfilterData(filterData)}, [filterData])
+  useEffect(() => {
+    // console.log("this has been invoked")
+    console.log(filterData);
+    setfilterData(filterData);
+  }, [filterData]);
 
   const divStyle = {
     color: "black",
     border: "1px solid rgba(0, 0, 0, 0.05)",
   };
 
-  // var starClick = (starNumber) => {
-  //   var result = [];
-  //   if (data) {
-  //     for (var i = 0; i < data.results.length; i++) {
-  //       if (data.results[i].rating === starNumber) {
-  //         result.push(data.results[i])
-  //       };
-  //     };
-  //   }
-  //   setData(result);
-  // };
-  var starClick = async (e) => {
-    var number = Number(e.target.className[0]);
-    if (filterRecord[number] === true) {
-      var result = [];
-      for (let i = 0; i < filterData.length; i++) {
-        if (filterData[i].rating !== number) {
-          result.push(filterData[i]);
-        }
-      }
-      var record = filterRecord;
-      delete record[number];
-      await setfilterData(result);
-      if (filterData.length === 0) {
-        setfilterData(data);
-      }
-      setfilterRecord(record);
-    } else {
-      if (filterData) {
-        var result = filterData;
-      } else {
-        var result = [];
-      }
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].rating === number) {
-          result.push(data[i]);
-        }
-      }
-      var record = filterRecord;
-      record[number] = true;
-      await setfilterRecord(record);
-      setfilterData(result);
-    }
+  var filterDataSet = (result) => {
+    setfilterData(result);
+    forceUpdate();
+  };
+
+  var filterRecordSet = (record) => {
+    setfilterRecord(record);
+    forceUpdate();
+  };
+
+  var writeReviewClick = () => {
+    writeReview ? setWriteReview(false) : setWriteReview(true);
   };
 
   return (
     <div className="reviewList" style={divStyle}>
       <h2>RATINGS AND REVIEWS</h2>
       {metaData ? (
-        <BreakDown metaData={metaData} starClick={starClick} />
+        <BreakDown
+          metaData={metaData}
+          filterData={filterData}
+          filterRecord={filterRecord}
+          setfilterData={filterDataSet}
+          setfilterRecord={filterRecordSet}
+          data={data}
+        />
       ) : null}
-      {<ReviewList data={filterData ? filterData : data} count={5} />}
+      {<ReviewList data={filterData} count={5} />}
+      <div className="writeReview">
+        <button id="writeReviewButton" onClick={writeReviewClick}>
+          Write Review
+        </button>
+        {writeReview ? <WriteReview id={id} /> : null}
+      </div>
     </div>
   );
 };

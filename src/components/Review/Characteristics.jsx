@@ -49,6 +49,13 @@ const Characteristics = (props) => {
     "Runs long ",
   ];
 
+  var result = {};
+
+  var Characteristics = (e) => {
+    // result[e.target.id] = e.target.value;
+    props.CharacteristicsReview(e);
+  };
+
   var eachCharacteristics = (array, id, name) => {
     var num = 1;
     var result = [];
@@ -60,7 +67,7 @@ const Characteristics = (props) => {
             id={id}
             value={num}
             name={name}
-            onClick={props.CharacteristicsRate}
+            onClick={Characteristics}
           />
           <label for={id} title="text">
             {array[i]}
@@ -73,7 +80,7 @@ const Characteristics = (props) => {
   };
 
   return (
-    <div class="Characteristics">
+    <div className="Characteristics">
       <h5>Characteristics </h5>
       <span className="size">
         <div>Size {eachCharacteristics(size, 14, "Size")} </div>

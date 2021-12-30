@@ -1,17 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import IndividualReviews from "./IndividualReviews.jsx";
 import axios from "../../apis/atelier.js";
-import WriteReview from "./writeReview.jsx";
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
   const [addMoreTracker, setaddMoreTracker] = useState(2);
-  const [writeReview, setWriteReview] = useState(false);
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  useEffect(
-    () => setData(props.data.slice(0, addMoreTracker)),
-    [props.data, addMoreTracker]
-  );
+  useEffect(() => setData(props.data), [props.data]);
+
+  useEffect(() => {
+    if (props.data.length <= 2) {
+      setaddMoreTracker(2);
+    } else if (props.data.length < addMoreTracker) {
+      setaddMoreTracker(props.data.length);
+    }
+  }, [props.data]);
+  // useEffect(
+  //   () => {
+  //     // setaddMoreTracker(2)
+  //     setData(props.data.slice(0, addMoreTracker))},
+  //   [props.data, addMoreTracker]
+  // );
 
   var sort = (e) => {
     if (e.target.value === "relevant") {
@@ -52,10 +62,6 @@ const ReviewList = (props) => {
     setaddMoreTracker(number);
   };
 
-  var addReview = () => {
-    setWriteReview(true);
-  };
-
   const divStyle = {
     color: "black",
     border: "1px solid black",
@@ -71,18 +77,16 @@ const ReviewList = (props) => {
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
       </select>
-      {data.map((data) => (
-        <IndividualReviews data={data} />
-      ))}
-      {addMoreTracker <= props.data.length ? (
+      <div style={{ maxHeight: "600px", overflow: "scroll" }}>
+        {data.slice(0, addMoreTracker).map((data) => (
+          <IndividualReviews data={data} />
+        ))}
+      </div>
+      {addMoreTracker < props.data.length ? (
         <button id="morereviews" onClick={showmoreOnclick}>
           More reviews
         </button>
       ) : null}
-      <button id="writereview" onClick={addReview}>
-        Write Review
-      </button>
-      {writeReview ? <WriteReview /> : null}
     </div>
   );
 };
