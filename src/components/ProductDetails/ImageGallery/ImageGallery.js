@@ -11,7 +11,7 @@ const ImageGallery = () => {
   const [currentImage, setCurrentImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
-  console.log("currentImage:", currentImage);
+  // console.log("currentImage:", currentImage);
   const imageGalleryStyle = {
     borderStyle: "solid",
     borderWidth: "1px",
