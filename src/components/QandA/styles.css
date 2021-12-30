@@ -88,7 +88,7 @@
   width: 70%;
 }
 
-.form-cell {
+.form-cell .selectImage {
   padding: 10px;
 }
 
@@ -105,3 +105,7 @@
 .hightlight {
   color: yellow;
 }
+
+/* .selectImage {
+  padding: 10px;
+} */

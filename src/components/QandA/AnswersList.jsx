@@ -5,14 +5,29 @@ import { Context } from "../context/context.js";
 const AnswersList = ({ answers }) => {
   const [reportStatus, setReport] = useState(false);
   const [helpfulStatus, setHelpful] = useState(false);
-  const { handleHelpfulness } = useContext(Context);
+  const { handleAHelpfulness } = useContext(Context);
 
-  var date;
-  if (answers) {
-    date = answers.date.slice(0, 10);
-  } else {
-    date = "";
-  }
+  const dateConversion = (date) => {
+    var newDate = new Date(date);
+    var month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var convertedDate = `${month[newDate.getMonth()]} ${
+      newDate.getDate() + 1
+    }, ${newDate.getFullYear()}`;
+    return convertedDate;
+  };
 
   var reportStyle = {
     textDecoration: "underline",
@@ -30,7 +45,7 @@ const AnswersList = ({ answers }) => {
       return;
     } else {
       setHelpful(!helpfulStatus);
-      handleHelpfulness(answers.answer_id);
+      handleAHelpfulness(answers.answer_id);
     }
   };
 
@@ -54,9 +69,9 @@ const AnswersList = ({ answers }) => {
 
   return (
     <div className="individualAnswer">
-      <div>
+      <div className="answer-body">
         A: {answers ? answers.body : "This problem has no answers yet."}
-        <div>
+        <div className="answer-photos">
           {answers
             ? answers.photos.map((photo) => (
                 <img src={photo.url} width="100" height="100" key={photo.id} />
@@ -64,8 +79,20 @@ const AnswersList = ({ answers }) => {
             : null}{" "}
         </div>
       </div>
-      <div>
-        by: {answers ? answers.answerer_name : null} {date} | Helpful?
+      <div className="answerer">
+        by:{" "}
+        {answers ? (
+          <span
+            style={{
+              fontWeight:
+                answers.answerer_name === "Seller" ? "bold" : "normal",
+            }}
+          >
+            {" "}
+            {answers.answerer_name}{" "}
+          </span>
+        ) : null}
+        , {answers ? dateConversion(answers.date) : ""} | Helpful?
         <span
           style={helpfulStyle}
           onClick={() => {

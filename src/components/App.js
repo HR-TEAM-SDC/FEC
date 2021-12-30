@@ -15,7 +15,7 @@ const App = () => {
       <ProductDetails />
       <RelatedItems />
       <QAapp />
-      <RRIndex />
+      {/* <RRIndex /> */}
     </main>
   );
 };

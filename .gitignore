@@ -1,8 +1,3 @@
 node_modules
-config.js
-webpack.config.js
-dist/index.bundle.js
-dist/index.bundle.js.LICENSE.txt
-package-lock.json
-package.json
-README.md
+src/apis/config.js
+

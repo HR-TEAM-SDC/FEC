@@ -12,7 +12,7 @@ const QuestionEntry = ({ question, answersList }) => {
   const [moreAnswers, setLoadMore] = useState(false);
   const [helpQuesStatus, setHelpQues] = useState(false);
   const modal = useRef(null);
-  const { handleClose } = useContext(Context);
+  const { handleQHelpfulness } = useContext(Context);
 
   useEffect(() => {
     axios
@@ -36,14 +36,7 @@ const QuestionEntry = ({ question, answersList }) => {
       return;
     } else {
       setHelpQues(!helpQuesStatus);
-      axios
-        .put(`qa/questions/${question.question_id}/helpful`)
-        .then((res) => {
-          console.log("Your successfuly mark a question helpful!");
-        })
-        .catch((err) => {
-          console.log("Failed to mark a question", err);
-        });
+      handleQHelpfulness(question.question_id);
     }
   };
 

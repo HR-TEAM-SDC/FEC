@@ -10,6 +10,10 @@ import { Context } from "../context/context.js";
 import "./styles.css";
 const productId = 40344;
 
+//Note for Api
+//On the main page App.js, QA section needs  .get("qa/questions"
+//and .get(`products/${productId}`)
+
 export default function QAapp() {
   // Declare a new state variable
   const [questions, setQuestion] = useState([]);
@@ -77,7 +81,7 @@ export default function QAapp() {
     setQuestion(newList);
   };
 
-  const handleHelpfulness = (answerId) => {
+  const handleAHelpfulness = (answerId) => {
     axios
       .put(`qa/answers/${answerId}/helpful`)
       .then(() => {
@@ -86,6 +90,18 @@ export default function QAapp() {
       })
       .catch((err) => {
         console.log("Failed to submit a feedback: ", err);
+      });
+  };
+
+  const handleQHelpfulness = (questionId) => {
+    axios
+      .put(`qa/questions/${questionId}/helpful`)
+      .then((res) => {
+        console.log("Your successfuly mark a question helpful!");
+        refreshPage();
+      })
+      .catch((err) => {
+        console.log("Failed to mark a question", err);
       });
   };
 
@@ -126,7 +142,9 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider value={{ handleHelpfulness, product }}>
+        <Context.Provider
+          value={{ handleAHelpfulness, product, handleQHelpfulness }}
+        >
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>

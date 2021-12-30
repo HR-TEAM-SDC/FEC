@@ -79,17 +79,19 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
 
         <div className="form-cell">
           <label>Enter your answer:</label>
-          <textarea
-            className="textarea"
-            maxLength="1000"
-            placeholder="Enter your answers here"
-            required="required"
-          ></textarea>
+          <div>
+            <textarea
+              className="textarea"
+              maxLength="1000"
+              placeholder="Enter your answers here"
+              required="required"
+            ></textarea>
+          </div>
         </div>
 
         <div className="form-cell">
-          <label>Upload photos: {photos.length} / 5 Max</label>
-          <div>
+          <label>Selected images: {photos.length} / 5 Max</label>
+          <div className="selectImage">
             <input
               type="file"
               className="button"
@@ -102,7 +104,9 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
               {photos.length > 0
                 ? photos.map((photo) => {
                     return (
-                      <img src={photo} width="100" height="100" key={photo} />
+                      <span className="selectImage" key={photo}>
+                        <img src={photo} width="100" height="100" />
+                      </span>
                     );
                   })
                 : "No photo selected"}
