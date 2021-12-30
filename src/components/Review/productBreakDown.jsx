@@ -5,6 +5,10 @@ const ProductBreakDown = (props) => {
     var SizePercentage = String((props.data.Size.value / 5) * 100) + "px";
   }
 
+  if (props.data.Width) {
+    var WidthPercentage = String((props.data.Width.value / 5) * 100) + "px";
+  }
+
   if (props.data.Comfort) {
     var ComfortPercentage = String((props.data.Comfort.value / 5) * 100) + "px";
   }
@@ -40,6 +44,29 @@ const ProductBreakDown = (props) => {
               top: "0px",
               color: "black",
               left: SizePercentage,
+            }}
+          >
+            &#124;
+          </span>
+        </div>
+      </div>
+      <div className="productBreakDownWidth">
+        <span style={{ display: "block" }}>Width</span>
+        <div
+          style={{
+            backgroundColor: "grey",
+            width: "100px",
+            height: "10px",
+            display: "inline-block",
+            position: "relative",
+          }}
+        >
+          <span
+            style={{
+              position: "absolute",
+              top: "0px",
+              color: "black",
+              left: WidthPercentage,
             }}
           >
             &#124;

@@ -47,7 +47,7 @@ const RRIndex = (props) => {
   //   }
   //   setData(result);
   // };
-  var starClick = (e) => {
+  var starClick = async (e) => {
     var number = Number(e.target.className[0]);
     if (filterRecord[number] === true) {
       var result = [];
@@ -58,7 +58,7 @@ const RRIndex = (props) => {
       }
       var record = filterRecord;
       delete record[number];
-      setfilterData(result);
+      await setfilterData(result);
       if (filterData.length === 0) {
         setfilterData(data);
       }
@@ -76,7 +76,7 @@ const RRIndex = (props) => {
       }
       var record = filterRecord;
       record[number] = true;
-      setfilterRecord(record);
+      await setfilterRecord(record);
       setfilterData(result);
     }
   };

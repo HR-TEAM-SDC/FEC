@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import IndividualReviews from "./IndividualReviews.jsx";
 import axios from "../../apis/atelier.js";
+import WriteReview from "./writeReview.jsx";
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
-  // const [showmore, setShowmore] = useState(false);
   const [addMoreTracker, setaddMoreTracker] = useState(2);
+  const [writeReview, setWriteReview] = useState(false);
 
   useEffect(
     () => setData(props.data.slice(0, addMoreTracker)),
@@ -51,9 +52,15 @@ const ReviewList = (props) => {
     setaddMoreTracker(number);
   };
 
+  var addReview = () => {
+    setWriteReview(true);
+  };
+
   const divStyle = {
     color: "black",
     border: "1px solid black",
+    display: "inline-block",
+    width: "60%",
   };
 
   return (
@@ -67,12 +74,15 @@ const ReviewList = (props) => {
       {data.map((data) => (
         <IndividualReviews data={data} />
       ))}
-      {/* {showmore
-        ? data.map((data) => <IndividualReviews data={data} />)
-        : data.slice(0, 2).map((data) => <IndividualReviews data={data} />)} */}
-      <div id="morereviews" onClick={showmoreOnclick}>
-        {addMoreTracker <= props.data.length ? "more reviews" : null}
-      </div>
+      {addMoreTracker <= props.data.length ? (
+        <button id="morereviews" onClick={showmoreOnclick}>
+          More reviews
+        </button>
+      ) : null}
+      <button id="writereview" onClick={addReview}>
+        Write Review
+      </button>
+      {writeReview ? <WriteReview /> : null}
     </div>
   );
 };

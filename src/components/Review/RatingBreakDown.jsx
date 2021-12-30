@@ -50,7 +50,16 @@ const BreakDown = (props) => {
   };
 
   return (
-    <div className="ratingSummary">
+    <div
+      className="ratingSummary"
+      style={{
+        display: "inline-block",
+        width: "20%",
+        float: "left",
+        border: "1px solid black",
+        overflow: "hidden",
+      }}
+    >
       <span id="numberSummary" style={{ fontSize: "100px" }}>
         {summaryRating}
       </span>
