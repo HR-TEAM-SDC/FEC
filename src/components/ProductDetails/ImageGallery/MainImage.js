@@ -4,7 +4,7 @@ import { CurrentStyleContext } from "../ProductDetails";
 
 const MainImage = (props) => {
   const { currentStyle } = useContext(CurrentStyleContext);
-  const { currentImage, setCurrentImage } = useContext(CurrentImageContext);
+  const { currentImage } = useContext(CurrentImageContext);
 
   // if (currentStyle) {
   //   setCurrentImage(currentStyle.photos[0].thumbnail_url);

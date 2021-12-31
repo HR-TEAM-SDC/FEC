@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import Thumbnail from "./Thumbnail";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
-import { CurrentImageContext, CurrentIndexContext } from "./ImageGallery";
+import { CurrentImageContext } from "./ImageGallery";
+import { CurrentIndexContext } from "../ProductDetails";
 
 const Thumbnails = (props) => {
   let photos = props.currentStyle.photos;
