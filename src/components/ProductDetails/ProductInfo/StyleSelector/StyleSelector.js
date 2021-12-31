@@ -24,7 +24,6 @@ const StyleSelector = () => {
     setCurrentSku(null);
     setCurrentQuantity(null);
     setCurrentImage(style.photos[currentIndex].thumbnail_url);
-    console.log("currentStyle:", currentStyle);
   };
 
   return (

@@ -18,8 +18,6 @@ const MainImage = (props) => {
     width: "600px",
     height: "auto",
   };
-  console.log("currentStyle:", props.currentStyle);
-  console.log("currentImage:", currentImage);
   return (
     <span>
       <img
