@@ -7,11 +7,6 @@ const CardContainer = ({ cardItems, selectedItem }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const thisRef = useRef();
 
-  // useEffect(() => {
-  //   handleScrollLeft();
-  //   handleScrollRight();
-  // }, [scrollPosition]);
-
   const isOverflowing = () => {
     const bool = thisRef.current.scrollWidth > thisRef.current.clientWidth;
     console.log(thisRef);
