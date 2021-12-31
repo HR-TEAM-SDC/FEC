@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import CompareModal from "./CompareModal";
+import CompareModal from "./CompareModal.jsx";
 
 const ItemCard = ({ item, selectedItem }) => {
   const modal = useRef();

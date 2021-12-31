@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import ItemCard from "./ItemCard";
+import ItemCard from "./ItemCard.jsx";
 
 const CardContainer = ({ cardItems, selectedItem }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);

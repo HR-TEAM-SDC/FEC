@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../apis/atelier.js";
-import CardContainer from "./CardContainer";
+import CardContainer from "./CardContainer.jsx";
 
 const RelatedItems = () => {
   const [selectedItem, setSelectedItem] = useState(null);
