@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Thumbnail from "./Thumbnail";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
+import { CurrentImageContext } from "./ImageGallery";
 
 const Thumbnails = (props) => {
   let photos = props.currentStyle.photos;
+  let { setCurrentImage } = useContext(CurrentImageContext);
 
   const thumbnailsStyle = {
     borderStyle: "solid",
@@ -16,7 +18,7 @@ const Thumbnails = (props) => {
     let src = event.target.getAttribute("src");
     console.log("Thumbnail clicked...");
     console.log("src:", src);
-    console.log("event.target.value:", event.target.value);
+    setCurrentImage(src);
   };
 
   return (
