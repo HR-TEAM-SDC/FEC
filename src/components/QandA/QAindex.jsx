@@ -10,9 +10,7 @@ import { Context } from "../context/context.js";
 import "./styles.css";
 const productId = 40348;
 
-//Note for Api
-//On the main page App.js, QA section needs  .get("qa/questions"
-//and .get(`products/${productId}`)
+//Please check README.md in QA folder
 
 export default function QAapp() {
   // Declare a new state variable
@@ -68,6 +66,7 @@ export default function QAapp() {
       handleSearch();
     } else {
       console.log("returning to non-filter state");
+      setInput(query.target.value);
       setQuestion(storage);
     }
   };
@@ -144,7 +143,12 @@ export default function QAapp() {
       </div>
       <div>
         <Context.Provider
-          value={{ handleAHelpfulness, product, handleQHelpfulness }}
+          value={{
+            handleAHelpfulness,
+            product,
+            handleQHelpfulness,
+            searchInput,
+          }}
         >
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>

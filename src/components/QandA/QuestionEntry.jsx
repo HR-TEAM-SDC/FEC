@@ -4,6 +4,7 @@ import AnswersList from "./AnswersList.jsx";
 import LoadMoreAns from "./LoadMoreAns.jsx";
 import AddModal from "./AddModals.jsx";
 import AddAnswerForm from "./AddAnswerForm.jsx";
+import Highlighter from "react-highlight-words";
 import { Context } from "../context/context.js";
 import "./styles.css";
 
@@ -14,6 +15,7 @@ const QuestionEntry = ({ question, answersList }) => {
   const modal = useRef(null);
   const { handleQHelpfulness } = useContext(Context);
   const [isActive, setIsActive] = useState(false);
+  const { searchInput } = useContext(Context);
 
   useEffect(() => {
     axios
@@ -81,7 +83,15 @@ const QuestionEntry = ({ question, answersList }) => {
   return (
     <div className="accordion-item">
       <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
-        <div className="individualQuestion">Q: {question.question_body}</div>
+        <div className="individualQuestion">
+          Q:{" "}
+          <Highlighter
+            highlightClassName="YourHighlightClass"
+            searchWords={[searchInput]}
+            autoEscape={true}
+            textToHighlight={question.question_body}
+          />
+        </div>
         <span>
           Helpful?{" "}
           <abbr
