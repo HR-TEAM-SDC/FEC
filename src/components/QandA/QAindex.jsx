@@ -8,7 +8,7 @@ import AddQuestionForm from "./AddQuestionForm.jsx";
 import AddAnswerForm from "./AddAnswerForm.jsx";
 import { Context } from "../context/context.js";
 import "./styles.css";
-const productId = 40347;
+const productId = 40348;
 
 //Note for Api
 //On the main page App.js, QA section needs  .get("qa/questions"
@@ -149,7 +149,7 @@ export default function QAapp() {
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>
-      <div class="LoadQButton">
+      <div className="LoadQButton">
         {questions.length > 2 ? (
           counter >= QuesArrayLength - 2 ? null : (
             <button className="button" onClick={handleLoadMoreQ}>
@@ -166,7 +166,7 @@ export default function QAapp() {
         ) : null}
       </div>
 
-      <div class="AddQButton">
+      <div className="AddQButton">
         <button className="button" onClick={() => modal.current.open()}>
           ADD A QUESTION ➕
         </button>

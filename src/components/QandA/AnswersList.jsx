@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import axios from "../../apis/atelier";
+import AddModal from "./AddModals.jsx";
+import Image from "./Image.jsx";
 import { Context } from "../context/context.js";
 import "./styles.css";
 
@@ -7,6 +9,8 @@ const AnswersList = ({ answers }) => {
   const [reportStatus, setReport] = useState(false);
   const [helpfulStatus, setHelpful] = useState(false);
   const { handleAHelpfulness } = useContext(Context);
+  const [currentPic, setPic] = useState("");
+  const modal = useRef(null);
 
   const dateConversion = (date) => {
     var newDate = new Date(date);
@@ -68,6 +72,13 @@ const AnswersList = ({ answers }) => {
     }
   };
 
+  const handleOpenPicModal = () => modal.current.open();
+
+  const handleOpenPic = (url) => {
+    handleOpenPicModal();
+    setPic(url);
+  };
+
   return (
     <div className="individualAnswer">
       <div className="answer-body">
@@ -79,10 +90,18 @@ const AnswersList = ({ answers }) => {
           {answers
             ? answers.photos.map((photo) => (
                 <span key={photo.id} className="selectImage">
-                  <img src={photo.url} width="100" height="100" />
+                  <img
+                    src={photo.url}
+                    width="100"
+                    height="100"
+                    onClick={() => handleOpenPic(photo.url)}
+                  />
                 </span>
               ))
             : null}{" "}
+          <AddModal ref={modal}>
+            <Image currentPic={currentPic} />
+          </AddModal>
         </div>
       </div>
       <div className="answerer">

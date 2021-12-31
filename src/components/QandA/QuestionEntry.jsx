@@ -84,15 +84,16 @@ const QuestionEntry = ({ question, answersList }) => {
         <div className="individualQuestion">Q: {question.question_body}</div>
         <span>
           Helpful?{" "}
-          <span
+          <abbr
             style={helpLinkStyle}
             onClick={() => {
               handleHelpQues();
             }}
+            title="Users can vote once"
           >
             Yes
-          </span>{" "}
-          ({question.question_helpfulness}) |{" "}
+          </abbr>{" "}
+          &#128161; ({question.question_helpfulness}) |{" "}
           <span style={addAnswerStyle} onClick={() => modal.current.open()}>
             Add Answer
           </span>{" "}
