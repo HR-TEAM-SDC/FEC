@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import Thumbnail from "./Thumbnail";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
-import { CurrentImageContext } from "./ImageGallery";
+import { CurrentImageContext, CurrentIndexContext } from "./ImageGallery";
 
 const Thumbnails = (props) => {
   let photos = props.currentStyle.photos;
   let { setCurrentImage } = useContext(CurrentImageContext);
+  let { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
 
   const thumbnailsStyle = {
     borderStyle: "solid",
@@ -14,11 +15,14 @@ const Thumbnails = (props) => {
   };
 
   const handleThumbnailClick = () => {
-    let index = event.target.selectedIndex;
+    let index = event.target.getAttribute("index");
     let src = event.target.getAttribute("src");
     console.log("Thumbnail clicked...");
     console.log("src:", src);
+    console.log("index:", index);
     setCurrentImage(src);
+    setCurrentIndex(index);
+    console.log("currentIndex:", currentIndex);
   };
 
   return (
@@ -31,6 +35,7 @@ const Thumbnails = (props) => {
                 <Thumbnail
                   handleThumbnailClick={handleThumbnailClick}
                   photo={photo}
+                  index={index}
                   key={index}
                 />
               );

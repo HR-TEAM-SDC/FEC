@@ -9,6 +9,7 @@ const Thumbnail = (props) => {
     <img
       onClick={props.handleThumbnailClick}
       style={thumbnailStyle}
+      index={props.index}
       src={props.photo.thumbnail_url}
     ></img>
   );
