@@ -22,7 +22,7 @@ const Thumbnails = (props) => {
     console.log("src:", src);
     console.log("currentIndex:", currentIndex);
     setCurrentImage(src);
-    setCurrentIndex(index);
+    setCurrentIndex(Number(index));
   };
 
   return (
