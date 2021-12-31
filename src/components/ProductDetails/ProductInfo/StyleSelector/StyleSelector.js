@@ -3,7 +3,11 @@ import axios from "../../../../apis/atelier";
 import Style from "./Style";
 import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
 import { CurrentSizeContext, CurrentSkuContext } from "../../ProductDetails";
-import { CurrentQuantityContext } from "../../ProductDetails";
+import {
+  CurrentQuantityContext,
+  CurrentIndexContext,
+} from "../../ProductDetails";
+import { CurrentImageContext } from "../../ProductDetails";
 
 const StyleSelector = () => {
   const styles = useContext(StylesContext);
@@ -11,13 +15,16 @@ const StyleSelector = () => {
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
   const { setCurrentQuantity } = useContext(CurrentQuantityContext);
+  const { currentIndex } = useContext(CurrentIndexContext);
+  const { setCurrentImage } = useContext(CurrentImageContext);
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
     setCurrentSize(null);
     setCurrentSku(null);
     setCurrentQuantity(null);
-    // console.log('currentStyle:', currentStyle);
+    setCurrentImage(style.photos[currentIndex].thumbnail_url);
+    console.log("currentStyle:", currentStyle);
   };
 
   return (

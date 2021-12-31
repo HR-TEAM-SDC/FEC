@@ -11,6 +11,7 @@ export const CurrentSkuContext = createContext();
 export const CurrentSizeContext = createContext();
 export const CurrentQuantityContext = createContext();
 export const CurrentIndexContext = createContext();
+export const CurrentImageContext = createContext();
 
 const ProductDetails = () => {
   const [product, setProduct] = useState([]);
@@ -21,6 +22,7 @@ const ProductDetails = () => {
   const [currentSize, setCurrentSize] = useState(null);
   const [currentQuantity, setCurrentQuantity] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,14 +35,9 @@ const ProductDetails = () => {
       const styles = await axios.get(`products/40344/styles`);
       setStyles(styles.data.results);
       setCurrentStyle(styles.data.results[0]);
+      setCurrentImage(styles.data.results[0].photos[0].thumbnail_url);
     };
     fetchData();
-    // return (() => {
-    //   setProduct({});
-    //   setReviews([]);
-    //   setStyles([]);
-    //   setCurrentStyle({});
-    // });
   }, []);
 
   const detailStyles = {
@@ -73,8 +70,12 @@ const ProductDetails = () => {
                     <CurrentIndexContext.Provider
                       value={{ currentIndex, setCurrentIndex }}
                     >
-                      <ImageGallery />
-                      <ProductInfo />
+                      <CurrentImageContext.Provider
+                        value={{ currentImage, setCurrentImage }}
+                      >
+                        <ImageGallery />
+                        <ProductInfo />
+                      </CurrentImageContext.Provider>
                     </CurrentIndexContext.Provider>
                   </CurrentQuantityContext.Provider>
                 </CurrentSkuContext.Provider>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Thumbnail from "./Thumbnail";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
-import { CurrentImageContext } from "./ImageGallery";
+import { CurrentImageContext } from "../ProductDetails";
 import { CurrentIndexContext } from "../ProductDetails";
 
 const Thumbnails = (props) => {
@@ -20,10 +20,9 @@ const Thumbnails = (props) => {
     let src = event.target.getAttribute("src");
     console.log("Thumbnail clicked...");
     console.log("src:", src);
-    console.log("index:", index);
+    console.log("currentIndex:", currentIndex);
     setCurrentImage(src);
     setCurrentIndex(index);
-    console.log("currentIndex:", currentIndex);
   };
 
   return (

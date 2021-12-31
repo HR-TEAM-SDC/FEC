@@ -1,18 +1,15 @@
 import React, { useContext, useEffect } from "react";
-import { CurrentImageContext } from "./ImageGallery";
-import { CurrentStyleContext } from "../ProductDetails";
+import { CurrentIndexContext, CurrentImageContext } from "../ProductDetails";
 
 const MainImage = (props) => {
-  const { currentStyle } = useContext(CurrentStyleContext);
-  const { currentImage } = useContext(CurrentImageContext);
+  const { currentImage, setCurrentImage } = useContext(CurrentImageContext);
+  const { currentIndex } = useContext(CurrentIndexContext);
 
-  // if (currentStyle) {
-  //   setCurrentImage(currentStyle.photos[0].thumbnail_url);
+  // if (props.currentStyle) {
+  //   useEffect(() => {
+  //     setCurrentImage(props.currentStyle.photos[0]);
+  //   }, []);
   // }
-  // useEffect(() => {
-  //   setCurrentImage(<img src="https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-mediumSquareAt3X-v2.jpg" style="max-width: 50px; max-height: 50px;"></img>);
-  // }, []);
-  //a
 
   const mainImageStyle = {
     display: "block",
@@ -21,7 +18,8 @@ const MainImage = (props) => {
     width: "600px",
     height: "auto",
   };
-
+  console.log("currentStyle:", props.currentStyle);
+  console.log("currentImage:", currentImage);
   return (
     <span>
       <img

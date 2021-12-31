@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "../../../../apis/atelier";
+import { CurrentIndexContext } from "../../ProductDetails";
 
 const Style = (props) => {
+  const { currentIndex } = useContext(CurrentIndexContext);
+
   const thumbnailStyle = {
     borderStyle: "solid",
     borderWidth: "1px",
