@@ -7,7 +7,7 @@ import { CurrentIndexContext } from "../ProductDetails";
 
 const Thumbnails = (props) => {
   let photos = props.currentStyle.photos;
-  let { setCurrentImage } = useContext(CurrentImageContext);
+  let { currentImage, setCurrentImage } = useContext(CurrentImageContext);
   let { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
 
   const thumbnailsStyle = {
@@ -34,6 +34,7 @@ const Thumbnails = (props) => {
               return (
                 <Thumbnail
                   handleThumbnailClick={handleThumbnailClick}
+                  currentImage={currentImage}
                   photo={photo}
                   index={index}
                   key={index}
