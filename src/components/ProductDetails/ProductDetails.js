@@ -49,7 +49,6 @@ const ProductDetails = () => {
     width: "90%",
     height: "auto",
     margin: "auto",
-    padding: "10px",
   };
 
   return (

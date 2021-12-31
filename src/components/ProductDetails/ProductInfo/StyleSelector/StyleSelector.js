@@ -25,6 +25,7 @@ const StyleSelector = () => {
     setCurrentQuantity(null);
     setCurrentImage(style.photos[currentIndex].thumbnail_url);
   };
+  // let index = 0;
 
   return (
     <h4>
@@ -40,6 +41,41 @@ const StyleSelector = () => {
               styleClickHandler={styleClickHandler}
             />
           );
+          // console.log('index:', index);
+          // if (index === 0) {
+          //   index++;
+          //   return (
+          //     <Style
+          //       style={style}
+          //       currentStyle={currentStyle}
+          //       key={style.style_id}
+          //       styleClickHandler={styleClickHandler}
+          //     />
+          //   );
+          // }
+          // if (index % 4 === 0) {
+          //   index++;
+          //   return (
+          //     <div>
+          //       <Style
+          //         style={style}
+          //         currentStyle={currentStyle}
+          //         key={style.style_id}
+          //         styleClickHandler={styleClickHandler}
+          //       />
+          //     </div>
+          //   );
+          // } else {
+          //   index++;
+          //   return (
+          //     <Style
+          //       style={style}
+          //       currentStyle={currentStyle}
+          //       key={style.style_id}
+          //       styleClickHandler={styleClickHandler}
+          //     />
+          //   );
+          // }
         })}
       </div>
     </h4>

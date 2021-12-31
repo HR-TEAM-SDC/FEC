@@ -9,7 +9,7 @@ const Style = (props) => {
     borderStyle: "solid",
     borderWidth: "1px",
     borderRadius: "100%",
-    width: "75px",
+    width: "20%",
     height: "75px",
     margin: "0px 5px",
   };
@@ -18,7 +18,7 @@ const Style = (props) => {
     borderStyle: "solid",
     borderWidth: "5px",
     borderRadius: "100%",
-    width: "75px",
+    width: "20%",
     height: "75px",
     margin: "0px 5px",
   };
