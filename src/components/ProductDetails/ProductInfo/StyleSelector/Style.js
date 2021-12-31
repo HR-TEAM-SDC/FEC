@@ -10,8 +10,8 @@ const Style = (props) => {
     borderWidth: "1px",
     borderRadius: "100%",
     width: "20%",
-    height: "75px",
-    margin: "0px 5px",
+    height: "100px",
+    margin: "0px 10px 10px 10px",
   };
 
   const selectedStyle = {
@@ -19,8 +19,9 @@ const Style = (props) => {
     borderWidth: "5px",
     borderRadius: "100%",
     width: "20%",
-    height: "75px",
-    margin: "0px 5px",
+    height: "100px",
+    margin: "0px 10px 10px 10px",
+    background: "url('../../imgs/checkmark.png')",
   };
 
   return (
