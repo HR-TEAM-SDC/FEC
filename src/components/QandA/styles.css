@@ -56,19 +56,22 @@
 }
 
 .modal > .modal-body {
+  display: flex;
+  flex-direction: column;
   z-index: 2;
   height: 80%;
   width: 80%;
   position: relative;
   margin: 0 auto;
-  background-color: #303030;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
+  background-color: #21aeca;
+  /* #303030; */
+  border: 1px solid rgba(122, 176, 247, 0.25);
+  border-radius: 20px;
   overflow-x: auto;
   overflow-y: auto;
   max-height: 100%;
   padding: 15px 20px;
-  color: #c3c0c0;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -107,8 +110,9 @@
 }
 
 .privacy {
-  color: red;
+  color: black;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .input-small {

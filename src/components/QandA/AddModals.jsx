@@ -46,7 +46,7 @@ const AddQuestionsModal = ({ children }, ref) => {
           aria-label="close"
           onClick={close}
         >
-          x
+          ✖
         </span>
         <div className="modal-body">{children}</div>
       </div>

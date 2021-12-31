@@ -94,7 +94,6 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
           <div className="selectImage">
             <input
               type="file"
-              className="button"
               accept=".png, .jpg, .jpeg"
               multiple
               max-uploads="5"
@@ -109,7 +108,7 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
                       </span>
                     );
                   })
-                : "No photo selected"}
+                : "No image selected"}
             </div>
           </div>
         </div>
