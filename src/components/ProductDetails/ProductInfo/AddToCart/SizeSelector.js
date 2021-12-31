@@ -47,7 +47,7 @@ const SizeSelector = () => {
 
   return (
     <div>
-      <h4>Sizes Component</h4>
+      <h4>Sizes</h4>
       Select Size:
       <select onChange={handleSizeChange}>{renderSizes()}</select>
     </div>

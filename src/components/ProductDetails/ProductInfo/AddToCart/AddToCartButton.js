@@ -21,7 +21,7 @@ const AddToCartButton = () => {
 
   return (
     <div>
-      <h4>AddToCartButton Component</h4>
+      <h4>Add To Cart Button</h4>
       <button onClick={buttonOnClick}> Add To Cart </button>
     </div>
   );

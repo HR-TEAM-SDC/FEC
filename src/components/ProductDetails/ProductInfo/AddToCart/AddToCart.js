@@ -6,7 +6,7 @@ import AddToCartButton from "./AddToCartButton";
 const AddToCart = () => {
   return (
     <div>
-      <h4>Add To Cart Component</h4>
+      <h4>Add To Cart</h4>
       <SizeSelector />
       <QuantitySelector />
       <AddToCartButton />

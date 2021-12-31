@@ -19,7 +19,7 @@ const ProductInfo = () => {
 
   return (
     <div style={infoStyles}>
-      <h3>Product Info Component</h3>
+      <h3>Product Info</h3>
       <ProductTitle />
       <ProductCategory />
       <ProductRating />

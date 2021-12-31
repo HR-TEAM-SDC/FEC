@@ -18,6 +18,7 @@ const MainImage = (props) => {
     width: "600px",
     height: "auto",
   };
+
   return (
     <span>
       <img

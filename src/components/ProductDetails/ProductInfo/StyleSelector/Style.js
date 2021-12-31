@@ -21,7 +21,6 @@ const Style = (props) => {
     width: "20%",
     height: "100px",
     margin: "0px 10px 10px 10px",
-    background: "url('../../imgs/checkmark.png')",
   };
 
   return (

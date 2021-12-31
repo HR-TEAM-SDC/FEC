@@ -34,7 +34,7 @@ const StyleSelector = () => {
 
   return (
     <h4>
-      Style Selector Component. <br></br>
+      Style Selector<br></br>
       Current Style: {currentStyle.name} <br></br>
       <div>
         {styles.map((style) => {
