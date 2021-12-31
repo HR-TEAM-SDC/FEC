@@ -4,18 +4,14 @@ import { CurrentIndexContext } from "../ProductDetails";
 const LeftArrow = () => {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
 
-  const buttonOnClick = () => {
-    console.log("Left arrow clicked...");
+  const handleClick = () => {
     let decrementIndex = currentIndex - 1;
     setCurrentIndex(decrementIndex);
-    console.log("currentIndex:", currentIndex);
   };
 
   return (
     <span>
-      {currentIndex > 0 ? (
-        <button onClick={buttonOnClick}> Left </button>
-      ) : null}
+      {currentIndex > 0 ? <button onClick={handleClick}> Left </button> : null}
     </span>
   );
 };

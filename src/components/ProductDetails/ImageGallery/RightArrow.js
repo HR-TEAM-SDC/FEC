@@ -8,18 +8,16 @@ const RightArrow = () => {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { currentStylePhotos } = useContext(CurrentStylePhotosContext);
 
-  const buttonOnClick = () => {
-    console.log("Right arrow clicked...");
+  const handleClick = () => {
     let incrementIndex = currentIndex + 1;
     setCurrentIndex(incrementIndex);
-    console.log("currentIndex:", currentIndex);
   };
 
   return (
     <span>
       {currentStylePhotos ? (
         currentIndex < currentStylePhotos.length - 1 ? (
-          <button onClick={buttonOnClick}> Right </button>
+          <button onClick={handleClick}> Right </button>
         ) : null
       ) : null}
     </span>
