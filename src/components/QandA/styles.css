@@ -1,3 +1,8 @@
+.QAbody {
+  text-align: center;
+  margin: 2rem 0 4rem 0;
+}
+
 .modal {
   position: fixed;
   overflow: hidden;
@@ -80,7 +85,15 @@
 .button {
   height: 70px;
   width: 400px;
+  border-width: 5px;
   border-radius: 10px;
+  border-color: #21aeca;
+  background-color: white;
+  box-shadow: 10px 10px 18px;
+}
+
+.button:hover {
+  background-color: #21aeca;
 }
 
 .textarea {
@@ -88,7 +101,8 @@
   width: 70%;
 }
 
-.form-cell .selectImage {
+.form-cell,
+.selectImage {
   padding: 10px;
 }
 
@@ -106,6 +120,95 @@
   color: yellow;
 }
 
-/* .selectImage {
-  padding: 10px;
-} */
+/* accordin */
+.accordion {
+  max-width: 70%;
+  margin: 2rem auto;
+}
+
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #21aeca;
+  border-radius: 5px;
+}
+
+.accordion-title:hover {
+  background-color: #3ab4cc;
+}
+
+.accordion-title,
+.accordion-content {
+  padding: 1rem;
+  box-shadow: 10px 10px 18px;
+}
+
+.accordion-content {
+  text-align: left;
+  margin: 0;
+  background-color: #75d8ec;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 18px;
+  }
+
+  .accordion {
+    width: 90%;
+  }
+}
+
+.individualAnswer {
+  margin: 20px 20px;
+}
+
+.individualQuestion,
+.bold {
+  font-weight: bold;
+}
+
+.answer-content {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.answerer {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 5px;
+}
+
+.LoadMoreQPage {
+  max-width: 70%;
+  margin: 2rem auto;
+  overflow-y: auto;
+  height: 300px;
+}
+
+.LoadMoreAnsPage {
+  height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  margin: 0;
+  border-top: 1px solid #21aeca;
+  border-right: 1px solid #21aeca;
+}
+
+.searchBar {
+  height: 50px;
+  border-radius: 15px;
+  text-align: center;
+  border: 7px solid #21aeca;
+}
+
+.searchBar:hover {
+  box-shadow: 10px 10px 18px;
+}
+
+.AddQButton,
+.LoadQButton {
+  margin: 5px;
+}

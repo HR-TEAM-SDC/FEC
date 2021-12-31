@@ -8,7 +8,7 @@ import AddQuestionForm from "./AddQuestionForm.jsx";
 import AddAnswerForm from "./AddAnswerForm.jsx";
 import { Context } from "../context/context.js";
 import "./styles.css";
-const productId = 40344;
+const productId = 40347;
 
 //Note for Api
 //On the main page App.js, QA section needs  .get("qa/questions"
@@ -61,6 +61,7 @@ export default function QAapp() {
   };
 
   const editSearch = (query) => {
+    query.preventDefault();
     if (query.target.value.length >= 3) {
       console.log("Detecting input changing");
       setInput(query.target.value);
@@ -136,8 +137,8 @@ export default function QAapp() {
   };
 
   return (
-    <div>
-      <h2>QUESTIONS AND ANSWERS</h2>
+    <div className="QAbody">
+      <h2 className="QAtitle">QUESTIONS AND ANSWERS</h2>
       <div>
         <Search editSearch={editSearch} />
       </div>
@@ -148,7 +149,7 @@ export default function QAapp() {
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>
-      <div>
+      <div class="LoadQButton">
         {questions.length > 2 ? (
           counter >= QuesArrayLength - 2 ? null : (
             <button className="button" onClick={handleLoadMoreQ}>
@@ -159,11 +160,13 @@ export default function QAapp() {
       </div>
       <div>
         {moreQ ? (
-          <LoadMoreQ questions={questions.slice(counter, counter + 2)} />
+          <Context.Provider value={{ handleQHelpfulness }}>
+            <LoadMoreQ questions={questions.slice(counter, counter + 2)} />
+          </Context.Provider>
         ) : null}
       </div>
 
-      <div>
+      <div class="AddQButton">
         <button className="button" onClick={() => modal.current.open()}>
           ADD A QUESTION ➕
         </button>

@@ -46,12 +46,14 @@ const AddQuestionForm = ({ product, handleAddQuestion }) => {
 
         <div className="form-cell">
           <label>Enter your new question:</label>
-          <textarea
-            className="textarea"
-            maxLength="1000"
-            placeholder="Any questions..."
-            required="required"
-          ></textarea>
+          <div>
+            <textarea
+              className="textarea"
+              maxLength="1000"
+              placeholder="Any questions..."
+              required="required"
+            ></textarea>
+          </div>
         </div>
 
         <div className="form-cell">

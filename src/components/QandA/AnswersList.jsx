@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "../../apis/atelier";
 import { Context } from "../context/context.js";
+import "./styles.css";
 
 const AnswersList = ({ answers }) => {
   const [reportStatus, setReport] = useState(false);
@@ -70,11 +71,16 @@ const AnswersList = ({ answers }) => {
   return (
     <div className="individualAnswer">
       <div className="answer-body">
-        A: {answers ? answers.body : "This problem has no answers yet."}
+        <span className="bold"> A: </span>{" "}
+        <span className="answer-content">
+          {answers ? answers.body : "This problem has no answers yet."}
+        </span>
         <div className="answer-photos">
           {answers
             ? answers.photos.map((photo) => (
-                <img src={photo.url} width="100" height="100" key={photo.id} />
+                <span key={photo.id} className="selectImage">
+                  <img src={photo.url} width="100" height="100" />
+                </span>
               ))
             : null}{" "}
         </div>
@@ -84,8 +90,7 @@ const AnswersList = ({ answers }) => {
         {answers ? (
           <span
             style={{
-              fontWeight:
-                answers.answerer_name === "Seller" ? "bold" : "normal",
+              fontWeight: answers.answerer_name === "Seller" ? "bold" : 300,
             }}
           >
             {" "}

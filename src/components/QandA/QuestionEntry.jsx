@@ -13,6 +13,7 @@ const QuestionEntry = ({ question, answersList }) => {
   const [helpQuesStatus, setHelpQues] = useState(false);
   const modal = useRef(null);
   const { handleQHelpfulness } = useContext(Context);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     axios
@@ -68,22 +69,6 @@ const QuestionEntry = ({ question, answersList }) => {
     textDecoration: "underline",
   };
 
-  const questionStyle = {
-    border: "solid",
-    borderColor: `#dcdcdc`,
-    borderWidth: 1,
-  };
-
-  const answerStyle = {
-    border: "solid",
-    borderColor: `#d3d3d3`,
-    borderWidth: 1,
-  };
-
-  const helpfulStyle = {
-    float: "right",
-  };
-
   const helpLinkStyle = {
     textDecoration: "underline",
     color: helpQuesStatus ? "orange" : "black",
@@ -94,10 +79,10 @@ const QuestionEntry = ({ question, answersList }) => {
   };
 
   return (
-    <div style={questionStyle}>
-      <div className="individualQuestion">
-        Q: {question.question_body}{" "}
-        <span style={helpfulStyle}>
+    <div className="accordion-item">
+      <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+        <div className="individualQuestion">Q: {question.question_body}</div>
+        <span>
           Helpful?{" "}
           <span
             style={helpLinkStyle}
@@ -110,7 +95,8 @@ const QuestionEntry = ({ question, answersList }) => {
           ({question.question_helpfulness}) |{" "}
           <span style={addAnswerStyle} onClick={() => modal.current.open()}>
             Add Answer
-          </span>
+          </span>{" "}
+          <span>{isActive ? "-" : "+"}</span>
         </span>
         <AddModal ref={modal}>
           <AddAnswerForm
@@ -120,20 +106,23 @@ const QuestionEntry = ({ question, answersList }) => {
         </AddModal>
       </div>
 
-      <div style={answerStyle}>
-        <AnswersList answers={answers[0]} />
-      </div>
-      <div style={answerStyle}>
-        <AnswersList answers={answers[1]} />
-      </div>
+      {isActive && (
+        <div className="accordion-content">
+          <div>
+            {answers.slice(0, 2).map((answers) => (
+              <AnswersList key={answers.answer_id} answers={answers} />
+            ))}
+          </div>
 
-      <div onClick={handleLoad} style={LoadMoreStyle}>
-        {moreAnswers ? "Collapse answers" : "See more answers"}
-      </div>
+          <div onClick={handleLoad} style={LoadMoreStyle}>
+            {moreAnswers ? "Collapse answers" : "See more answers"}
+          </div>
 
-      <div>
-        {moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}
-      </div>
+          <div>
+            {moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
