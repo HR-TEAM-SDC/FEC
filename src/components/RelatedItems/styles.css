@@ -65,12 +65,12 @@
   position: relative;
   height: 415px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
   scroll-behavior: smooth;
 }
 
 .card {
-  height: 400px;
+  height: 100%;
   width: 275px;
   position: relative;
   flex-shrink: 0;
@@ -88,17 +88,17 @@
   cursor: pointer;
 }
 .card-image {
-  height: 180px;
-  margin-bottom: 30px;
+  height: 80%;
+  width: 80%;
   object-fit: contain;
 }
 
 .card-image-container {
   display: flex;
   justify-content: center;
-  height: 200px;
+  align-items: center;
+  height: 70%;
   width: auto;
-  margin-bottom: 30px;
 }
 
 .card-info {

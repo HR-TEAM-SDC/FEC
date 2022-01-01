@@ -6,16 +6,16 @@ import QAapp from "../components/QandA/QAindex.jsx";
 import RRIndex from "./Review/RRIndex.jsx";
 const styles = {
   fontFamily: "Montserrat, sans-serif",
-  display: "grid",
+  // display: "grid",
 };
 
 const App = () => {
   return (
     <main style={styles}>
-      <ProductDetails />
+      {/* <ProductDetails /> */}
       <RelatedItems />
-      <QAapp />
-      <RRIndex />
+      {/* <QAapp />
+      <RRIndex /> */}
     </main>
   );
 };

@@ -61,10 +61,12 @@ const ItemCard = ({ item, selectedItem }) => {
           />
         ) : null}
       </div>
-      <h4 className="card-info">{item.name}</h4>
-      <p className="card-info">{item.category}</p>
-      <p className="card-info">{item.default_price}</p>
-      <p className="card-info">{item.avgRating}</p>
+      <div className="card-info-container">
+        <p className="card-info">{item.category}</p>
+        <h3 className="card-info">{item.name}</h3>
+        <p className="card-info">{item.default_price}</p>
+        <p className="card-info">{item.avgRating}</p>
+      </div>
     </section>
   );
 };
