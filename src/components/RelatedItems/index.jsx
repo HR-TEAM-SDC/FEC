@@ -5,7 +5,7 @@ import { AppContext } from "../context";
 
 const RelatedItems = () => {
   const [relatedItems, setRelatedItems] = useState(null);
-  const { currentProduct, setCurrentProduct } = useContext(AppContext);
+  const { currentProduct } = useContext(AppContext);
 
   useEffect(() => {
     if (currentProduct) {

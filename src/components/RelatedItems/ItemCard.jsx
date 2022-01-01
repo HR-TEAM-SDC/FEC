@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import CompareModal from "./CompareModal.jsx";
+import { AppContext } from "../context";
 
 const ItemCard = ({ item, selectedItem }) => {
+  const { setCurrentProduct } = useContext(AppContext);
   const modal = useRef();
 
   const handleFormat = () => {
@@ -41,7 +43,7 @@ const ItemCard = ({ item, selectedItem }) => {
   };
 
   return (
-    <section className="card">
+    <section className="card" onClick={() => setCurrentProduct(item)}>
       <CompareModal ref={modal}>
         <table>
           <tbody>

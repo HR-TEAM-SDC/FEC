@@ -29,10 +29,10 @@ const App = () => {
   return (
     <main style={styles}>
       <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
-        {/* <ProductDetails /> */}
+        <ProductDetails />
         <RelatedItems />
-        {/* <QAapp />
-        <RRIndex /> */}
+        <QAapp />
+        <RRIndex />
       </AppContext.Provider>
     </main>
   );
