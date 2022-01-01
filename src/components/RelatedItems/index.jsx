@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "../../apis/atelier.js";
 import CardContainer from "./CardContainer.jsx";
+import { AppContext } from "../context";
 
 const RelatedItems = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
   const [relatedItems, setRelatedItems] = useState(null);
+  const { currentProduct, setCurrentProduct } = useContext(AppContext);
 
   useEffect(() => {
-    useFetch();
-  }, []);
+    if (currentProduct) {
+      useFetch();
+    }
+  }, [currentProduct]);
 
   const useFetch = async () => {
-    const { data: currentItemDetails } = await axios.get(`/products/40344`);
-    const { data: relatedIds } = await axios.get(`/products/40344/related`);
+    const { data: relatedIds } = await axios.get(
+      `/products/${currentProduct.id}/related`
+    );
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -29,15 +33,18 @@ const RelatedItems = () => {
     });
 
     const productArray = await Promise.all(promiseArray);
-    setSelectedItem(currentItemDetails);
     setRelatedItems(productArray);
   };
 
   return (
     <section className="related-items">
-      <h3>Related Items</h3>
+      <h3>Other Items You Might Enjoy!</h3>
       <div className="list">
-        <CardContainer cardItems={relatedItems} selectedItem={selectedItem} />
+        <CardContainer cardItems={relatedItems} selectedItem={currentProduct} />
+      </div>
+      <h3>Your Outfit</h3>
+      <div className="list">
+        <CardContainer />
       </div>
     </section>
   );

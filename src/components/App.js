@@ -4,18 +4,36 @@ import ProductDetails from "./ProductDetails/ProductDetails";
 import RelatedItems from "./RelatedItems/index.jsx";
 import QAapp from "../components/QandA/QAindex.jsx";
 import RRIndex from "./Review/RRIndex.jsx";
-const styles = {
-  fontFamily: "Montserrat, sans-serif",
-  // display: "grid",
-};
+import { AppContext } from "./context";
 
 const App = () => {
+  const [currentProduct, setCurrentProduct] = useState(null);
+
+  useEffect(() => {
+    fetchCurrentProduct();
+  }, []);
+
+  const fetchCurrentProduct = async () => {
+    const { data: products } = await axios.get("products");
+    const { data: initialProductDetail } = await axios.get(
+      `products/${products[0].id}`
+    );
+    setCurrentProduct(initialProductDetail);
+  };
+
+  const styles = {
+    fontFamily: "Montserrat, sans-serif",
+    // display: "grid",
+  };
+
   return (
     <main style={styles}>
-      {/* <ProductDetails /> */}
-      <RelatedItems />
-      {/* <QAapp />
-      <RRIndex /> */}
+      <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
+        {/* <ProductDetails /> */}
+        <RelatedItems />
+        {/* <QAapp />
+        <RRIndex /> */}
+      </AppContext.Provider>
     </main>
   );
 };

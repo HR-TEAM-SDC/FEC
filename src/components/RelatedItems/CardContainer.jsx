@@ -21,6 +21,7 @@ const CardContainer = ({ cardItems, selectedItem }) => {
 
   const handleScrollRight = () => {
     setIsOverflownLeft(true);
+    console.log(thisRef);
     thisRef.current.scrollLeft += 300;
     setScrollPosition(thisRef.current.scrollLeft);
   };

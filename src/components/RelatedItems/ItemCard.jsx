@@ -4,28 +4,32 @@ import CompareModal from "./CompareModal.jsx";
 const ItemCard = ({ item, selectedItem }) => {
   const modal = useRef();
 
-  const formatFeatures = {};
-  item.features.forEach(
-    ({ feature, value }) =>
-      (formatFeatures[feature] = { itemValue: value ? value : "✔️" })
-  );
-  selectedItem.features.forEach(({ feature, value }) => {
-    if (formatFeatures[feature])
-      formatFeatures[feature]["selectedItemValue"] = value ? value : "✔️";
-    else formatFeatures[feature] = { selectedItemValue: value ? value : "✔️" };
-  });
+  const handleFormat = () => {
+    const formatFeatures = {};
+    item.features.forEach(
+      ({ feature, value }) =>
+        (formatFeatures[feature] = { itemValue: value ? value : "✔️" })
+    );
+    selectedItem.features.forEach(({ feature, value }) => {
+      if (formatFeatures[feature])
+        formatFeatures[feature]["selectedItemValue"] = value ? value : "✔️";
+      else
+        formatFeatures[feature] = { selectedItemValue: value ? value : "✔️" };
+    });
 
-  const featuresArray = [];
-  for (let key in formatFeatures) {
-    featuresArray.push([
-      key,
-      formatFeatures[key].itemValue || "-",
-      formatFeatures[key].selectedItemValue || "-",
-    ]);
-  }
+    const featuresArray = [];
+    for (let key in formatFeatures) {
+      featuresArray.push([
+        key,
+        formatFeatures[key].itemValue || "-",
+        formatFeatures[key].selectedItemValue || "-",
+      ]);
+    }
+    return featuresArray;
+  };
 
   const renderTable = () => {
-    return featuresArray.map((feature) => {
+    return handleFormat().map((feature) => {
       return (
         <tr key={feature[0]}>
           <td>{feature[1]}</td>
