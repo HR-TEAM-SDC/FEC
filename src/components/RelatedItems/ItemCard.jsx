@@ -1,11 +1,11 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 import CompareModal from './CompareModal.jsx';
 import { AppContext } from '../context';
 import { Star } from 'react-feather';
 
 const ItemCard = ({ item, selectedItem }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   const { setCurrentProduct } = useContext(AppContext);
-  const modal = useRef();
 
   const handleFormat = () => {
     const formatFeatures = {};
@@ -34,9 +34,17 @@ const ItemCard = ({ item, selectedItem }) => {
     });
   };
 
+  const handleCompareClick = (e) => {
+    e.stopPropagation();
+    setModalOpen(true);
+  };
+
+  const handleCardClick = (e) => {
+    setCurrentProduct(item);
+  };
   return (
-    <section className="card">
-      <CompareModal ref={modal}>
+    <>
+      <CompareModal open={modalOpen} onClose={() => setModalOpen(false)}>
         <table>
           <tbody>
             <tr>
@@ -48,21 +56,21 @@ const ItemCard = ({ item, selectedItem }) => {
           </tbody>
         </table>
       </CompareModal>
-      <Star className="card-button" size={48} aria-label="Compare" onClick={() => modal.current.open()} />
-      <div className="card-image-container">
-        {item.styles[0].photos[0].thumbnail_url ? (
-          <img className="card-image" src={item.styles[0].photos[0].thumbnail_url} />
-        ) : null}
-      </div>
-      <div className="card-info-container">
-        <p className="card-info">{item.category}</p>
-        <h3 className="card-info" onClick={() => setCurrentProduct(item)}>
-          {item.name}
-        </h3>
-        <p className="card-info">${item.default_price}</p>
-        <p className="card-info">{item.avgRating}</p>
-      </div>
-    </section>
+      <section className="card" onClick={handleCardClick}>
+        <Star className="card-button" size={48} aria-label="Compare" onClick={(e) => handleCompareClick(e)} />
+        <div className="card-image-container">
+          {item.styles[0].photos[0].thumbnail_url ? (
+            <img className="card-image" src={item.styles[0].photos[0].thumbnail_url} />
+          ) : null}
+        </div>
+        <div className="card-info-container">
+          <p className="card-info category">{item.category}</p>
+          <h3 className="card-info title">{item.name}</h3>
+          <p className="card-info">${item.default_price}</p>
+          <p className="card-info">{item.avgRating || 0}</p>
+        </div>
+      </section>
+    </>
   );
 };
 

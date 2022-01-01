@@ -23,7 +23,7 @@
   align-items: center;
   overflow: auto;
   padding-top: 50px;
-  color: black;
+  color: rgb(110, 30, 30);
   z-index: 150;
 }
 
@@ -77,19 +77,18 @@
   background: rgba(163, 168, 170, 0.199);
   border-radius: 10px;
 }
-.card :hover {
-  box-shadow: none !important;
-}
-
-.list > .card-container :hover {
+.card:hover {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border-bottom: 0px;
   cursor: pointer;
 }
+
 .card-image {
-  height: 80%;
-  width: 80%;
-  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card-image-container {
@@ -104,6 +103,28 @@
   margin: 5px 15px;
 }
 
+.card-info.category {
+  font-size: smaller;
+}
+
+.scroll-button {
+  position: sticky;
+  height: 48px;
+  width: 48px;
+  top: 50%;
+  z-index: 100;
+  border: none;
+  background: rgba(163, 168, 170, 0.479);
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
+}
+
 .card-button {
   position: absolute;
   cursor: pointer;
@@ -111,4 +132,8 @@
   right: 0px;
   margin-top: 5px;
   z-index: 10;
+}
+
+.card-button:hover {
+  color: goldenrod;
 }

@@ -21,7 +21,6 @@ const App = () => {
 
   const styles = {
     fontFamily: 'Montserrat, sans-serif',
-    // display: "grid",
   };
 
   return (

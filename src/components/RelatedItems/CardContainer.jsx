@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ItemCard from './ItemCard.jsx';
+import { ChevronsLeft, ChevronsRight } from 'react-feather';
 
 const CardContainer = ({ cardItems, selectedItem }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);
@@ -8,7 +9,6 @@ const CardContainer = ({ cardItems, selectedItem }) => {
 
   const isOverflowing = () => {
     const bool = thisRef.current.scrollWidth > thisRef.current.clientWidth;
-    console.log(thisRef);
     setIsOverflownRight(bool);
   };
 
@@ -37,41 +37,16 @@ const CardContainer = ({ cardItems, selectedItem }) => {
   };
 
   return (
-    <div
-      className="card-container"
-      ref={thisRef}
-      onScroll={() => setScrollPosition(thisRef.current.scrollLeft)}
-      onLoad={isOverflowing}
-    >
+    <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
       {isOverflownLeft ? (
-        <button
-          style={{
-            position: 'sticky',
-            height: '48px',
-            width: '48px',
-            top: '50%',
-            left: '0',
-            zIndex: 100,
-          }}
-          onClick={handleScrollLeft}
-        >
-          {'<<'}
+        <button className="scroll-button left" onClick={handleScrollLeft}>
+          <ChevronsLeft />
         </button>
       ) : null}
       {renderCards()}
       {isOverflownRight ? (
-        <button
-          style={{
-            position: 'sticky',
-            height: '48px',
-            width: '48px',
-            top: '50%',
-            right: '0',
-            zIndex: 100,
-          }}
-          onClick={handleScrollRight}
-        >
-          {'>>'}
+        <button className="scroll-button right" onClick={handleScrollRight}>
+          <ChevronsRight />
         </button>
       ) : null}
     </div>
