@@ -43,19 +43,13 @@ const CardContainer = ({ cardItems, selectedItem }) => {
       onLoad={isOverflowing}
     >
       {isOverflownLeft ? (
-        <button
-          style={{ position: "sticky", left: "10px", zIndex: 100 }}
-          onClick={handleScrollLeft}
-        >
+        <button className="list-scroll-button" onClick={handleScrollLeft}>
           {"<<"}
         </button>
       ) : null}
       {renderCards()}
       {isOverflownRight ? (
-        <button
-          style={{ position: "sticky", right: "10px", zIndex: 100 }}
-          onClick={handleScrollRight}
-        >
+        <button className="list-scroll-button" onClick={handleScrollRight}>
           {">>"}
         </button>
       ) : null}
