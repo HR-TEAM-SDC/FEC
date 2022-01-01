@@ -61,7 +61,7 @@
 .card-container {
   display: flex;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: hidden;
   position: relative;
   height: 415px;
   margin: 0px;
@@ -75,8 +75,8 @@
   position: relative;
   flex-shrink: 0;
   margin: 0px 10px;
-  background: rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, hsl(190, 70%, 99%), hsl(240, 60%, 100%));
+  background: rgba(163, 168, 170, 0.199);
+  border-radius: 10px;
 }
 .card :hover {
   box-shadow: none !important;
