@@ -1,6 +1,7 @@
-import React, { useRef, useContext } from "react";
-import CompareModal from "./CompareModal.jsx";
-import { AppContext } from "../context";
+import React, { useRef, useContext } from 'react';
+import CompareModal from './CompareModal.jsx';
+import { AppContext } from '../context';
+import { Star } from 'react-feather';
 
 const ItemCard = ({ item, selectedItem }) => {
   const { setCurrentProduct } = useContext(AppContext);
@@ -8,24 +9,15 @@ const ItemCard = ({ item, selectedItem }) => {
 
   const handleFormat = () => {
     const formatFeatures = {};
-    item.features.forEach(
-      ({ feature, value }) =>
-        (formatFeatures[feature] = { itemValue: value ? value : "✔️" })
-    );
+    item.features.forEach(({ feature, value }) => (formatFeatures[feature] = { itemValue: value ? value : '✔️' }));
     selectedItem.features.forEach(({ feature, value }) => {
-      if (formatFeatures[feature])
-        formatFeatures[feature]["selectedItemValue"] = value ? value : "✔️";
-      else
-        formatFeatures[feature] = { selectedItemValue: value ? value : "✔️" };
+      if (formatFeatures[feature]) formatFeatures[feature]['selectedItemValue'] = value ? value : '✔️';
+      else formatFeatures[feature] = { selectedItemValue: value ? value : '✔️' };
     });
 
     const featuresArray = [];
     for (let key in formatFeatures) {
-      featuresArray.push([
-        key,
-        formatFeatures[key].itemValue || "-",
-        formatFeatures[key].selectedItemValue || "-",
-      ]);
+      featuresArray.push([key, formatFeatures[key].itemValue || '-', formatFeatures[key].selectedItemValue || '-']);
     }
     return featuresArray;
   };
@@ -43,34 +35,31 @@ const ItemCard = ({ item, selectedItem }) => {
   };
 
   return (
-    <section className="card" onClick={() => setCurrentProduct(item)}>
+    <section className="card">
       <CompareModal ref={modal}>
         <table>
           <tbody>
             <tr>
               <th key={item.id}>{item.name}</th>
-              <th key="blankspace">{"Comparing..."}</th>
+              <th key="blankspace">{'Comparing...'}</th>
               <th key={selectedItem.id}>{selectedItem.name}</th>
             </tr>
             {renderTable()}
           </tbody>
         </table>
       </CompareModal>
-      <button className="card-button" onClick={() => modal.current.open()}>
-        Compare
-      </button>
+      <Star className="card-button" size={48} aria-label="Compare" onClick={() => modal.current.open()} />
       <div className="card-image-container">
         {item.styles[0].photos[0].thumbnail_url ? (
-          <img
-            className="card-image"
-            src={item.styles[0].photos[0].thumbnail_url}
-          />
+          <img className="card-image" src={item.styles[0].photos[0].thumbnail_url} />
         ) : null}
       </div>
       <div className="card-info-container">
         <p className="card-info">{item.category}</p>
-        <h3 className="card-info">{item.name}</h3>
-        <p className="card-info">{item.default_price}</p>
+        <h3 className="card-info" onClick={() => setCurrentProduct(item)}>
+          {item.name}
+        </h3>
+        <p className="card-info">${item.default_price}</p>
         <p className="card-info">{item.avgRating}</p>
       </div>
     </section>
