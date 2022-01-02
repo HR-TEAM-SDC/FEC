@@ -25,7 +25,19 @@ app.post('/outfit', (req, res) => {
       console.error(err.message);
       res.status(500).send();
     } else {
-      res.status(200).send(`Item with ${productId} added to outfit`);
+      res.status(200).send(`Item number ${productId} added to outfit`);
+    }
+  });
+});
+
+app.delete('/outfit', (req, res) => {
+  const productId = req.body.id;
+  db.removeFromOutfit(productId, (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send();
+    } else {
+      res.status(200).send(`Item number ${productId} removed from outfit`);
     }
   });
 });
