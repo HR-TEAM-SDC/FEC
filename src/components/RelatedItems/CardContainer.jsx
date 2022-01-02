@@ -5,7 +5,7 @@ import { ChevronsLeft, ChevronsRight } from 'react-feather';
 import { AppContext } from '../context';
 import localhost from '../../apis/localhost';
 
-const CardContainer = ({ cardItems, selectedItem }) => {
+const CardContainer = ({ cardItems, selectedItem, fetchOutfit }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);
   const [isOverflownRight, setIsOverflownRight] = useState(false);
   const { currentProduct } = useContext(AppContext);
@@ -18,7 +18,7 @@ const CardContainer = ({ cardItems, selectedItem }) => {
 
   const handleScrollLeft = () => {
     setIsOverflownRight(true);
-    thisRef.current.scrollLeft -= 300;
+    thisRef.current.scrollLeft -= 310;
     if (thisRef.current.scrollLeft <= 300) {
       setIsOverflownLeft(false);
     }
@@ -26,8 +26,8 @@ const CardContainer = ({ cardItems, selectedItem }) => {
 
   const handleScrollRight = () => {
     setIsOverflownLeft(true);
-    thisRef.current.scrollLeft += 300;
-    if (thisRef.current.scrollLeft >= thisRef.current.scrollWidth - thisRef.current.clientWidth - 350) {
+    thisRef.current.scrollLeft += 310;
+    if (thisRef.current.scrollLeft >= thisRef.current.scrollWidth - thisRef.current.clientWidth - 370) {
       setIsOverflownRight(false);
     }
   };
@@ -36,7 +36,7 @@ const CardContainer = ({ cardItems, selectedItem }) => {
     if (cardItems && selectedItem) {
       return cardItems.map((item) => <RelatedItemCard item={item} key={item.id} selectedItem={selectedItem} />);
     } else if (cardItems) {
-      return cardItems.map((item) => <OutfitCard item={item} key={item.id} />);
+      return cardItems.map((item) => <OutfitCard item={item} key={item.id} fetchOutfit={fetchOutfit} />);
     } else {
       return <p>Loading...</p>;
     }
@@ -44,9 +44,12 @@ const CardContainer = ({ cardItems, selectedItem }) => {
 
   const handleAddToOutfit = async () => {
     const outfitIds = cardItems.reduce((allIds, current) => allIds.concat(current.id), []);
-    outfitIds.includes(currentProduct.id)
-      ? alert(`${currentProduct.name} is already in your outfit!`)
-      : localhost.post('outfit', { id: currentProduct.id });
+    if (outfitIds.includes(currentProduct.id)) {
+      return;
+    } else {
+      await localhost.post('outfit', { id: currentProduct.id });
+      fetchOutfit();
+    }
   };
 
   return (

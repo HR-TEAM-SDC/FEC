@@ -54,7 +54,7 @@ const RelatedItems = () => {
       return finalProduct;
     });
     const outfitArray = await Promise.all(promiseArray);
-    setOutfit(outfitArray);
+    setOutfit(outfitArray.reverse());
   };
 
   return (
@@ -65,7 +65,7 @@ const RelatedItems = () => {
       </div>
       <h3>Your Outfit</h3>
       <div className="list">
-        <CardContainer cardItems={outfit} />
+        <CardContainer cardItems={outfit} fetchOutfit={fetchOutfit} />
       </div>
     </section>
   );

@@ -32,8 +32,10 @@ export function CompareModal({ open, children, onClose }) {
   }
   function renderPortal({ portal }) {
     return portal(
-      <div className="compare-modal-overlay" onClick={onClose}>
-        <section className="compare-modal-body">{children}</section>
+      <div className="modal">
+        <div className="compare-modal-overlay" onClick={onClose}>
+          <section className="compare-modal-body">{children}</section>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 main {
   font-family: Montserrat, sans-serif;
   background-color: rgb(220, 245, 253);
-  height: 100%;
+  overflow-y: scroll;
 }

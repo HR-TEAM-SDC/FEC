@@ -30,8 +30,8 @@ app.post('/outfit', (req, res) => {
   });
 });
 
-app.delete('/outfit', (req, res) => {
-  const productId = req.body.id;
+app.delete('/outfit/:id', (req, res) => {
+  const productId = req.params.id;
   db.removeFromOutfit(productId, (err) => {
     if (err) {
       console.error(err.message);

@@ -2,6 +2,7 @@ import React, { useRef, useContext, useState } from 'react';
 import CompareModal from './CompareModal.jsx';
 import { AppContext } from '../context';
 import { Star } from 'react-feather';
+import { Rating } from '@mui/material';
 
 const RelatedItemCard = ({ item, selectedItem }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,7 +68,9 @@ const RelatedItemCard = ({ item, selectedItem }) => {
           <p className="card-info category">{item.category}</p>
           <h3 className="card-info title">{item.name}</h3>
           <p className="card-info">${item.default_price}</p>
-          <p className="card-info">{item.avgRating || 0}</p>
+          <p className="card-info">
+            <Rating style={{ color: 'black' }} defaultValue={item.avgRating || 0} precision={0.25} readOnly />
+          </p>
         </div>
       </section>
     </>
