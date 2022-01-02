@@ -1,9 +1,10 @@
 import React, { useContext, useRef, useState } from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import OutfitCard from './OutfitCard.jsx';
-import { ChevronsLeft, ChevronsRight } from 'react-feather';
+import { ChevronsLeft, ChevronsRight, Plus } from 'react-feather';
 import { AppContext } from '../context';
 import localhost from '../../apis/localhost';
+import { textAlign } from '@mui/system';
 
 const CardContainer = ({ cardItems, selectedItem, fetchOutfit }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);
@@ -61,8 +62,13 @@ const CardContainer = ({ cardItems, selectedItem, fetchOutfit }) => {
       ) : null}
       <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
         {selectedItem ? null : (
-          <section className="card" onClick={handleAddToOutfit}>
-            {currentProduct ? `Add ${currentProduct.name} to your outfit` : null}
+          <section className="outfit-card card" onClick={handleAddToOutfit}>
+            {currentProduct ? (
+              <>
+                <p>Add {currentProduct.name} to your outfit</p>
+                <Plus size={48} />
+              </>
+            ) : null}
           </section>
         )}
         {renderCards()}

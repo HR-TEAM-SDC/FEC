@@ -27,7 +27,8 @@
 }
 
 .compare-modal-body {
-  background-color: white;
+  font-family: Montserrat, sans-serif;
+  background-color: rgb(220, 245, 253);
   min-width: 350px;
   width: 75%;
   max-width: 600px;
@@ -35,7 +36,10 @@
   align-items: center;
   padding: 10px;
   border: 1px solid black;
+  border-radius: 10px;
   overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fade-in {
@@ -46,6 +50,9 @@
   100% {
     opacity: 1;
   }
+}
+.compare-table {
+  border-spacing: 20px;
 }
 
 .card-container {
@@ -72,6 +79,12 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border-bottom: 0px;
   cursor: pointer;
+}
+.outfit-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-image {

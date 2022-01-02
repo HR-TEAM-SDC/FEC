@@ -26,10 +26,10 @@ const RelatedItemCard = ({ item, selectedItem }) => {
   const renderTable = () => {
     return handleFormat().map((feature) => {
       return (
-        <tr key={feature[0]}>
-          <td>{feature[1]}</td>
-          <td>{feature[0]}</td>
-          <td>{feature[2]}</td>
+        <tr className="compare-table-row" key={feature[0]}>
+          <td className="compare-table-data">{feature[1]}</td>
+          <td className="compare-table-data feature">{feature[0]}</td>
+          <td className="compare-table-data">{feature[2]}</td>
         </tr>
       );
     });
@@ -46,7 +46,7 @@ const RelatedItemCard = ({ item, selectedItem }) => {
   return (
     <>
       <CompareModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <table>
+        <table className="compare-table">
           <tbody>
             <tr>
               <th key={item.id}>{item.name}</th>
