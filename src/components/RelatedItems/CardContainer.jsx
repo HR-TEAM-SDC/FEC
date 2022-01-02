@@ -46,7 +46,7 @@ const CardContainer = ({ cardItems, selectedItem }) => {
     const outfitIds = cardItems.reduce((allIds, current) => allIds.concat(current.id), []);
     outfitIds.includes(currentProduct.id)
       ? alert(`${currentProduct.name} is already in your outfit!`)
-      : await localhost.post('outfit', { id: currentProduct.id });
+      : localhost.post('outfit', { id: currentProduct.id });
   };
 
   return (
