@@ -1,46 +1,44 @@
-import React, {
-  useEffect,
-  useImperativeHandle,
-  useState,
-  forwardRef,
-} from "react";
-import { createPortal } from "react-dom";
-import "./styles.css";
+import React, { useEffect } from 'react';
+import { PortalWithState } from 'react-portal';
+import { createPortal } from 'react-dom';
 
-export function CompareModal({ children }, ref) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const close = () => setIsOpen(false);
-
-  useImperativeHandle(
-    ref,
-    () => ({
-      open: () => setIsOpen(true),
-      close,
-    }),
-    [close]
-  );
-
-  const handleEscape = (event) => {
-    if (event.keyCode === 27) close();
-  };
-
+export function CompareModal({ open, children, onClose }) {
   useEffect(() => {
-    if (isOpen) document.addEventListener("keydown", handleEscape, false);
-    return () => {
-      document.removeEventListener("keydown", handleEscape, false);
-    };
-  }, [handleEscape, isOpen]);
+    const mainEl = document.querySelector('main');
 
-  return createPortal(
-    isOpen ? (
+    if (open) {
+      if (mainEl) {
+        mainEl.style.filter = 'blur(3px)';
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      if (mainEl) {
+        mainEl.style.filter = 'none';
+      }
+    };
+  }, [open]);
+
+  if (open) {
+    return (
+      <PortalWithState defaultOpen closeOnEsc onClose={onClose}>
+        {renderPortal}
+      </PortalWithState>
+    );
+  } else {
+    return null;
+  }
+  function renderPortal({ portal }) {
+    return portal(
       <div className="modal">
-        <div className="modal-overlay" onClick={close} />
-        <section className="modal-body">{children}</section>
+        <div className="compare-modal-overlay" onClick={onClose}>
+          <section className="compare-modal-body">{children}</section>
+        </div>
       </div>
-    ) : null,
-    document.getElementById("compareModal")
-  );
+    );
+  }
 }
 
-export default forwardRef(CompareModal);
+export default CompareModal;

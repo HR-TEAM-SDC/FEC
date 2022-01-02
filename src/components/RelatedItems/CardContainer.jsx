@@ -1,65 +1,78 @@
-import React, { useEffect, useRef, useState } from "react";
-import ItemCard from "./ItemCard.jsx";
+import React, { useContext, useRef, useState } from 'react';
+import RelatedItemCard from './RelatedItemCard.jsx';
+import OutfitCard from './OutfitCard.jsx';
+import { ChevronsLeft, ChevronsRight } from 'react-feather';
+import { AppContext } from '../context';
+import localhost from '../../apis/localhost';
 
-const CardContainer = ({ cardItems, selectedItem }) => {
+const CardContainer = ({ cardItems, selectedItem, fetchOutfit }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);
   const [isOverflownRight, setIsOverflownRight] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const { currentProduct } = useContext(AppContext);
   const thisRef = useRef();
 
   const isOverflowing = () => {
     const bool = thisRef.current.scrollWidth > thisRef.current.clientWidth;
-    console.log(thisRef);
     setIsOverflownRight(bool);
   };
 
   const handleScrollLeft = () => {
     setIsOverflownRight(true);
-    thisRef.current.scrollLeft -= 300;
-    setScrollPosition(thisRef.current.scrollLeft);
+    thisRef.current.scrollLeft -= 310;
+    if (thisRef.current.scrollLeft <= 300) {
+      setIsOverflownLeft(false);
+    }
   };
 
   const handleScrollRight = () => {
     setIsOverflownLeft(true);
-    thisRef.current.scrollLeft += 300;
-    setScrollPosition(thisRef.current.scrollLeft);
+    thisRef.current.scrollLeft += 310;
+    if (thisRef.current.scrollLeft >= thisRef.current.scrollWidth - thisRef.current.clientWidth - 370) {
+      setIsOverflownRight(false);
+    }
   };
 
   const renderCards = () => {
-    return cardItems ? (
-      cardItems.map((item) => (
-        <ItemCard item={item} key={item.id} selectedItem={selectedItem} />
-      ))
-    ) : (
-      <p>Loading...</p>
-    );
+    if (cardItems && selectedItem) {
+      return cardItems.map((item) => <RelatedItemCard item={item} key={item.id} selectedItem={selectedItem} />);
+    } else if (cardItems) {
+      return cardItems.map((item) => <OutfitCard item={item} key={item.id} fetchOutfit={fetchOutfit} />);
+    } else {
+      return <p>Loading...</p>;
+    }
+  };
+
+  const handleAddToOutfit = async () => {
+    const outfitIds = cardItems.reduce((allIds, current) => allIds.concat(current.id), []);
+    if (outfitIds.includes(currentProduct.id)) {
+      return;
+    } else {
+      await localhost.post('outfit', { id: currentProduct.id });
+      fetchOutfit();
+    }
   };
 
   return (
-    <div
-      className="card-container"
-      ref={thisRef}
-      onScroll={() => setScrollPosition(thisRef.current.scrollLeft)}
-      onLoad={isOverflowing}
-    >
+    <>
       {isOverflownLeft ? (
-        <button
-          style={{ position: "sticky", left: "10px", zIndex: 100 }}
-          onClick={handleScrollLeft}
-        >
-          {"<<"}
+        <button className="scroll-button left" onClick={handleScrollLeft}>
+          <ChevronsLeft />
         </button>
       ) : null}
-      {renderCards()}
+      <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
+        {selectedItem ? null : (
+          <section className="card" onClick={handleAddToOutfit}>
+            {currentProduct ? `Add ${currentProduct.name} to your outfit` : null}
+          </section>
+        )}
+        {renderCards()}
+      </div>
       {isOverflownRight ? (
-        <button
-          style={{ position: "sticky", right: "10px", zIndex: 100 }}
-          onClick={handleScrollRight}
-        >
-          {">>"}
+        <button className="scroll-button right" onClick={handleScrollRight}>
+          <ChevronsRight />
         </button>
       ) : null}
-    </div>
+    </>
   );
 };
 

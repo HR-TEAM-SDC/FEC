@@ -1,42 +1,32 @@
 .related-items {
-  padding: 5px 40px 0px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 10px auto;
-  max-width: 1200px;
+  align-items: center;
+  margin: 10px 0;
+  width: 90%;
+  padding-left: 5%;
 }
 .list {
   margin: 10px 0px 0px;
-  position: relative;
-  width: 100%;
-}
-.modal {
-  background-color: rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: auto;
-  padding-top: 50px;
-  color: black;
-  z-index: 150;
+  width: 90%;
 }
 
-.modal > .modal-overlay {
+.compare-modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
-.modal > .modal-body {
+.compare-modal-body {
   background-color: white;
   min-width: 350px;
   width: 75%;
@@ -61,16 +51,16 @@
 .card-container {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   overflow: hidden;
-  position: relative;
   height: 415px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
   scroll-behavior: smooth;
 }
 
 .card {
-  height: 400px;
+  height: 100%;
   width: 275px;
   position: relative;
   flex-shrink: 0;
@@ -78,31 +68,51 @@
   background: rgba(163, 168, 170, 0.199);
   border-radius: 10px;
 }
-.card :hover {
-  box-shadow: none !important;
-}
-
-.list > .card-container :hover {
+.card:hover {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border-bottom: 0px;
   cursor: pointer;
 }
+
 .card-image {
-  height: 180px;
-  margin-bottom: 30px;
-  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card-image-container {
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 70%;
   width: auto;
-  margin-bottom: 30px;
 }
 
 .card-info {
   margin: 5px 15px;
+}
+
+.card-info.category {
+  font-size: smaller;
+}
+
+.scroll-button {
+  height: 48px;
+  width: 48px;
+  z-index: 100;
+  border: none;
+  background: rgba(163, 168, 170, 0.479);
+}
+
+.scroll-button.left {
+  left: 0;
+  margin-right: 5px;
+}
+
+.scroll-button.right {
+  right: 0;
+  margin-left: 5px;
 }
 
 .card-button {
@@ -112,4 +122,11 @@
   right: 0px;
   margin-top: 5px;
   z-index: 10;
+}
+
+.card-button:hover {
+  color: goldenrod;
+}
+h3 {
+  align-self: flex-start;
 }
