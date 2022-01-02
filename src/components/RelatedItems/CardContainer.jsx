@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ItemCard from './ItemCard.jsx';
+import RelatedItemCard from './RelatedItemCard.jsx';
+import OutfitCard from './OutfitCard.jsx';
 import { ChevronsLeft, ChevronsRight } from 'react-feather';
 
 const CardContainer = ({ cardItems, selectedItem }) => {
@@ -29,11 +30,13 @@ const CardContainer = ({ cardItems, selectedItem }) => {
   };
 
   const renderCards = () => {
-    return cardItems ? (
-      cardItems.map((item) => <ItemCard item={item} key={item.id} selectedItem={selectedItem} />)
-    ) : (
-      <p>Loading...</p>
-    );
+    if (cardItems && selectedItem) {
+      return cardItems.map((item) => <RelatedItemCard item={item} key={item.id} selectedItem={selectedItem} />);
+    } else if (cardItems) {
+      return cardItems.map((item) => <OutfitCard item={item} key={item.id} />);
+    } else {
+      return <p>Loading...</p>;
+    }
   };
 
   return (

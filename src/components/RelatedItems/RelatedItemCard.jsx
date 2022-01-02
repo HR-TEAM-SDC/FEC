@@ -3,7 +3,7 @@ import CompareModal from './CompareModal.jsx';
 import { AppContext } from '../context';
 import { Star } from 'react-feather';
 
-const ItemCard = ({ item, selectedItem }) => {
+const RelatedItemCard = ({ item, selectedItem }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { setCurrentProduct } = useContext(AppContext);
 
@@ -74,4 +74,4 @@ const ItemCard = ({ item, selectedItem }) => {
   );
 };
 
-export default ItemCard;
+export default RelatedItemCard;
