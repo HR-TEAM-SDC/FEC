@@ -19,6 +19,7 @@ const RelatedItems = () => {
 
   const fetchRelatedItems = async () => {
     const { data: relatedIds } = await axios.get(`/products/${currentProduct.id}/related`);
+
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -40,6 +41,7 @@ const RelatedItems = () => {
   const fetchOutfit = async () => {
     const { data: outfit } = await localhost.get('outfit');
     const outfitIds = outfit.reduce((ids, current) => ids.concat(current.productid), []);
+
     const promiseArray = outfitIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -53,6 +55,7 @@ const RelatedItems = () => {
 
       return finalProduct;
     });
+
     const outfitArray = await Promise.all(promiseArray);
     setOutfit(outfitArray.reverse());
   };
