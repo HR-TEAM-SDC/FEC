@@ -1,11 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import OutfitCard from './OutfitCard.jsx';
 import { ChevronsLeft, ChevronsRight } from 'react-feather';
+import { AppContext } from '../context';
+import localhost from '../../apis/localhost';
 
 const CardContainer = ({ cardItems, selectedItem }) => {
   const [isOverflownLeft, setIsOverflownLeft] = useState(false);
   const [isOverflownRight, setIsOverflownRight] = useState(false);
+  const { currentProduct } = useContext(AppContext);
   const thisRef = useRef();
 
   const isOverflowing = () => {
@@ -39,6 +42,13 @@ const CardContainer = ({ cardItems, selectedItem }) => {
     }
   };
 
+  const handleAddToOutfit = async () => {
+    const outfitIds = cardItems.reduce((allIds, current) => allIds.concat(current.id), []);
+    outfitIds.includes(currentProduct.id)
+      ? alert(`${currentProduct.name} is already in your outfit!`)
+      : await localhost.post('outfit', { id: currentProduct.id });
+  };
+
   return (
     <>
       {isOverflownLeft ? (
@@ -47,6 +57,11 @@ const CardContainer = ({ cardItems, selectedItem }) => {
         </button>
       ) : null}
       <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
+        {selectedItem ? null : (
+          <section className="card" onClick={handleAddToOutfit}>
+            {currentProduct ? `Add ${currentProduct.name} to your outfit` : null}
+          </section>
+        )}
         {renderCards()}
       </div>
       {isOverflownRight ? (

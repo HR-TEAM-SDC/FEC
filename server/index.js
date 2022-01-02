@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const db = require("../database");
+const db = require('../database');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + "/../dist"));
+app.use(express.static(__dirname + '/../dist'));
 
-app.get("/outfit", (req, res) => {
+app.get('/outfit', (req, res) => {
   db.getOutfit((err, outfit) => {
     if (err) {
       console.error(err.message);
@@ -18,8 +18,8 @@ app.get("/outfit", (req, res) => {
   });
 });
 
-app.post("/outfit", (req, res) => {
-  const productId = req.body.productId;
+app.post('/outfit', (req, res) => {
+  const productId = req.body.id;
   db.addToOutfit(productId, (err) => {
     if (err) {
       console.error(err.message);
