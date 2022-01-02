@@ -30,14 +30,14 @@ const ProductDetails = () => {
     const fetchData = async () => {
       const products = await axios.get("products");
       setProduct(products.data[0]);
-      console.log(products);
+      console.log("products:", products);
       const reviews = await axios.get("reviews", {
         params: { product_id: 40344 },
       });
       setReviews(reviews.data.results);
-      console.log('reviews:', reviews);
+      console.log("reviews:", reviews);
       const styles = await axios.get(`products/40344/styles`);
-      console.log('styles:', styles);
+      console.log("styles:", styles);
       setStyles(styles.data.results);
       setCurrentStyle(styles.data.results[0]);
       setCurrentStylePhotos(styles.data.results[0].photos);
@@ -47,16 +47,14 @@ const ProductDetails = () => {
   }, []);
 
   const detailStyles = {
+    display: "flex",
+    justifyContent: "space-around",
     borderStyle: "solid",
     borderWidth: "1px",
-    width: "90%",
-    height: "auto",
-    margin: "auto",
   };
 
   return (
-    <div style={detailStyles}>
-      <h2>Product Details</h2>
+    <main style={detailStyles}>
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
           <StylesContext.Provider value={styles}>
@@ -93,7 +91,7 @@ const ProductDetails = () => {
           </StylesContext.Provider>
         </ReviewsContext.Provider>
       </ProductContext.Provider>
-    </div>
+    </main>
   );
 };
 

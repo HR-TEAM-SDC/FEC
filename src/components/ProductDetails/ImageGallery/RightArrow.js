@@ -17,13 +17,13 @@ const RightArrow = () => {
   };
 
   return (
-    <span>
+    <div>
       {currentStylePhotos ? (
         currentIndex < currentStylePhotos.length - 1 ? (
           <button onClick={handleClick}> Right </button>
         ) : null
       ) : null}
-    </span>
+    </div>
   );
 };
 

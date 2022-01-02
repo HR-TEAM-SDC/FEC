@@ -8,19 +8,17 @@ const Style = (props) => {
   const thumbnailStyle = {
     borderStyle: "solid",
     borderWidth: "1px",
-    borderRadius: "100%",
-    width: "20%",
-    height: "100px",
-    margin: "0px 10px 10px 10px",
+    borderRadius: "50%",
+    width: "75px",
+    height: "75px",
   };
 
   const selectedStyle = {
     borderStyle: "solid",
     borderWidth: "5px",
-    borderRadius: "100%",
-    width: "20%",
-    height: "100px",
-    margin: "0px 10px 10px 10px",
+    borderRadius: "50%",
+    width: "75px",
+    height: "75px",
   };
 
   return (

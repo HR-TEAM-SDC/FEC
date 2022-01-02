@@ -11,6 +11,9 @@ const Thumbnails = (props) => {
   let { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
 
   const thumbnailsStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     borderStyle: "solid",
     borderWidth: "1px",
   };
@@ -27,8 +30,8 @@ const Thumbnails = (props) => {
 
   return (
     <div style={thumbnailsStyle}>
+      <LeftArrow />
       <span>
-        <LeftArrow />
         {photos
           ? photos.map((photo, index) => {
               return (
@@ -42,8 +45,8 @@ const Thumbnails = (props) => {
               );
             })
           : null}
-        <RightArrow />
       </span>
+      <RightArrow />
     </div>
   );
 };

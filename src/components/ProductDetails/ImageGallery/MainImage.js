@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { CurrentIndexContext, CurrentImageContext } from "../ProductDetails";
+import { CurrentStyleContext } from "../ProductDetails";
+import Thumbnails from "./Thumbnails";
 
 const MainImage = (props) => {
   const { currentImage, setCurrentImage } = useContext(CurrentImageContext);
   const { currentIndex } = useContext(CurrentIndexContext);
+  const { currentStyle } = useContext(CurrentStyleContext);
 
   // if (props.currentStyle) {
   //   useEffect(() => {
@@ -12,15 +15,20 @@ const MainImage = (props) => {
   // }
 
   const mainImageStyle = {
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
-    width: "600px",
-    height: "auto",
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // flexShrink: "0",
+    // minWidth: "50%",
+    // minHeight: "50%",
+    // overflow: "hidden"
+    objectFit: "cover",
+    width: "400px",
+    height: "500px",
   };
 
   return (
-    <span>
+    <div>
       <img
         style={mainImageStyle}
         src={
@@ -29,7 +37,8 @@ const MainImage = (props) => {
             : null
         }
       ></img>
-    </span>
+      <Thumbnails currentStyle={currentStyle} />
+    </div>
   );
 };
 

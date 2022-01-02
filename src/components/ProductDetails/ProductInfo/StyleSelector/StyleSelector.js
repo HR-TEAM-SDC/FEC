@@ -32,11 +32,16 @@ const StyleSelector = () => {
   };
   // let index = 0;
 
+  const thumbnailsStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  };
+
   return (
-    <h4>
-      Style Selector<br></br>
-      Current Style: {currentStyle.name} <br></br>
-      <div>
+    <div>
+      <h4>Current Style: {currentStyle.name}</h4> <br></br>
+      <div style={thumbnailsStyle}>
         {styles.map((style) => {
           return (
             <Style
@@ -46,44 +51,9 @@ const StyleSelector = () => {
               styleClickHandler={styleClickHandler}
             />
           );
-          // console.log('index:', index);
-          // if (index === 0) {
-          //   index++;
-          //   return (
-          //     <Style
-          //       style={style}
-          //       currentStyle={currentStyle}
-          //       key={style.style_id}
-          //       styleClickHandler={styleClickHandler}
-          //     />
-          //   );
-          // }
-          // if (index % 4 === 0) {
-          //   index++;
-          //   return (
-          //     <div>
-          //       <Style
-          //         style={style}
-          //         currentStyle={currentStyle}
-          //         key={style.style_id}
-          //         styleClickHandler={styleClickHandler}
-          //       />
-          //     </div>
-          //   );
-          // } else {
-          //   index++;
-          //   return (
-          //     <Style
-          //       style={style}
-          //       currentStyle={currentStyle}
-          //       key={style.style_id}
-          //       styleClickHandler={styleClickHandler}
-          //     />
-          //   );
-          // }
         })}
       </div>
-    </h4>
+    </div>
   );
 };
 

@@ -9,18 +9,17 @@ const ImageGallery = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
 
   const imageGalleryStyle = {
+    display: "flex",
     borderStyle: "solid",
     borderWidth: "1px",
-    width: "40%",
-    height: "auto",
-    float: "left",
-    marginLeft: "100px",
+    width: "50%",
+    justifyContent: "center",
   };
 
   return (
     <div style={imageGalleryStyle}>
       <MainImage currentStyle={currentStyle} />
-      <Thumbnails currentStyle={currentStyle} />
+      {/* <Thumbnails currentStyle={currentStyle} /> */}
     </div>
   );
 };

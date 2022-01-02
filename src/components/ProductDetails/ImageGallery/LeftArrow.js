@@ -14,9 +14,9 @@ const LeftArrow = () => {
   };
 
   return (
-    <span>
+    <div>
       {currentIndex > 0 ? <button onClick={handleClick}> Left </button> : null}
-    </span>
+    </div>
   );
 };
 
