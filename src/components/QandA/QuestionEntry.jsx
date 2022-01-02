@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import axios from "../../apis/atelier";
-import AnswersList from "./AnswersList.jsx";
-import LoadMoreAns from "./LoadMoreAns.jsx";
-import AddModal from "./AddModals.jsx";
-import AddAnswerForm from "./AddAnswerForm.jsx";
-import { Context } from "../context/context.js";
-import "./styles.css";
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import axios from '../../apis/atelier';
+import AnswersList from './AnswersList.jsx';
+import LoadMoreAns from './LoadMoreAns.jsx';
+import AddModal from './AddModals.jsx';
+import AddAnswerForm from './AddAnswerForm.jsx';
+import Highlighter from 'react-highlight-words';
+import { Context } from '../context/context.js';
+import './styles.css';
 
 const QuestionEntry = ({ question, answersList }) => {
   const [answers, setAnswer] = useState([]);
@@ -13,13 +14,15 @@ const QuestionEntry = ({ question, answersList }) => {
   const [helpQuesStatus, setHelpQues] = useState(false);
   const modal = useRef(null);
   const { handleQHelpfulness } = useContext(Context);
+  const [isActive, setIsActive] = useState(false);
+  const { searchInput } = useContext(Context);
 
   useEffect(() => {
     axios
       .get(`qa/questions/${question.question_id}/answers`)
       .then((res) => {
         setAnswer(res.data.results);
-        console.log("answers:", res.data.results);
+        console.log('answers:', res.data.results);
       })
       .catch((err) => {
         console.log("This problem doesn't have any answers", err);
@@ -51,89 +54,81 @@ const QuestionEntry = ({ question, answersList }) => {
     let body = event.target[2].value;
     let photos = photosArray;
     event.target.reset();
-    console.log("what is the new answer:", body, name, email, photos);
+    console.log('what is the new answer:', body, name, email, photos);
 
     axios
       .post(`qa/questions/${id}/answers`, { name, email, body, photos })
       .then((res) => {
-        console.log("You submit a new answer successfully!", res);
+        console.log('You submit a new answer successfully!', res);
         handleCloseAnsModal();
       })
       .catch((err) => {
-        console.log("Failed to post a new answer.", err.response);
+        console.log('Failed to post a new answer.', err.response);
       });
   };
 
   const LoadMoreStyle = {
-    textDecoration: "underline",
-  };
-
-  const questionStyle = {
-    border: "solid",
-    borderColor: `#dcdcdc`,
-    borderWidth: 1,
-  };
-
-  const answerStyle = {
-    border: "solid",
-    borderColor: `#d3d3d3`,
-    borderWidth: 1,
-  };
-
-  const helpfulStyle = {
-    float: "right",
+    textDecoration: 'underline',
   };
 
   const helpLinkStyle = {
-    textDecoration: "underline",
-    color: helpQuesStatus ? "orange" : "black",
+    textDecoration: 'underline',
+    color: helpQuesStatus ? 'orange' : 'black',
   };
 
   const addAnswerStyle = {
-    textDecoration: "underline",
+    textDecoration: 'underline',
   };
 
   return (
-    <div style={questionStyle}>
-      <div className="individualQuestion">
-        Q: {question.question_body}{" "}
-        <span style={helpfulStyle}>
-          Helpful?{" "}
-          <span
+    <div className="accordion-item">
+      <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+        <div className="individualQuestion">
+          Q:{' '}
+          <Highlighter
+            highlightClassName="YourHighlightClass"
+            searchWords={[searchInput]}
+            autoEscape={true}
+            textToHighlight={question.question_body}
+          />
+        </div>
+        <span>
+          Helpful?{' '}
+          <abbr
             style={helpLinkStyle}
             onClick={() => {
               handleHelpQues();
             }}
+            title="Users can vote once"
           >
             Yes
-          </span>{" "}
-          ({question.question_helpfulness}) |{" "}
+          </abbr>{' '}
+          &#128161; ({question.question_helpfulness}) |{' '}
           <span style={addAnswerStyle} onClick={() => modal.current.open()}>
             Add Answer
-          </span>
+          </span>{' '}
+          <span>{isActive ? '-' : '+'}</span>
         </span>
         <AddModal ref={modal}>
-          <AddAnswerForm
-            question={question}
-            handleAddAnswer={handleAddAnswer}
-          />
+          <AddAnswerForm question={question} handleAddAnswer={handleAddAnswer} />
         </AddModal>
       </div>
 
-      <div style={answerStyle}>
-        <AnswersList answers={answers[0]} />
-      </div>
-      <div style={answerStyle}>
-        <AnswersList answers={answers[1]} />
-      </div>
+      {isActive && (
+        <div className="accordion-content">
+          <div>
+            {answers.slice(0, 2).map((answers) => (
+              <AnswersList key={answers.answer_id} answers={answers} />
+            ))}
+          </div>
 
-      <div onClick={handleLoad} style={LoadMoreStyle}>
-        {moreAnswers ? "Collapse answers" : "See more answers"}
-      </div>
+          <div onClick={handleLoad} style={LoadMoreStyle}>
+            {moreAnswers ? 'Collapse answers' : 'See more answers'}
+          </div>
 
-      <div>
-        {moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}
-      </div>
+          <div>{moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}</div>
+        </div>
+      )}
     </div>
   );
 };

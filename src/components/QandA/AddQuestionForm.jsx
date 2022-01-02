@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "../../apis/atelier";
-import "./styles.css";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from '../../apis/atelier';
+import './styles.css';
 
 const AddQuestionForm = ({ product, handleAddQuestion }) => {
   return (
     <div>
       <h1>Ask Your Question</h1>
       <h3>
-        About the{" "}
-        <span className="hightlight">{product ? product.name : "Null"} </span>
+        About the <span className="hightlight">{product ? product.name : 'Null'} </span>
       </h3>
 
       <form onSubmit={(event) => handleAddQuestion(event, product.id)}>
@@ -23,9 +22,7 @@ const AddQuestionForm = ({ product, handleAddQuestion }) => {
               className="input-small"
             ></input>
           </div>
-          <span className="privacy">
-            * For privacy reasons, do not use your full name or email address
-          </span>
+          <span className="privacy">* For privacy reasons, do not use your full name or email address</span>
         </div>
 
         <div className="form-cell">
@@ -39,19 +36,19 @@ const AddQuestionForm = ({ product, handleAddQuestion }) => {
               className="input-small"
             ></input>
           </div>
-          <span className="privacy">
-            * For authentication reasons, you will not be emailed
-          </span>
+          <span className="privacy">* For authentication reasons, you will not be emailed</span>
         </div>
 
         <div className="form-cell">
           <label>Enter your new question:</label>
-          <textarea
-            className="textarea"
-            maxLength="1000"
-            placeholder="Any questions..."
-            required="required"
-          ></textarea>
+          <div>
+            <textarea
+              className="textarea"
+              maxLength="1000"
+              placeholder="Any questions..."
+              required="required"
+            ></textarea>
+          </div>
         </div>
 
         <div className="form-cell">
