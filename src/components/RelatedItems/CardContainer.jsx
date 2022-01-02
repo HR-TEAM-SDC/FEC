@@ -37,19 +37,21 @@ const CardContainer = ({ cardItems, selectedItem }) => {
   };
 
   return (
-    <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
+    <>
       {isOverflownLeft ? (
         <button className="scroll-button left" onClick={handleScrollLeft}>
           <ChevronsLeft />
         </button>
       ) : null}
-      {renderCards()}
+      <div className="card-container" ref={thisRef} onLoad={isOverflowing}>
+        {renderCards()}
+      </div>
       {isOverflownRight ? (
         <button className="scroll-button right" onClick={handleScrollRight}>
           <ChevronsRight />
         </button>
       ) : null}
-    </div>
+    </>
   );
 };
 

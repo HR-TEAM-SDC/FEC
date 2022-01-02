@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "../../apis/atelier.js";
-import CardContainer from "./CardContainer.jsx";
-import { AppContext } from "../context";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from '../../apis/atelier.js';
+import CardContainer from './CardContainer.jsx';
+import { AppContext } from '../context';
+import './styles.css';
 
 const RelatedItems = () => {
   const [relatedItems, setRelatedItems] = useState(null);
@@ -14,9 +15,7 @@ const RelatedItems = () => {
   }, [currentProduct]);
 
   const useFetch = async () => {
-    const { data: relatedIds } = await axios.get(
-      `/products/${currentProduct.id}/related`
-    );
+    const { data: relatedIds } = await axios.get(`/products/${currentProduct.id}/related`);
     const promiseArray = relatedIds.map(async (productId) => {
       const productDetails = await axios.get(`products/${productId}`);
       const productStyles = await axios.get(`products/${productId}/styles`);
@@ -26,8 +25,7 @@ const RelatedItems = () => {
       const finalProduct = productDetails.data;
       finalProduct.styles = productStyles.data.results;
       finalProduct.avgRating =
-        productReviews.results.reduce((acc, cur) => acc + cur.rating, 0) /
-        productReviews.results.length;
+        productReviews.results.reduce((acc, cur) => acc + cur.rating, 0) / productReviews.results.length;
 
       return finalProduct;
     });

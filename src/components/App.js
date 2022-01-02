@@ -5,6 +5,7 @@ import RelatedItems from './RelatedItems/index.jsx';
 import QAapp from '../components/QandA/QAindex.jsx';
 import RRIndex from './Review/RRIndex.jsx';
 import { AppContext } from './context';
+import './styles.css';
 
 const App = () => {
   const [currentProduct, setCurrentProduct] = useState(null);
@@ -19,12 +20,8 @@ const App = () => {
     setCurrentProduct(initialProductDetail);
   };
 
-  const styles = {
-    fontFamily: 'Montserrat, sans-serif',
-  };
-
   return (
-    <main style={styles}>
+    <main>
       <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
         <ProductDetails />
         <RelatedItems />
