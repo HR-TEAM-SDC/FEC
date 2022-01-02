@@ -12,15 +12,15 @@ const ImageGallery = () => {
     display: "flex",
     borderStyle: "solid",
     borderWidth: "1px",
-    width: "50%",
+    width: "40%",
     justifyContent: "center",
   };
 
   return (
-    <div style={imageGalleryStyle}>
+    <section style={imageGalleryStyle}>
       <MainImage currentStyle={currentStyle} />
       {/* <Thumbnails currentStyle={currentStyle} /> */}
-    </div>
+    </section>
   );
 };
 

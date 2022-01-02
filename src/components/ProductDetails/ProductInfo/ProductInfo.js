@@ -12,13 +12,13 @@ const ProductInfo = () => {
   const infoStyles = {
     borderStyle: "solid",
     borderWidth: "1px",
-    width: "50%",
+    width: "45%",
     // height: "auto",
     // marginLeft: "50%",
   };
 
   return (
-    <div style={infoStyles}>
+    <section style={infoStyles}>
       <h3>Product Info</h3>
       <ProductTitle />
       <ProductCategory />
@@ -28,7 +28,7 @@ const ProductInfo = () => {
       <StyleSelector />
       <AddToCart />
       <ShareProduct />
-    </div>
+    </section>
   );
 };
 

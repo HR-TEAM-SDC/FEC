@@ -22,6 +22,8 @@ const MainImage = (props) => {
     // minWidth: "50%",
     // minHeight: "50%",
     // overflow: "hidden"
+    borderStyle: "solid",
+    borderWidth: "1px",
     objectFit: "cover",
     width: "400px",
     height: "500px",

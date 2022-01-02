@@ -28,15 +28,15 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const products = await axios.get("products");
-      setProduct(products.data[0]);
-      console.log("products:", products);
+      const product = await axios.get("products");
+      setProduct(product.data[2]);
+      console.log("product:", product);
       const reviews = await axios.get("reviews", {
-        params: { product_id: 40344 },
+        params: { product_id: 40346 },
       });
       setReviews(reviews.data.results);
       console.log("reviews:", reviews);
-      const styles = await axios.get(`products/40344/styles`);
+      const styles = await axios.get(`products/40346/styles`);
       console.log("styles:", styles);
       setStyles(styles.data.results);
       setCurrentStyle(styles.data.results[0]);
@@ -45,6 +45,7 @@ const ProductDetails = () => {
     };
     fetchData();
   }, []);
+  // console.log("product:", product);
 
   const detailStyles = {
     display: "flex",
