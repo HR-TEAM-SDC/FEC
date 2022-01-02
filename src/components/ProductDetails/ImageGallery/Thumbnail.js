@@ -1,14 +1,25 @@
-import React from "react";
+import React from 'react';
 
 const Thumbnail = (props) => {
   const thumbnailStyle = {
-    maxWidth: "50px",
-    maxHeight: "50px",
+    objectFit: 'cover',
+    width: '50px',
+    height: '50px',
   };
+
+  const selectedThumbnailStyle = {
+    borderStyle: 'solid',
+    borderWidth: '5px',
+    borderColor: 'yellow',
+    objectFit: 'cover',
+    width: '50px',
+    height: '50px',
+  };
+  // style={props.currentImage === props.photo.thumbnail_url ? selectedThumbnailStyle : thumbnailStyle}
   return (
     <img
       onClick={props.handleThumbnailClick}
-      style={thumbnailStyle}
+      style={props.currentImage === props.photo.thumbnail_url ? selectedThumbnailStyle : thumbnailStyle}
       index={props.index}
       src={props.photo.thumbnail_url}
     ></img>

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import SizeOption from "./SizeOption";
-import { StylesContext, CurrentStyleContext } from "../../ProductDetails";
-import { CurrentSkuContext, CurrentSizeContext } from "../../ProductDetails";
-import { CurrentQuantityContext } from "../../ProductDetails";
+import React, { useContext, useEffect } from 'react';
+import SizeOption from './SizeOption';
+import { StylesContext, CurrentStyleContext } from '../../ProductDetails';
+import { CurrentSkuContext, CurrentSizeContext } from '../../ProductDetails';
+import { CurrentQuantityContext } from '../../ProductDetails';
 
 const SizeSelector = () => {
   const styles = useContext(StylesContext);
@@ -23,9 +23,7 @@ const SizeSelector = () => {
     let index = 0;
     content.push(<option key={0}>Select Size</option>);
     for (let key in currentStyle.skus) {
-      content.push(
-        <SizeOption key={key} value={key} currentStyle={currentStyle} />
-      );
+      content.push(<SizeOption key={key} value={key} currentStyle={currentStyle} />);
       index++;
     }
     return content;
@@ -33,7 +31,7 @@ const SizeSelector = () => {
 
   const handleSizeChange = () => {
     let index = event.target.selectedIndex;
-    let sku = event.target.childNodes[index].getAttribute("sku");
+    let sku = event.target.childNodes[index].getAttribute('sku');
     setCurrentSku(sku);
     let prevSize = currentSize;
     setCurrentSize(event.target.value);
@@ -47,7 +45,7 @@ const SizeSelector = () => {
 
   return (
     <div>
-      <h4>Sizes Component</h4>
+      <h4>Sizes</h4>
       Select Size:
       <select onChange={handleSizeChange}>{renderSizes()}</select>
     </div>

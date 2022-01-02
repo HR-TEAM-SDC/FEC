@@ -1,7 +1,7 @@
-import React, { useState, useEffect, createContext } from "react";
-import axios from "../../apis/atelier";
-import ProductInfo from "./ProductInfo/ProductInfo";
-import ImageGallery from "./ImageGallery/ImageGallery";
+import React, { useState, useEffect, createContext } from 'react';
+import axios from '../../apis/atelier';
+import ProductInfo from './ProductInfo/ProductInfo';
+import ImageGallery from './ImageGallery/ImageGallery';
 
 export const ProductContext = createContext();
 export const ReviewsContext = createContext();
@@ -29,14 +29,15 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const products = await axios.get("products");
-      setProducts(products.data);
-      setProduct(products.data[0]);
-      const reviews = await axios.get("reviews", {
-        params: { product_id: 40344 },
+      const product = await axios.get('products');
+      setProduct(product.data[2]);
+      const reviews = await axios.get('reviews', {
+        params: { product_id: 40346 },
       });
       setReviews(reviews.data.results);
-      const styles = await axios.get(`products/40344/styles`);
+      console.log('reviews:', reviews);
+      const styles = await axios.get(`products/40346/styles`);
+      console.log('styles:', styles);
       setStyles(styles.data.results);
       setCurrentStyle(styles.data.results[0]);
       setCurrentStylePhotos(styles.data.results[0].photos);
@@ -44,43 +45,31 @@ const ProductDetails = () => {
     };
     fetchData();
   }, []);
+  // console.log("product:", product);
 
   const detailStyles = {
-    borderStyle: "solid",
-    borderWidth: "1px",
-    width: "90%",
-    height: "auto",
-    margin: "auto",
-    padding: "10px",
+    display: 'flex',
+    justifyContent: 'space-around',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    width: '90%',
+    height: 'auto',
+    margin: 'auto',
+    padding: '10px',
   };
 
   return (
-    <div>
-      <h2>Product Details Component</h2>
+    <main style={detailStyles}>
       <ProductContext.Provider value={product}>
         <ReviewsContext.Provider value={reviews}>
           <StylesContext.Provider value={styles}>
-            <CurrentSizeContext.Provider
-              value={{ currentSize, setCurrentSize }}
-            >
-              <CurrentStyleContext.Provider
-                value={{ currentStyle, setCurrentStyle }}
-              >
-                <CurrentSkuContext.Provider
-                  value={{ currentSku, setCurrentSku }}
-                >
-                  <CurrentQuantityContext.Provider
-                    value={{ currentQuantity, setCurrentQuantity }}
-                  >
-                    <CurrentIndexContext.Provider
-                      value={{ currentIndex, setCurrentIndex }}
-                    >
-                      <CurrentImageContext.Provider
-                        value={{ currentImage, setCurrentImage }}
-                      >
-                        <CurrentStylePhotosContext.Provider
-                          value={{ currentStylePhotos, setCurrentStylePhotos }}
-                        >
+            <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>
+              <CurrentStyleContext.Provider value={{ currentStyle, setCurrentStyle }}>
+                <CurrentSkuContext.Provider value={{ currentSku, setCurrentSku }}>
+                  <CurrentQuantityContext.Provider value={{ currentQuantity, setCurrentQuantity }}>
+                    <CurrentIndexContext.Provider value={{ currentIndex, setCurrentIndex }}>
+                      <CurrentImageContext.Provider value={{ currentImage, setCurrentImage }}>
+                        <CurrentStylePhotosContext.Provider value={{ currentStylePhotos, setCurrentStylePhotos }}>
                           <ImageGallery />
                           <ProductInfo />
                         </CurrentStylePhotosContext.Provider>
@@ -93,7 +82,7 @@ const ProductDetails = () => {
           </StylesContext.Provider>
         </ReviewsContext.Provider>
       </ProductContext.Provider>
-    </div>
+    </main>
   );
 };
 
