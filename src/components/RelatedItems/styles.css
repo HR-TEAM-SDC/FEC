@@ -1,0 +1,145 @@
+.related-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  width: 90%;
+  padding-left: 5%;
+}
+.list {
+  margin: 10px 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.compare-modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.compare-modal-body {
+  font-family: Montserrat, sans-serif;
+  background-color: rgb(220, 245, 253);
+  min-width: 350px;
+  width: 75%;
+  max-width: 600px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes fade-in {
+  0% {
+    animation-timing-function: cubic-bezier(0.2242, 0.7499, 0.3142, 0.8148);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.compare-table {
+  border-spacing: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  height: 415px;
+  margin: 0px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.card {
+  height: 100%;
+  width: 275px;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0px 10px;
+  background: rgba(163, 168, 170, 0.199);
+  border-radius: 10px;
+}
+.card:hover {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 0px;
+  cursor: pointer;
+}
+.outfit-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-image-container {
+  display: flex;
+  justify-content: center;
+  height: 70%;
+  width: auto;
+}
+
+.card-info {
+  margin: 5px 15px;
+}
+
+.card-info.category {
+  font-size: smaller;
+}
+
+.scroll-button {
+  height: 48px;
+  width: 48px;
+  z-index: 100;
+  border: none;
+  background: rgba(163, 168, 170, 0.479);
+}
+
+.scroll-button.left {
+  left: 0;
+  margin-right: 5px;
+}
+
+.scroll-button.right {
+  right: 0;
+  margin-left: 5px;
+}
+
+.card-button {
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  right: 0px;
+  margin-top: 5px;
+  z-index: 10;
+}
+
+.card-button:hover {
+  color: goldenrod;
+}
+h3 {
+  align-self: flex-start;
+}

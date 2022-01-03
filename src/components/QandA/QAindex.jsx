@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "../../apis/atelier";
-import QuestionsList from "./QuestionsList.jsx";
-import Search from "./Search.jsx";
-import LoadMoreQ from "./LoadMoreQ.jsx";
-import AddModal from "./AddModals.jsx";
-import AddQuestionForm from "./AddQuestionForm.jsx";
-import AddAnswerForm from "./AddAnswerForm.jsx";
-import { Context } from "../context/context.js";
-import "./styles.css";
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import axios from '../../apis/atelier';
+import QuestionsList from './QuestionsList.jsx';
+import Search from './Search.jsx';
+import LoadMoreQ from './LoadMoreQ.jsx';
+import AddModal from './AddModals.jsx';
+import AddQuestionForm from './AddQuestionForm.jsx';
+import AddAnswerForm from './AddAnswerForm.jsx';
+import { Context } from '../context/context.js';
+import { AppContext } from '../context';
+import './styles.css';
 const productId = 40348;
 
 //Please check README.md in QA folder
@@ -16,37 +17,40 @@ export default function QAapp() {
   // Declare a new state variable
   const [questions, setQuestion] = useState([]);
   const [storage, setSave] = useState([]);
-  const [searchInput, setInput] = useState("");
+  const [searchInput, setInput] = useState('');
   const [moreQ, setLoadQ] = useState(false);
   const [QuesArrayLength, setLength] = useState(0);
   const [counter, setCount] = useState(0);
   const [product, setProduct] = useState(0);
+  const { currentProduct } = useContext(AppContext);
   const modal = useRef(null);
 
   useEffect(() => {
-    axios
-      .get("qa/questions", { params: { product_id: productId } })
+    if (currentProduct) {
+      fetchQuestion();
+      {
+        console.log('what is currentProduct', currentProduct);
+      }
+    }
+  }, [currentProduct]);
+
+  const fetchQuestion = async () => {
+    await axios
+      .get('qa/questions', { params: { product_id: currentProduct.id } })
       .then((res) => {
         setQuestion(res.data.results);
         setSave(res.data.results);
         setLength(res.data.results.length);
         console.log(res.data);
       })
-      .then(() => {
-        return axios.get(`products/${productId}`);
-      })
-      .then((res) => {
-        setProduct(res.data);
-        console.log("Product data: ", res.data);
-      })
       .catch((err) => {
-        console.log("Failed to get data,", err);
+        console.log('Failed to get data,', err);
       });
-  }, []);
+  };
 
   const refreshPage = () => {
     axios
-      .get("qa/questions", { params: { product_id: productId } })
+      .get('qa/questions', { params: { product_id: currentProduct.id } })
       .then((res) => {
         setQuestion(res.data.results);
         setSave(res.data.results);
@@ -54,29 +58,27 @@ export default function QAapp() {
         console.log(res.data);
       })
       .catch((err) => {
-        console.log("Failed to get data,", err);
+        console.log('Failed to get data,', err);
       });
   };
 
   const editSearch = (query) => {
     query.preventDefault();
     if (query.target.value.length >= 3) {
-      console.log("Detecting input changing");
+      console.log('Detecting input changing');
       setInput(query.target.value);
       handleSearch();
     } else {
-      console.log("returning to non-filter state");
+      console.log('returning to non-filter state');
       setInput(query.target.value);
       setQuestion(storage);
     }
   };
 
   const handleSearch = () => {
-    console.log("Searching!");
+    console.log('Searching!');
     let newList = storage.filter((question) => {
-      return question.question_body
-        .toLowerCase()
-        .includes(searchInput.toLowerCase());
+      return question.question_body.toLowerCase().includes(searchInput.toLowerCase());
     });
     setQuestion(newList);
   };
@@ -85,11 +87,11 @@ export default function QAapp() {
     axios
       .put(`qa/answers/${answerId}/helpful`)
       .then(() => {
-        console.log("Your feedback has been submitted!");
+        console.log('Your feedback has been submitted!');
         refreshPage();
       })
       .catch((err) => {
-        console.log("Failed to submit a feedback: ", err);
+        console.log('Failed to submit a feedback: ', err);
       });
   };
 
@@ -97,11 +99,11 @@ export default function QAapp() {
     axios
       .put(`qa/questions/${questionId}/helpful`)
       .then((res) => {
-        console.log("Your successfuly mark a question helpful!");
+        console.log('Your successfuly mark a question helpful!');
         refreshPage();
       })
       .catch((err) => {
-        console.log("Failed to mark a question", err);
+        console.log('Failed to mark a question', err);
       });
   };
 
@@ -125,13 +127,13 @@ export default function QAapp() {
     //a correct format of email is required: aaa@qq.com
 
     axios
-      .post("qa/questions", { name, email, body, product_id })
+      .post('qa/questions', { name, email, body, product_id })
       .then((res) => {
-        console.log("You submit a new question successfully!", res);
+        console.log('You submit a new question successfully!', res);
         handleCloseQModal();
       })
       .catch((err) => {
-        console.log("Failed to post a new question.", err.response);
+        console.log('Failed to post a new question.', err.response);
       });
   };
 
@@ -142,14 +144,7 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider
-          value={{
-            handleAHelpfulness,
-            product,
-            handleQHelpfulness,
-            searchInput,
-          }}
-        >
+        <Context.Provider value={{ handleAHelpfulness, currentProduct, handleQHelpfulness, searchInput }}>
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>
@@ -176,10 +171,7 @@ export default function QAapp() {
         </button>
       </div>
       <AddModal ref={modal}>
-        <AddQuestionForm
-          handleAddQuestion={handleAddQuestion}
-          product={product}
-        />
+        <AddQuestionForm handleAddQuestion={handleAddQuestion} product={currentProduct} />
       </AddModal>
     </div>
   );

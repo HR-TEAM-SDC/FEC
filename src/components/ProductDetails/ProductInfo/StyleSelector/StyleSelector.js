@@ -1,17 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "../../../../apis/atelier";
-import Style from "./Style";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from '../../../../apis/atelier';
+import Style from './Style';
+import { StylesContext, CurrentStyleContext } from '../../ProductDetails';
+import { CurrentSizeContext, CurrentSkuContext } from '../../ProductDetails';
+import { CurrentQuantityContext, CurrentIndexContext } from '../../ProductDetails';
+import { CurrentImageContext } from '../../ProductDetails';
 
 const StyleSelector = () => {
-  const [styles, setStyles] = useState([]);
+  const styles = useContext(StylesContext);
+  const { currentStyle, setCurrentStyle } = useContext(CurrentStyleContext);
+  const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
+  const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
+  const { setCurrentQuantity } = useContext(CurrentQuantityContext);
+  const { currentIndex } = useContext(CurrentIndexContext);
+  const { setCurrentImage } = useContext(CurrentImageContext);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const styles = await axios.get(`products/40344/styles`);
-      setStyles(styles.data.results);
-    };
-    fetchData();
-  }, []);
+  const styleClickHandler = (style) => {
+    setCurrentStyle(style);
+    setCurrentSize(null);
+    setCurrentSku(null);
+    setCurrentQuantity(null);
+    setCurrentImage(style.photos[currentIndex].thumbnail_url);
+  };
 
   return (
     <h4>
