@@ -3,6 +3,7 @@ import './style.css';
 import Characteristics from './Characteristics.jsx';
 import Input from './writeReviewInput.jsx';
 import axios from '../../apis/atelier.js';
+import { createPortal } from 'react-dom';
 
 const WriteReview = (props) => {
   const [rate, setRate] = useState(null);
@@ -44,6 +45,7 @@ const WriteReview = (props) => {
       alert(string);
       return;
     }
+
     var finalParam = {
       product_id: props.id,
       rating: rate,
@@ -59,6 +61,7 @@ const WriteReview = (props) => {
     axios
       .post('reviews', {
         params: finalParam,
+        type: 'application/json',
       })
       .then((res) => {
         console.log(res);
@@ -69,18 +72,24 @@ const WriteReview = (props) => {
   };
 
   var starRate = (e) => {
-    setRate(e.target.value);
+    setRate(Number(e.target.value));
   };
 
   var starResult = ['', 'Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   var recommendRate = (e) => {
-    setRecommend(e.target.value);
+    if (e.target.value === 'Yes') {
+      setRecommend(true);
+    }
+    if (e.target.value === 'No') {
+      setRecommend(false);
+    }
   };
 
   var CharacteristicsReview = (e) => {
     var result = characteristics;
-    result[e.target.id] = e.target.value;
+    var number = e.target.id;
+    result[number] = Number(e.target.value);
     setCharacteristics(result);
     forceUpdate();
   };
@@ -106,18 +115,10 @@ const WriteReview = (props) => {
   };
 
   return (
-    <div style={{ display: 'inline-block' }}>
+    <div className="writeReviewBox">
       <h2>Write Your Review</h2>
-      <h5>About the [Product Name Here]</h5>
-      <div
-        className="rateBox"
-        style={{
-          position: 'relative',
-          display: 'block',
-          float: 'top',
-          width: '180px',
-        }}
-      >
+      <h5> About the {props.name}</h5>
+      <div className="rateBox">
         <div className="rate" onClick={starRate}>
           <input type="radio" id="star5" name="rate" value="5" />
           <label for="star5" title="text">

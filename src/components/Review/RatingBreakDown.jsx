@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductBreakDown from './productBreakDown.jsx';
+import './style.css';
 
 const BreakDown = (props) => {
   var ratingData = props.metaData.ratings;
@@ -88,17 +89,7 @@ const BreakDown = (props) => {
   };
 
   return (
-    <div
-      className="ratingSummary"
-      style={{
-        display: 'inline-block',
-        width: '20%',
-        float: 'left',
-        border: '1px solid black',
-        overflow: 'hidden',
-        textAlign: 'left',
-      }}
-    >
+    <div className="ratingSummary">
       <span id="numberSummary" style={{ fontSize: '100px' }}>
         {summaryRating}
       </span>
@@ -197,7 +188,10 @@ const BreakDown = (props) => {
           </div>
           <span>{ratingData[1]}</span>
         </div>
-        <p> {Math.round((props.metaData.recommended.true / totalReviews) * 1000) / 10}% recommend</p>
+        <p style={{ fontSize: '15px' }}>
+          {' '}
+          {Math.round((props.metaData.recommended.true / totalReviews) * 1000) / 10}% of reviews recommend this product
+        </p>
       </div>
       <ProductBreakDown data={props.metaData.characteristics} />
     </div>

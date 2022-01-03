@@ -24,7 +24,7 @@ const App = () => {
     <main>
       <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
         <ProductDetails />
-        <RelatedItems />
+        {/* <RelatedItems /> */}
         <QAapp />
         <RRIndex />
       </AppContext.Provider>

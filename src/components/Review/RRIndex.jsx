@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import BreakDown from './RatingBreakDown.jsx';
 import WriteReview from './writeReview.jsx';
 import { AppContext } from '../context';
+import './style.css';
 
 const RRIndex = (props) => {
   const [data, setData] = useState([]);
@@ -15,8 +16,6 @@ const RRIndex = (props) => {
   const { currentProduct } = useContext(AppContext);
 
   //JAKE CHANGE THIS PART TO WHAT YOU WANT TO DO, A
-
-  console.log('I need this info: ', currentProduct);
 
   useEffect(() => {
     if (currentProduct) {
@@ -36,7 +35,6 @@ const RRIndex = (props) => {
       .then((res) => {
         setData(res.data.results);
         setfilterData(res.data.results);
-        console.log('this has been invoked');
       });
     axios
       .get('reviews/meta', {
@@ -47,7 +45,6 @@ const RRIndex = (props) => {
       .then((res) => setMetaData(res.data));
   };
   useEffect(() => {
-    console.log(filterData);
     setfilterData(filterData);
   }, [filterData]);
 
@@ -83,12 +80,19 @@ const RRIndex = (props) => {
           data={data}
         />
       ) : null}
-      {<ReviewList data={filterData} count={filterData.length} />}
+      {<ReviewList data={filterData} count={filterData.length} id={currentProduct ? currentProduct.id : null} />}
       <div className="writeReview">
-        <button id="writeReviewButton" onClick={writeReviewClick}>
-          Write Review
-        </button>
-        {writeReview ? <WriteReview id={currentProduct ? currentProduct.id : null} /> : null}
+        {writeReview ? null : (
+          <button className="writeReviewButton" onClick={writeReviewClick}>
+            Write Review
+          </button>
+        )}
+        {writeReview ? (
+          <WriteReview
+            id={currentProduct ? currentProduct.id : null}
+            name={currentProduct ? currentProduct.name : null}
+          />
+        ) : null}
       </div>
     </div>
   );

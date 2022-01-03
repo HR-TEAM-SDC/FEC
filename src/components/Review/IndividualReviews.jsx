@@ -24,11 +24,6 @@ const IndividualReviews = (props) => {
     return str;
   };
 
-  const divStyle = {
-    color: 'black',
-    border: '1px solid rgba(0, 0, 0, 0.05)',
-  };
-
   var reportOnClick = (e) => {
     var API = 'reviews/' + props.data.review_id + '/report';
     axios
@@ -70,7 +65,7 @@ const IndividualReviews = (props) => {
   };
 
   return (
-    <div className="IndividualReviews" style={divStyle}>
+    <div className="IndividualReviews">
       {stars(props.data.rating)}
       <div className="date">{dateConvert(props.data.date)}</div>
       <div className="summary">{props.data.summary}</div>
