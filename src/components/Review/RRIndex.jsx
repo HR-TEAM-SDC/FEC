@@ -91,6 +91,7 @@ const RRIndex = (props) => {
           <WriteReview
             id={currentProduct ? currentProduct.id : null}
             name={currentProduct ? currentProduct.name : null}
+            writeReviewClick={writeReviewClick}
           />
         ) : null}
       </div>
