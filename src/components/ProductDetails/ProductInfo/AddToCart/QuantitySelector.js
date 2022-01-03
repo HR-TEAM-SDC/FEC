@@ -31,6 +31,7 @@ const QuantitySelector = () => {
   const renderQuantity = () => {
     let content = [];
     let quantity = 1;
+
     if (currentSku) {
       // console.log("currentStyle.skus[currentSku]:", currentStyle.skus[currentSku]);
       if (currentStyle.skus[currentSku].quantity > 15) {
@@ -50,7 +51,6 @@ const QuantitySelector = () => {
 
   return (
     <div>
-      <h4>Quantity</h4>
       Quantity:
       <select onChange={handleQuantityChange}>{renderQuantity()}</select>
     </div>
