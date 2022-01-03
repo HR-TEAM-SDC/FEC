@@ -35,7 +35,7 @@ const SizeSelector = () => {
     setCurrentSku(sku);
     let prevSize = currentSize;
     setCurrentSize(event.target.value);
-    console.log('currentSize:', currentSize);
+    // console.log('currentSize:', currentSize);
     let curSize = currentSize;
     // If previous selected quantity is greater than
     // the next selected Sku's quantity (skus[currentSku].quantity)
@@ -64,7 +64,9 @@ const SizeSelector = () => {
   return (
     <div>
       Select Size:
-      <select onChange={handleSizeChange}>{renderSizes()}</select>
+      <select id="size-menu" onChange={handleSizeChange}>
+        {renderSizes()}
+      </select>
     </div>
   );
 };
