@@ -4,7 +4,6 @@ import ProductInfo from './ProductInfo/ProductInfo';
 import ImageGallery from './ImageGallery/ImageGallery';
 import { AppContext } from '../context';
 
-export const ProductContext = createContext();
 export const ReviewsContext = createContext();
 export const StylesContext = createContext();
 export const CurrentStyleContext = createContext();
@@ -33,14 +32,13 @@ const ProductDetails = () => {
       fetchData();
     }
   }, [currentProduct]);
+
   const fetchData = async () => {
     const reviews = await axios.get('reviews', {
       params: { product_id: currentProduct.id },
     });
     setReviews(reviews.data.results);
-    console.log('reviews:', reviews);
     const styles = await axios.get(`products/${currentProduct.id}/styles`);
-    console.log('styles:', styles);
     setStyles(styles.data.results);
     setCurrentStyle(styles.data.results[0]);
     setCurrentStylePhotos(styles.data.results[0].photos);
@@ -49,10 +47,10 @@ const ProductDetails = () => {
 
   const detailStyles = {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '90%',
+    width: '100%',
     height: 'auto',
     margin: 'auto',
     padding: '10px',

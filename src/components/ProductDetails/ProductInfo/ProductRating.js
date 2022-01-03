@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import axios from "../../../apis/atelier";
-import { ReviewsContext } from "../ProductDetails";
+import React, { useState, useContext } from 'react';
+import axios from '../../../apis/atelier';
+import { ReviewsContext } from '../ProductDetails';
 
 const ProductRating = () => {
   const reviews = useContext(ReviewsContext);
@@ -12,10 +12,8 @@ const ProductRating = () => {
 
   return (
     <h4>
-      [Product Rating Here: {averageRating}]
-      <span>
-        [Reviews Link Here: [Link that jumps to review section on click]]
-      </span>
+      Product Rating {averageRating}
+      <span>[Reviews Link that jumps to review section on click]</span>
     </h4>
   );
 };

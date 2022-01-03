@@ -15,7 +15,7 @@ const Thumbnail = (props) => {
     width: '50px',
     height: '50px',
   };
-  // style={props.currentImage === props.photo.thumbnail_url ? selectedThumbnailStyle : thumbnailStyle}
+
   return (
     <img
       onClick={props.handleThumbnailClick}

@@ -23,7 +23,11 @@ const Style = (props) => {
 
   return (
     <span>
-      <img style={thumbnailStyle} src={props.style.photos[0].thumbnail_url}></img>
+      <img
+        style={props.style === props.currentStyle ? selectedStyle : thumbnailStyle}
+        src={props.style.photos[0].thumbnail_url}
+        onClick={() => props.styleClickHandler(props.style)}
+      ></img>
     </span>
   );
 };

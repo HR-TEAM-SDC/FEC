@@ -24,7 +24,6 @@ const StyleSelector = () => {
     setCurrentQuantity(null);
     setCurrentImage(style.photos[currentIndex].thumbnail_url);
   };
-  // let index = 0;
 
   const thumbnailsStyle = {
     display: 'flex',
@@ -37,7 +36,14 @@ const StyleSelector = () => {
       <h4>Current Style: {currentStyle.name}</h4> <br></br>
       <div style={thumbnailsStyle}>
         {styles.map((style) => {
-          return <Style style={style} key={style.style_id} />;
+          return (
+            <Style
+              style={style}
+              key={style.style_id}
+              currentStyle={currentStyle}
+              styleClickHandler={styleClickHandler}
+            />
+          );
         })}
       </div>
     </div>
