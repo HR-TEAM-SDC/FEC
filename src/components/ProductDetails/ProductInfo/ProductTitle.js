@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import axios from "../../../apis/atelier";
-import { ProductContext } from "../ProductDetails";
+import React, { useState, useContext } from 'react';
+import axios from '../../../apis/atelier';
+import { AppContext } from '../../context';
 
 const ProductTitle = () => {
-  const product = useContext(ProductContext);
+  const currentProduct = useContext(AppContext);
 
-  return <h4>Product Title: {product.name}</h4>;
+  return currentProduct.currentProduct ? <h4>Product Title: {currentProduct.currentProduct.name}</h4> : null;
 };
 
 export default ProductTitle;

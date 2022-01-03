@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
-import { ProductContext } from "../ProductDetails";
+import React, { useState, useContext } from 'react';
+import { AppContext } from '../../context';
 const ProductCategory = () => {
-  const product = useContext(ProductContext);
+  const currentProduct = useContext(AppContext);
 
-  return <h4>Product Category: {product.category}</h4>;
+  return currentProduct ? <h4>Product Category: {currentProduct.category}</h4> : null;
 };
 
 export default ProductCategory;
