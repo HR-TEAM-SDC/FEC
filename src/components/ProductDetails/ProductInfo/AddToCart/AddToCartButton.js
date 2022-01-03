@@ -13,12 +13,20 @@ const AddToCartButton = () => {
   // console.log("currentSku:", currentSku);
 
   const buttonOnClick = () => {
-    console.log('button clicked...');
+    let sizeId = document.getElementById('size-msg');
+    if (currentSize === 'Select Size') {
+      if (!sizeId.innerHTML) {
+        sizeId.append('Please select a size');
+      }
+    } else {
+      sizeId.innerHTML = '';
+    }
   };
 
   return (
     <div>
       <h4>Add To Cart Button</h4>
+      <div></div>
       <button onClick={buttonOnClick}> Add To Cart </button>
     </div>
   );

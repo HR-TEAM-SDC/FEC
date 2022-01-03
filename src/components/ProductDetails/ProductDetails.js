@@ -19,7 +19,7 @@ const ProductDetails = () => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentSku, setCurrentSku] = useState(null);
-  const [currentSize, setCurrentSize] = useState(null);
+  const [currentSize, setCurrentSize] = useState('Select Size');
   const [currentQuantity, setCurrentQuantity] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState(null);

@@ -10,6 +10,7 @@ const AddToCart = () => {
   return (
     <div>
       <h4>Add To Cart</h4>
+      <div id="size-msg"></div>
       <SizeSelector />
       {currentSku ? (
         <QuantitySelector />
