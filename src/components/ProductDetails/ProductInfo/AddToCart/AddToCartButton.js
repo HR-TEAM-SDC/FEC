@@ -7,19 +7,21 @@ const AddToCartButton = () => {
   const { currentSize } = useContext(CurrentSizeContext);
   const { currentQuantity } = useContext(CurrentQuantityContext);
   const { currentSku } = useContext(CurrentSkuContext);
-  // console.log("currentStyle:", currentStyle);
+
   // console.log("currentSize:", currentSize);
   // console.log("currentQuantity:", currentQuantity);
   // console.log("currentSku:", currentSku);
 
   const buttonOnClick = () => {
-    let sizeId = document.getElementById('size-msg');
+    let sizeMsg = document.getElementById('size-msg');
+    let sizeMenu = document.getElementById('size-menu');
     if (currentSize === 'Select Size') {
-      if (!sizeId.innerHTML) {
-        sizeId.append('Please select a size');
+      if (!sizeMsg.innerHTML) {
+        sizeMsg.append('Please select a size');
+        sizeMenu.size = Object.keys(currentStyle.skus).length;
       }
     } else {
-      sizeId.innerHTML = '';
+      sizeMsg.innerHTML = '';
     }
   };
 
