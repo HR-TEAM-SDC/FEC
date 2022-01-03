@@ -1,10 +1,10 @@
-const mysql = require("mysql2");
-const mysqlConfig = require("./config");
+const mysql = require('mysql2');
+const mysqlConfig = require('./config');
 
 const connection = mysql.createConnection(mysqlConfig);
 
 const getOutfit = (cb) => {
-  const query = "SELECT * FROM outfits";
+  const query = 'SELECT * FROM outfits';
   connection.query(query, (err, data) => {
     err ? cb(err, null) : cb(null, data);
   });

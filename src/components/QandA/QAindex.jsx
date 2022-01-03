@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from '../../apis/atelier';
 import QuestionsList from './QuestionsList.jsx';
 import Search from './Search.jsx';
@@ -7,6 +7,7 @@ import AddModal from './AddModals.jsx';
 import AddQuestionForm from './AddQuestionForm.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 import { Context } from '../context/context.js';
+import { AppContext } from '../context';
 import './styles.css';
 const productId = 40348;
 
@@ -21,32 +22,35 @@ export default function QAapp() {
   const [QuesArrayLength, setLength] = useState(0);
   const [counter, setCount] = useState(0);
   const [product, setProduct] = useState(0);
+  const { currentProduct } = useContext(AppContext);
   const modal = useRef(null);
 
   useEffect(() => {
-    axios
-      .get('qa/questions', { params: { product_id: productId } })
+    if (currentProduct) {
+      fetchQuestion();
+      {
+        console.log('what is currentProduct', currentProduct);
+      }
+    }
+  }, [currentProduct]);
+
+  const fetchQuestion = async () => {
+    await axios
+      .get('qa/questions', { params: { product_id: currentProduct.id } })
       .then((res) => {
         setQuestion(res.data.results);
         setSave(res.data.results);
         setLength(res.data.results.length);
         console.log(res.data);
       })
-      .then(() => {
-        return axios.get(`products/${productId}`);
-      })
-      .then((res) => {
-        setProduct(res.data);
-        console.log('Product data: ', res.data);
-      })
       .catch((err) => {
         console.log('Failed to get data,', err);
       });
-  }, []);
+  };
 
   const refreshPage = () => {
     axios
-      .get('qa/questions', { params: { product_id: productId } })
+      .get('qa/questions', { params: { product_id: currentProduct.id } })
       .then((res) => {
         setQuestion(res.data.results);
         setSave(res.data.results);
@@ -140,14 +144,7 @@ export default function QAapp() {
         <Search editSearch={editSearch} />
       </div>
       <div>
-        <Context.Provider
-          value={{
-            handleAHelpfulness,
-            product,
-            handleQHelpfulness,
-            searchInput,
-          }}
-        >
+        <Context.Provider value={{ handleAHelpfulness, currentProduct, handleQHelpfulness, searchInput }}>
           <QuestionsList questions={questions.slice(0, 2)} />
         </Context.Provider>
       </div>
@@ -174,7 +171,7 @@ export default function QAapp() {
         </button>
       </div>
       <AddModal ref={modal}>
-        <AddQuestionForm handleAddQuestion={handleAddQuestion} product={product} />
+        <AddQuestionForm handleAddQuestion={handleAddQuestion} product={currentProduct} />
       </AddModal>
     </div>
   );

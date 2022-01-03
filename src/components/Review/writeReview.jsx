@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useReducer } from "react";
-import "./style.css";
-import Characteristics from "./Characteristics.jsx";
-import Input from "./writeReviewInput.jsx";
-import axios from "../../apis/atelier.js";
+import React, { useState, useEffect, useReducer } from 'react';
+import './style.css';
+import Characteristics from './Characteristics.jsx';
+import Input from './writeReviewInput.jsx';
+import axios from '../../apis/atelier.js';
 
 const WriteReview = (props) => {
   const [rate, setRate] = useState(null);
@@ -20,27 +20,27 @@ const WriteReview = (props) => {
   // }, [characteristics]);
   var finalSubmit = () => {
     if (!rate) {
-      var string = "You must enter the following: rating";
+      var string = 'You must enter the following: rating';
       alert(string);
       return;
     }
     if (!body) {
-      var string = "You must enter the following: body";
+      var string = 'You must enter the following: body';
       alert(string);
       return;
     }
     if (!characteristics) {
-      var string = "You must enter the following: characteristics";
+      var string = 'You must enter the following: characteristics';
       alert(string);
       return;
     }
     if (!nickname) {
-      var string = "You must enter the following: nickname";
+      var string = 'You must enter the following: nickname';
       alert(string);
       return;
     }
     if (!email) {
-      var string = "You must enter the following: email";
+      var string = 'You must enter the following: email';
       alert(string);
       return;
     }
@@ -57,7 +57,7 @@ const WriteReview = (props) => {
     };
     console.log(finalParam);
     axios
-      .post("reviews", {
+      .post('reviews', {
         params: finalParam,
       })
       .then((res) => {
@@ -72,7 +72,7 @@ const WriteReview = (props) => {
     setRate(e.target.value);
   };
 
-  var starResult = ["", "Poor", "Fair", "Average", "Good", "Great"];
+  var starResult = ['', 'Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   var recommendRate = (e) => {
     setRecommend(e.target.value);
@@ -112,10 +112,10 @@ const WriteReview = (props) => {
       <div
         className="rateBox"
         style={{
-          position: "relative",
-          display: "block",
-          float: "top",
-          width: "180px",
+          position: 'relative',
+          display: 'block',
+          float: 'top',
+          width: '180px',
         }}
       >
         <div className="rate" onClick={starRate}>
@@ -140,7 +140,7 @@ const WriteReview = (props) => {
             1 star
           </label>
         </div>
-        <p className="result" style={{ textAlign: "center" }}>
+        <p className="result" style={{ textAlign: 'center' }}>
           {starResult[rate]}
         </p>
       </div>
@@ -163,12 +163,7 @@ const WriteReview = (props) => {
         emailReview={emailReview}
         photoReview={photoReview}
       />
-      <input
-        type="submit"
-        value="submit"
-        style={{ display: "block" }}
-        onClick={finalSubmit}
-      ></input>
+      <input type="submit" value="submit" style={{ display: 'block' }} onClick={finalSubmit}></input>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useReducer } from "react";
-import axios from "../../apis/atelier.js";
-import ReviewList from "./ReviewList.jsx";
-import BreakDown from "./RatingBreakDown.jsx";
-import WriteReview from "./writeReview.jsx";
+import React, { useState, useEffect, useReducer } from 'react';
+import axios from '../../apis/atelier.js';
+import ReviewList from './ReviewList.jsx';
+import BreakDown from './RatingBreakDown.jsx';
+import WriteReview from './writeReview.jsx';
 
 const RRIndex = (props) => {
   const [data, setData] = useState([]);
@@ -16,19 +16,19 @@ const RRIndex = (props) => {
 
   useEffect(() => {
     axios
-      .get("reviews/", {
+      .get('reviews/', {
         params: {
           product_id: id,
-          sort: "relevant",
+          sort: 'relevant',
         },
       })
       .then((res) => {
         setData(res.data.results);
         setfilterData(res.data.results);
-        console.log("this has been invoked");
+        console.log('this has been invoked');
       });
     axios
-      .get("reviews/meta", {
+      .get('reviews/meta', {
         params: {
           product_id: id,
         },
@@ -43,8 +43,8 @@ const RRIndex = (props) => {
   }, [filterData]);
 
   const divStyle = {
-    color: "black",
-    border: "1px solid rgba(0, 0, 0, 0.05)",
+    color: 'black',
+    border: '1px solid rgba(0, 0, 0, 0.05)',
   };
 
   var filterDataSet = (result) => {

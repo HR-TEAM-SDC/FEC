@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
-import IndividualReviews from "./IndividualReviews.jsx";
-import axios from "../../apis/atelier.js";
+import React, { useState, useEffect, useReducer } from 'react';
+import IndividualReviews from './IndividualReviews.jsx';
+import axios from '../../apis/atelier.js';
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
@@ -24,33 +24,33 @@ const ReviewList = (props) => {
   // );
 
   var sort = (e) => {
-    if (e.target.value === "relevant") {
+    if (e.target.value === 'relevant') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "relevant",
+            sort: 'relevant',
           },
         })
         .then((res) => setData(res.data.results));
     }
 
-    if (e.target.value === "helpful") {
+    if (e.target.value === 'helpful') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "helpful",
+            sort: 'helpful',
           },
         })
         .then((res) => setData(res.data.results));
     }
-    if (e.target.value === "newest") {
+    if (e.target.value === 'newest') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "newest",
+            sort: 'newest',
           },
         })
         .then((res) => setData(res.data.results));
@@ -63,10 +63,10 @@ const ReviewList = (props) => {
   };
 
   const divStyle = {
-    color: "black",
-    border: "1px solid black",
-    display: "inline-block",
-    width: "60%",
+    color: 'black',
+    border: '1px solid black',
+    display: 'inline-block',
+    width: '60%',
   };
 
   return (
@@ -77,7 +77,7 @@ const ReviewList = (props) => {
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
       </select>
-      <div style={{ maxHeight: "600px", overflow: "scroll" }}>
+      <div style={{ maxHeight: '600px', overflow: 'scroll' }}>
         {data.slice(0, addMoreTracker).map((data) => (
           <IndividualReviews data={data} />
         ))}

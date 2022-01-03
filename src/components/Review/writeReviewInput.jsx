@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from 'react';
 
 const Input = (props) => {
   const [minimumLength, setMinimumLength] = useState(null);
@@ -29,7 +29,7 @@ const Input = (props) => {
         id="reviewSummary"
         type="text"
         placeholder="Example: Best purchase ever!"
-        style={{ width: "90%" }}
+        style={{ width: '90%' }}
         maxLength="60"
         onChange={props.summaryReview}
       ></input>
@@ -39,39 +39,24 @@ const Input = (props) => {
         type="text"
         placeholder="Why did you like the product or not?"
         style={{
-          width: "90%",
-          height: "400px",
-          textAlign: "top",
-          padding: "0",
+          width: '90%',
+          height: '400px',
+          textAlign: 'top',
+          padding: '0',
         }}
         maxLength="1000"
         onChange={WriteReviewBody}
       ></textarea>
-      <p>
-        {minimumLength >= 50
-          ? "Minimum reached"
-          : "Minimum required characters left: " + (50 - minimumLength)}
-      </p>
+      <p>{minimumLength >= 50 ? 'Minimum reached' : 'Minimum required characters left: ' + (50 - minimumLength)}</p>
       <div className="form-group multi-preview">
         {photoURLs.map((url) => (
-          <img
-            src={url}
-            alt="..."
-            style={{ height: "100px", width: "100px" }}
-          />
+          <img src={url} alt="..." style={{ height: '100px', width: '100px' }} />
         ))}
       </div>
       {photoURLs.length < 5 ? (
         <form action="/action_page.php">
           <label for="img">Select image:</label>
-          <input
-            type="file"
-            id="img"
-            name="img"
-            accept="image/*"
-            onChange={uploadMultiplePhotos}
-            multiple
-          />
+          <input type="file" id="img" name="img" accept="image/*" onChange={uploadMultiplePhotos} multiple />
         </form>
       ) : null}
 
@@ -80,7 +65,7 @@ const Input = (props) => {
         id="Nickname"
         type="text"
         placeholder="Example: jackson11!"
-        style={{ width: "20%" }}
+        style={{ width: '20%' }}
         maxLength="60"
         onChange={props.nicknameReview}
       ></input>
@@ -90,7 +75,7 @@ const Input = (props) => {
         id="email"
         type="text"
         placeholder="Example: jackson11@email.com"
-        style={{ width: "40%" }}
+        style={{ width: '40%' }}
         maxLength="60"
         onChange={props.emailReview}
       ></input>
