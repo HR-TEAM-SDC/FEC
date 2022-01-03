@@ -13,15 +13,15 @@ const AddToCartButton = () => {
   // console.log("currentQuantity:", currentQuantity);
   // console.log("currentSku:", currentSku);
 
-  const addToCart = () => {
-    let postCart = axios.post('/cart', {
+  const addToCart = async () => {
+    let postCart = await axios.post('/cart', {
       sku_id: currentSku,
       count: currentQuantity,
     });
-    return postCart;
+    console.log(postCart);
   };
 
-  const buttonOnClick = async () => {
+  const buttonOnClick = () => {
     let sizeMsg = document.getElementById('size-msg');
     let sizeMenu = document.getElementById('size-menu');
     if (currentSize === 'Select Size') {
@@ -31,8 +31,7 @@ const AddToCartButton = () => {
       }
     } else {
       sizeMsg.innerHTML = '';
-      let postCart = await addToCart();
-      // console.log(postCart);
+      addToCart();
     }
   };
 
