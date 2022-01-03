@@ -9,7 +9,6 @@
 .list {
   margin: 10px 0px 0px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -141,6 +140,6 @@
 .card-button:hover {
   color: goldenrod;
 }
-h2 {
+h3 {
   align-self: flex-start;
 }
