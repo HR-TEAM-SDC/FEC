@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
-import IndividualReviews from "./IndividualReviews.jsx";
-import axios from "../../apis/atelier.js";
+import React, { useState, useEffect, useReducer } from 'react';
+import IndividualReviews from './IndividualReviews.jsx';
+import axios from '../../apis/atelier.js';
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
@@ -24,33 +24,33 @@ const ReviewList = (props) => {
   // );
 
   var sort = (e) => {
-    if (e.target.value === "relevant") {
+    if (e.target.value === 'relevant') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "relevant",
+            sort: 'relevant',
           },
         })
         .then((res) => setData(res.data.results));
     }
 
-    if (e.target.value === "helpful") {
+    if (e.target.value === 'helpful') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "helpful",
+            sort: 'helpful',
           },
         })
         .then((res) => setData(res.data.results));
     }
-    if (e.target.value === "newest") {
+    if (e.target.value === 'newest') {
       axios
-        .get("reviews/", {
+        .get('reviews/', {
           params: {
             product_id: 40344, // need to change, will import data from main part.
-            sort: "newest",
+            sort: 'newest',
           },
         })
         .then((res) => setData(res.data.results));
@@ -62,12 +62,35 @@ const ReviewList = (props) => {
     setaddMoreTracker(number);
   };
 
-  const divStyle = {
-    color: "black",
-    border: "1px solid black",
-    display: "inline-block",
-    width: "60%",
+  var search = (e) => {
+    var result = [];
+    console.log(e.target.value.length);
+    if (e.target.value.length >= 3) {
+      for (var i = 0; i < props.data.length; i++) {
+        if (props.data[i].body.indexOf(e.target.value) !== -1) {
+          result.push(props.data[i]);
+          console.log('this has been invoked');
+        }
+      }
+    }
+    setData(result);
+    forceUpdate();
+
+    if (e.target.value.length < 3) {
+      setData(props.data.slice(0, addMoreTracker));
+      forceUpdate();
+    }
   };
+
+  const divStyle = {
+    color: 'black',
+    border: '1px solid black',
+    display: 'inline-block',
+    width: '75%',
+    textAlign: 'left',
+  };
+
+  var key = 0;
 
   return (
     <div className="ReviewList" style={divStyle}>
@@ -77,9 +100,10 @@ const ReviewList = (props) => {
         <option value="helpful">helpful</option>
         <option value="newest">newest</option>
       </select>
-      <div style={{ maxHeight: "600px", overflow: "scroll" }}>
+      <input type="text" id="search" placeholder="search" style={{ float: 'right' }} onChange={search}></input>
+      <div style={{ maxHeight: '600px', overflow: 'scroll', width: '100%' }} id="reviewsBox">
         {data.slice(0, addMoreTracker).map((data) => (
-          <IndividualReviews data={data} />
+          <IndividualReviews key={key++} data={data} />
         ))}
       </div>
       {addMoreTracker < props.data.length ? (
