@@ -111,7 +111,7 @@ export default function QAapp() {
     if (moreQ === false) {
       setLoadQ(!moreQ);
     }
-    setCount(counter + 2);
+    setCount(counter + questions.length);
   };
 
   const handleCloseQModal = () => modal.current.close();
@@ -160,7 +160,7 @@ export default function QAapp() {
       <div>
         {moreQ ? (
           <Context.Provider value={{ handleQHelpfulness }}>
-            <LoadMoreQ questions={questions.slice(counter, counter + 2)} />
+            <LoadMoreQ questions={questions.slice(2)} />
           </Context.Provider>
         ) : null}
       </div>

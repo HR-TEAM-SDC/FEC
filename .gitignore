@@ -1,4 +1,3 @@
 node_modules
 src/apis/config.js
-dist/index.bundle.js
 yarn.lock
