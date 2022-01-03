@@ -12,7 +12,7 @@ const ImageGallery = () => {
     display: 'flex',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '40%',
+    width: '45%',
     justifyContent: 'center',
   };
 

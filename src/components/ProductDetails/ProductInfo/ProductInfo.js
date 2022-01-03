@@ -6,15 +6,13 @@ import ProductOverview from './ProductOverview';
 import ProductCategory from './ProductCategory';
 import ShareProduct from './ShareProduct';
 import StyleSelector from './StyleSelector/StyleSelector';
-import AddToCart from '../AddToCart/AddToCart';
+import AddToCart from './AddToCart/AddToCart';
 
 const ProductInfo = () => {
   const infoStyles = {
     borderStyle: 'solid',
     borderWidth: '1px',
     width: '45%',
-    // height: "auto",
-    // marginLeft: "50%",
   };
 
   return (

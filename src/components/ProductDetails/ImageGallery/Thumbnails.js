@@ -21,9 +21,9 @@ const Thumbnails = (props) => {
   const handleThumbnailClick = () => {
     let index = event.target.getAttribute('index');
     let src = event.target.getAttribute('src');
-    console.log('Thumbnail clicked...');
-    console.log('src:', src);
-    console.log('currentIndex:', currentIndex);
+    // console.log("Thumbnail clicked...");
+    // console.log("src:", src);
+    // console.log("currentIndex:", currentIndex);
     setCurrentImage(src);
     setCurrentIndex(Number(index));
   };
