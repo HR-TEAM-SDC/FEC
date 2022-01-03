@@ -57,7 +57,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <main style={detailStyles}>
+    <section style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
         <StylesContext.Provider value={styles}>
           <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>
@@ -78,7 +78,7 @@ const ProductDetails = () => {
           </CurrentSizeContext.Provider>
         </StylesContext.Provider>
       </ReviewsContext.Provider>
-    </main>
+    </section>
   );
 };
 
