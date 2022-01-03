@@ -6,6 +6,7 @@ import './styles.css';
 const AddAnswerForm = ({ question, handleAddAnswer }) => {
   const { product } = useContext(Context);
   const [photos, setPhoto] = useState([]);
+  const { currentProduct } = useContext(Context);
   // const { handleAddAnswer } = useContext(Context);
 
   const handlePhoto = (event) => {
@@ -37,7 +38,7 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
     <div>
       <h1>Submit Your Answer</h1>
       <h4>
-        <span className="hightlight">{product.name}</span>: {question.question_body}
+        <span className="hightlight">{currentProduct.name}</span>: {question.question_body}
       </h4>
       <form onSubmit={(event) => handleAddAnswer(event, question.question_id, photos)}>
         <div className="form-cell">
