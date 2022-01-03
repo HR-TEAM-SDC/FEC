@@ -66,7 +66,7 @@
   border-radius: 10px;
   border-color: #21aeca;
   background-color: white;
-  box-shadow: 7px 7px 20px;
+  box-shadow: 2px 2px 5px;
 }
 
 .button:hover {
@@ -120,7 +120,7 @@
 .accordion-title,
 .accordion-content {
   padding: 1rem;
-  box-shadow: 7px 7px 20px;
+  box-shadow: 2px 2px 5px;
   animation: fadeIn 1s;
 }
 
@@ -196,11 +196,11 @@
   border: 7px solid #21aeca;
   width: 70%;
   animation: fadeIn 3s;
-  box-shadow: 7px 7px 20px;
+  box-shadow: 2px 2px 5px;
 }
 
 .searchBar:hover {
-  box-shadow: 7px 7px 20px;
+  box-shadow: 2px 2px 5px;
 }
 
 .AddQButton,

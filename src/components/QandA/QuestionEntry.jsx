@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import axios from "../../apis/atelier";
-import AnswersList from "./AnswersList.jsx";
-import LoadMoreAns from "./LoadMoreAns.jsx";
-import AddModal from "./AddModals.jsx";
-import AddAnswerForm from "./AddAnswerForm.jsx";
-import Highlighter from "react-highlight-words";
-import { Context } from "../context/context.js";
-import "./styles.css";
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import axios from '../../apis/atelier';
+import AnswersList from './AnswersList.jsx';
+import LoadMoreAns from './LoadMoreAns.jsx';
+import AddModal from './AddModals.jsx';
+import AddAnswerForm from './AddAnswerForm.jsx';
+import Highlighter from 'react-highlight-words';
+import { Context } from '../context/context.js';
+import './styles.css';
 
 const QuestionEntry = ({ question, answersList }) => {
   const [answers, setAnswer] = useState([]);
@@ -22,7 +22,7 @@ const QuestionEntry = ({ question, answersList }) => {
       .get(`qa/questions/${question.question_id}/answers`)
       .then((res) => {
         setAnswer(res.data.results);
-        console.log("answers:", res.data.results);
+        console.log('answers:', res.data.results);
       })
       .catch((err) => {
         console.log("This problem doesn't have any answers", err);
@@ -54,37 +54,37 @@ const QuestionEntry = ({ question, answersList }) => {
     let body = event.target[2].value;
     let photos = photosArray;
     event.target.reset();
-    console.log("what is the new answer:", body, name, email, photos);
+    console.log('what is the new answer:', body, name, email, photos);
 
     axios
       .post(`qa/questions/${id}/answers`, { name, email, body, photos })
       .then((res) => {
-        console.log("You submit a new answer successfully!", res);
+        console.log('You submit a new answer successfully!', res);
         handleCloseAnsModal();
       })
       .catch((err) => {
-        console.log("Failed to post a new answer.", err.response);
+        console.log('Failed to post a new answer.', err.response);
       });
   };
 
   const LoadMoreStyle = {
-    textDecoration: "underline",
+    textDecoration: 'underline',
   };
 
   const helpLinkStyle = {
-    textDecoration: "underline",
-    color: helpQuesStatus ? "orange" : "black",
+    textDecoration: 'underline',
+    color: helpQuesStatus ? 'orange' : 'black',
   };
 
   const addAnswerStyle = {
-    textDecoration: "underline",
+    textDecoration: 'underline',
   };
 
   return (
     <div className="accordion-item">
       <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
         <div className="individualQuestion">
-          Q:{" "}
+          Q:{' '}
           <Highlighter
             highlightClassName="YourHighlightClass"
             searchWords={[searchInput]}
@@ -93,7 +93,7 @@ const QuestionEntry = ({ question, answersList }) => {
           />
         </div>
         <span>
-          Helpful?{" "}
+          Helpful?{' '}
           <abbr
             style={helpLinkStyle}
             onClick={() => {
@@ -102,18 +102,15 @@ const QuestionEntry = ({ question, answersList }) => {
             title="Users can vote once"
           >
             Yes
-          </abbr>{" "}
-          &#128161; ({question.question_helpfulness}) |{" "}
+          </abbr>{' '}
+          &#128161; ({question.question_helpfulness}) |{' '}
           <span style={addAnswerStyle} onClick={() => modal.current.open()}>
             Add Answer
-          </span>{" "}
-          <span>{isActive ? "-" : "+"}</span>
+          </span>{' '}
+          <span>{isActive ? '-' : '+'}</span>
         </span>
         <AddModal ref={modal}>
-          <AddAnswerForm
-            question={question}
-            handleAddAnswer={handleAddAnswer}
-          />
+          <AddAnswerForm question={question} handleAddAnswer={handleAddAnswer} />
         </AddModal>
       </div>
 
@@ -126,12 +123,10 @@ const QuestionEntry = ({ question, answersList }) => {
           </div>
 
           <div onClick={handleLoad} style={LoadMoreStyle}>
-            {moreAnswers ? "Collapse answers" : "See more answers"}
+            {moreAnswers ? 'Collapse answers' : 'See more answers'}
           </div>
 
-          <div>
-            {moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}
-          </div>
+          <div>{moreAnswers ? <LoadMoreAns answers={answers.slice(2)} /> : null}</div>
         </div>
       )}
     </div>

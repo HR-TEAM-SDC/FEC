@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../apis/atelier";
-import AnswersList from "./AnswersList.jsx";
+import React, { useState, useEffect } from 'react';
+import axios from '../../apis/atelier';
+import AnswersList from './AnswersList.jsx';
 
 const LoadMoreAns = ({ answers }) => {
   return (

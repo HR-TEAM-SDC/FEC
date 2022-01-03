@@ -8,15 +8,26 @@ const Style = (props) => {
   const thumbnailStyle = {
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderRadius: '100%',
+    borderRadius: '50%',
     width: '75px',
     height: '75px',
-    margin: '0px 5px',
+  };
+
+  const selectedStyle = {
+    borderStyle: 'solid',
+    borderWidth: '5px',
+    borderRadius: '50%',
+    width: '75px',
+    height: '75px',
   };
 
   return (
     <span>
-      <img style={thumbnailStyle} src={props.style.photos[0].thumbnail_url}></img>
+      <img
+        style={props.style === props.currentStyle ? selectedStyle : thumbnailStyle}
+        src={props.style.photos[0].thumbnail_url}
+        onClick={() => props.styleClickHandler(props.style)}
+      ></img>
     </span>
   );
 };

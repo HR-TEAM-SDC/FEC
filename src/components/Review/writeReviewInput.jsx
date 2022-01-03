@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
+import './style.css';
 
 const Input = (props) => {
   const [minimumLength, setMinimumLength] = useState(null);
@@ -40,7 +41,7 @@ const Input = (props) => {
         placeholder="Why did you like the product or not?"
         style={{
           width: '90%',
-          height: '400px',
+          height: '300px',
           textAlign: 'top',
           padding: '0',
         }}

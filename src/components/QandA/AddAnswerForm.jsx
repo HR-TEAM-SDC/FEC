@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import axios from "../../apis/atelier";
-import { Context } from "../context/context.js";
-import "./styles.css";
+import React, { useState, useEffect, useContext } from 'react';
+import axios from '../../apis/atelier';
+import { Context } from '../context/context.js';
+import './styles.css';
 
 const AddAnswerForm = ({ question, handleAddAnswer }) => {
   const { product } = useContext(Context);
@@ -12,15 +12,15 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
     event.preventDefault();
 
     if (event.target.files.length > 5) {
-      alert("You can select only 5 images.");
+      alert('You can select only 5 images.');
       return;
     } else if (photos.length === 5) {
-      alert("Reach the Max amount of 5.");
+      alert('Reach the Max amount of 5.');
       return;
     } else {
       //console.log("what is photo:", event.target.files);
       let currPhoto = [...event.target.files];
-      console.log("currPhoto", currPhoto);
+      console.log('currPhoto', currPhoto);
 
       let newList = currPhoto.map((photo) => {
         return URL.createObjectURL(photo);
@@ -37,14 +37,9 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
     <div>
       <h1>Submit Your Answer</h1>
       <h4>
-        <span className="hightlight">{product.name}</span>:{" "}
-        {question.question_body}
+        <span className="hightlight">{product.name}</span>: {question.question_body}
       </h4>
-      <form
-        onSubmit={(event) =>
-          handleAddAnswer(event, question.question_id, photos)
-        }
-      >
+      <form onSubmit={(event) => handleAddAnswer(event, question.question_id, photos)}>
         <div className="form-cell">
           <label>Enter your username:</label>
           <div>
@@ -56,9 +51,7 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
               className="input-small"
             ></input>
           </div>
-          <span className="privacy">
-            * For privacy reasons, do not use your full name or email address
-          </span>
+          <span className="privacy">* For privacy reasons, do not use your full name or email address</span>
         </div>
 
         <div className="form-cell">
@@ -72,9 +65,7 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
               className="input-small"
             ></input>
           </div>
-          <span className="privacy">
-            * For authentication reasons, you will not be emailed
-          </span>
+          <span className="privacy">* For authentication reasons, you will not be emailed</span>
         </div>
 
         <div className="form-cell">
@@ -108,7 +99,7 @@ const AddAnswerForm = ({ question, handleAddAnswer }) => {
                       </span>
                     );
                   })
-                : "No image selected"}
+                : 'No image selected'}
             </div>
           </div>
         </div>

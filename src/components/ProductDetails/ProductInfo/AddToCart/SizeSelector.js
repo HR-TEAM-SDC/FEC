@@ -35,7 +35,7 @@ const SizeSelector = () => {
     setCurrentSku(sku);
     let prevSize = currentSize;
     setCurrentSize(event.target.value);
-    // console.log('currentStyle.skus[currentSku].quantity:', currentStyle.skus[currentSku].quantity);
+    // console.log('currentSize:', currentSize);
     let curSize = currentSize;
     // If previous selected quantity is greater than
     // the next selected Sku's quantity (skus[currentSku].quantity)
@@ -43,11 +43,30 @@ const SizeSelector = () => {
     setCurrentQuantity(1);
   };
 
+  if (currentStyle) {
+    let outOfStock = false;
+    for (let key in currentStyle.skus) {
+      if (currentStyle.skus[key].quantity <= 0) {
+        outOfStock = true;
+        break;
+      }
+    }
+    if (outOfStock) {
+      return (
+        <div>
+          <select disabled>
+            <option>OUT OF STOCK</option>
+          </select>
+        </div>
+      );
+    }
+  }
   return (
     <div>
-      <h4>Sizes Component</h4>
       Select Size:
-      <select onChange={handleSizeChange}>{renderSizes()}</select>
+      <select id="size-menu" onChange={handleSizeChange}>
+        {renderSizes()}
+      </select>
     </div>
   );
 };

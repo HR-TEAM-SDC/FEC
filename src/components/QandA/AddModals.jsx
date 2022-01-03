@@ -1,12 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
-import axios from "../../apis/atelier";
-import { createPortal } from "react-dom";
-import "./styles.css";
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import axios from '../../apis/atelier';
+import { createPortal } from 'react-dom';
+import './styles.css';
 
 const AddQuestionsModal = ({ children }, ref) => {
   //Open the modal
@@ -30,28 +25,23 @@ const AddQuestionsModal = ({ children }, ref) => {
 
   useEffect(() => {
     //addEventListener(type, listener, options);
-    if (isOpen) document.addEventListener("keydown", handleEscape, false);
+    if (isOpen) document.addEventListener('keydown', handleEscape, false);
     return () => {
-      document.removeEventListener("keydown", handleEscape, false);
+      document.removeEventListener('keydown', handleEscape, false);
     };
   }, [handleEscape, isOpen]);
 
   return createPortal(
     isOpen ? (
-      <div className={"modal"}>
+      <div className={'modal'}>
         <div className="modal-overlay" onClick={close} />
-        <span
-          role="button"
-          className="modal-close"
-          aria-label="close"
-          onClick={close}
-        >
+        <span role="button" className="modal-close" aria-label="close" onClick={close}>
           ✖
         </span>
         <div className="modal-body">{children}</div>
       </div>
     ) : null,
-    document.getElementById("AddModal")
+    document.getElementById('AddModal')
   );
 };
 

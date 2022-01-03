@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductBreakDown from './productBreakDown.jsx';
+import './style.css';
 
 const BreakDown = (props) => {
   var ratingData = props.metaData.ratings;
@@ -54,37 +55,6 @@ const BreakDown = (props) => {
       record[number] = true;
       props.setfilterRecord(record);
     }
-
-    // if (filterRecord[number] === true) {
-    //   var result = [];
-    //   for (let i = 0; i < filterData.length; i++) {
-    //     if (filterData[i].rating !== number) {
-    //       result.push(filterData[i]);
-    //     }
-    //   }
-    //   var record = filterRecord;
-    //   delete record[number];
-    //   setfilterData(result);
-    //   if (filterData.length === 0) {
-    //     setfilterData(data);
-    //   }
-    //   setfilterRecord(record);
-    // } else {
-    //   if (filterData) {
-    //     var result = filterData;
-    //   } else {
-    //     var result = [];
-    //   }
-    //   for (let i = 0; i < data.length; i++) {
-    //     if (data[i].rating === number) {
-    //       result.push(data[i]);
-    //     }
-    //   }
-    //   var record = filterRecord;
-    //   record[number] = true;
-    //   setfilterRecord(record);
-    //   setfilterData(result);
-    // }
   };
 
   var standardStyle = {
@@ -95,7 +65,7 @@ const BreakDown = (props) => {
   };
 
   var ratingStarStyle = {
-    color: 'gold',
+    color: 'black',
     position: 'absolute',
     width: percentage,
     top: '0',
@@ -113,22 +83,13 @@ const BreakDown = (props) => {
   };
 
   var breakDownStarStyle = {
-    color: 'gold',
+    color: 'black',
     width: '100px',
     display: 'inline-block',
   };
 
   return (
-    <div
-      className="ratingSummary"
-      style={{
-        display: 'inline-block',
-        width: '20%',
-        float: 'left',
-        border: '1px solid black',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="ratingSummary">
       <span id="numberSummary" style={{ fontSize: '100px' }}>
         {summaryRating}
       </span>
@@ -137,7 +98,7 @@ const BreakDown = (props) => {
         <span style={ratingStarStyle}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       </span>
       <div className="breakDownRatings">
-        <p>
+        <div className="stars">
           <span className="5star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;&#9733;
           </span>
@@ -154,8 +115,8 @@ const BreakDown = (props) => {
             <div style={ratingBarStyle(5)}></div>
           </div>
           <span>{ratingData[5]}</span>
-        </p>
-        <p>
+        </div>
+        <div className="stars">
           <span className="4star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;
           </span>
@@ -172,8 +133,8 @@ const BreakDown = (props) => {
             <div style={ratingBarStyle(4)}></div>
           </div>
           <span>{ratingData[4]}</span>
-        </p>
-        <p>
+        </div>
+        <div className="stars">
           <span className="3star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;
           </span>
@@ -190,8 +151,8 @@ const BreakDown = (props) => {
             <div style={ratingBarStyle(3)}></div>
           </div>
           <span>{ratingData[3]}</span>
-        </p>
-        <p>
+        </div>
+        <div className="stars">
           <span className="2star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;
           </span>
@@ -208,8 +169,8 @@ const BreakDown = (props) => {
             <div style={ratingBarStyle(2)}></div>
           </div>
           <span>{ratingData[2]}</span>
-        </p>
-        <p>
+        </div>
+        <div className="stars">
           <span className="1star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;
           </span>
@@ -226,8 +187,11 @@ const BreakDown = (props) => {
             <div style={ratingBarStyle(1)}></div>
           </div>
           <span>{ratingData[1]}</span>
+        </div>
+        <p style={{ fontSize: '15px' }}>
+          {' '}
+          {Math.round((props.metaData.recommended.true / totalReviews) * 1000) / 10}% of reviews recommend this product
         </p>
-        <p> {Math.round((props.metaData.recommended.true / totalReviews) * 1000) / 10}% recommend</p>
       </div>
       <ProductBreakDown data={props.metaData.characteristics} />
     </div>

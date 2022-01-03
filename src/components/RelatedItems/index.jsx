@@ -62,12 +62,12 @@ const RelatedItems = () => {
 
   return (
     <section className="related-items">
-      <h3>Other Items You Might Enjoy!</h3>
       <div className="list">
+        <h2>Other Items You Might Enjoy!</h2>
         <CardContainer cardItems={relatedItems} selectedItem={currentProduct} />
       </div>
-      <h3>Your Outfit</h3>
       <div className="list">
+        <h2>Your Outfit</h2>
         <CardContainer cardItems={outfit} fetchOutfit={fetchOutfit} />
       </div>
     </section>

@@ -3,6 +3,7 @@ import './style.css';
 import Characteristics from './Characteristics.jsx';
 import Input from './writeReviewInput.jsx';
 import axios from '../../apis/atelier.js';
+import { createPortal } from 'react-dom';
 
 const WriteReview = (props) => {
   const [rate, setRate] = useState(null);
@@ -44,6 +45,7 @@ const WriteReview = (props) => {
       alert(string);
       return;
     }
+
     var finalParam = {
       product_id: props.id,
       rating: rate,
@@ -59,6 +61,7 @@ const WriteReview = (props) => {
     axios
       .post('reviews', {
         params: finalParam,
+        type: 'application/json',
       })
       .then((res) => {
         console.log(res);
@@ -69,18 +72,24 @@ const WriteReview = (props) => {
   };
 
   var starRate = (e) => {
-    setRate(e.target.value);
+    setRate(Number(e.target.value));
   };
 
   var starResult = ['', 'Poor', 'Fair', 'Average', 'Good', 'Great'];
 
   var recommendRate = (e) => {
-    setRecommend(e.target.value);
+    if (e.target.value === 'Yes') {
+      setRecommend(true);
+    }
+    if (e.target.value === 'No') {
+      setRecommend(false);
+    }
   };
 
   var CharacteristicsReview = (e) => {
     var result = characteristics;
-    result[e.target.id] = e.target.value;
+    var number = e.target.id;
+    result[number] = Number(e.target.value);
     setCharacteristics(result);
     forceUpdate();
   };
@@ -105,66 +114,62 @@ const WriteReview = (props) => {
     setPhotoURLs(array);
   };
 
-  return (
-    <div>
-      <h2>Write Your Review</h2>
-      <h5>About the [Product Name Here]</h5>
-      <div
-        className="rateBox"
-        style={{
-          position: 'relative',
-          display: 'block',
-          float: 'top',
-          width: '180px',
-        }}
-      >
-        <div className="rate" onClick={starRate}>
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">
-            5 stars
+  return createPortal(
+    <div className="write-review">
+      <div className="write-review-close" onClick={props.writeReviewClick}></div>
+      <div className="writeReviewBox">
+        <h2>Write Your Review</h2>
+        <h5> About the {props.name}</h5>
+        <div className="rateBox">
+          <div className="rate" onClick={starRate}>
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">
+              5 stars
+            </label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">
+              4 stars
+            </label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">
+              3 stars
+            </label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">
+              2 stars
+            </label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">
+              1 star
+            </label>
+          </div>
+          <p className="result" style={{ textAlign: 'center' }}>
+            {starResult[rate]}
+          </p>
+        </div>
+        <div className="recommend" onClick={recommendRate}>
+          <span>Recommend? </span>
+          <input type="radio" id="Yes" value="Yes" name="recommend" />
+          <label for="Yes" title="text">
+            Yes
           </label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">
-            4 stars
-          </label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">
-            3 stars
-          </label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">
-            2 stars
-          </label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">
-            1 star
+          <input type="radio" id="No" value="No" name="recommend" />
+          <label for="No" title="text">
+            No
           </label>
         </div>
-        <p className="result" style={{ textAlign: 'center' }}>
-          {starResult[rate]}
-        </p>
+        <Characteristics CharacteristicsReview={CharacteristicsReview} />
+        <Input
+          summaryReview={summaryReview}
+          bodyReview={bodyReview}
+          nicknameReview={nicknameReview}
+          emailReview={emailReview}
+          photoReview={photoReview}
+        />
+        <input type="submit" value="submit" className="write-review-submit" onClick={finalSubmit}></input>
       </div>
-      <div className="recommend" onClick={recommendRate}>
-        <span>Recommend? </span>
-        <input type="radio" id="Yes" value="Yes" name="recommend" />
-        <label for="Yes" title="text">
-          Yes
-        </label>
-        <input type="radio" id="No" value="No" name="recommend" />
-        <label for="No" title="text">
-          No
-        </label>
-      </div>
-      <Characteristics CharacteristicsReview={CharacteristicsReview} />
-      <Input
-        summaryReview={summaryReview}
-        bodyReview={bodyReview}
-        nicknameReview={nicknameReview}
-        emailReview={emailReview}
-        photoReview={photoReview}
-      />
-      <input type="submit" value="submit" style={{ display: 'block' }} onClick={finalSubmit}></input>
-    </div>
+    </div>,
+    document.getElementById('AddModal')
   );
 };
 

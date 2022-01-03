@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
-import { ProductContext } from "../ProductDetails";
+import React, { useState, useContext } from 'react';
+import { AppContext } from '../../context';
 const ProductOverview = () => {
-  const product = useContext(ProductContext);
+  const { currentProduct } = useContext(AppContext);
 
-  return <h4>Product Description: {product.description}</h4>;
+  return currentProduct ? <h4>Product Description: {currentProduct.description}</h4> : null;
 };
 
 export default ProductOverview;
