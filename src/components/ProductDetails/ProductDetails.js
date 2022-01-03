@@ -29,6 +29,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (currentProduct) {
+      setCurrentSku(null);
       fetchData();
     }
   }, [currentProduct]);
