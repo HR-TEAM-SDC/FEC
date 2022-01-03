@@ -25,10 +25,13 @@ const AddToCartButton = () => {
     }
   };
 
+  if (currentStyle.skus && currentSku) {
+    if (currentStyle.skus[currentSku].quantity <= 0) {
+      return null;
+    }
+  }
   return (
     <div>
-      <h4>Add To Cart Button</h4>
-      <div></div>
       <button onClick={buttonOnClick}> Add To Cart </button>
     </div>
   );
