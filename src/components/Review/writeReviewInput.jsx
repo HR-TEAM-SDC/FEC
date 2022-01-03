@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
+import './style.css';
 
 const Input = (props) => {
   const [minimumLength, setMinimumLength] = useState(null);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './style.css';
 
 const Characteristics = (props) => {
   var size = ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'];
@@ -25,12 +26,12 @@ const Characteristics = (props) => {
     var result = [];
     for (var i = 0; i < array.length; i++) {
       result.push(
-        <span>
+        <div className="Characteristics-box">
           <input type="radio" id={id} value={num} name={name} onClick={Characteristics} />
           <label for={id} title="text">
             {array[i]}
           </label>
-        </span>
+        </div>
       );
       num++;
     }
@@ -39,15 +40,26 @@ const Characteristics = (props) => {
 
   return (
     <div className="Characteristics">
-      <h5>Characteristics </h5>
-      <span className="size">
-        <div>Size {eachCharacteristics(size, 14, 'Size')} </div>
-        <div>Width {eachCharacteristics(width, 15, 'Width')} </div>
-        <div>Comfort {eachCharacteristics(Comfort, 16, 'Comfort')} </div>
-        <div>Quality {eachCharacteristics(Quality, 17, 'Quality')} </div>
-        <div>Length {eachCharacteristics(Length, 18, 'Length')} </div>
-        <div>Fit {eachCharacteristics(Fit, 19, 'Fit')} </div>
-      </span>
+      <h2>Characteristics </h2>
+      <div>
+        <div className="Characteristics-names-Size">Size </div>
+        {eachCharacteristics(size, 14, 'Size')}{' '}
+      </div>
+      <div>
+        <div className="Characteristics-names">Width</div> {eachCharacteristics(width, 15, 'Width')}{' '}
+      </div>
+      <div>
+        <div className="Characteristics-names">Comfort</div> {eachCharacteristics(Comfort, 16, 'Comfort')}{' '}
+      </div>
+      <div>
+        <div className="Characteristics-names">Quality</div> {eachCharacteristics(Quality, 17, 'Quality')}{' '}
+      </div>
+      <div>
+        <div className="Characteristics-names">Length</div> {eachCharacteristics(Length, 18, 'Length')}{' '}
+      </div>
+      <div>
+        <div className="Characteristics-names">Fit</div> {eachCharacteristics(Fit, 19, 'Fit')}{' '}
+      </div>
     </div>
   );
 };
