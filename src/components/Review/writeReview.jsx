@@ -30,6 +30,11 @@ const WriteReview = (props) => {
       alert(string);
       return;
     }
+    if (body.length < 50) {
+      var string = 'Body must have over 50 characters';
+      alert(string);
+      return;
+    }
     if (!characteristics) {
       var string = 'You must enter the following: characteristics';
       alert(string);

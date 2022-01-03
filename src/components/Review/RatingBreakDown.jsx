@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import ProductBreakDown from './productBreakDown.jsx';
 import './style.css';
 
 const BreakDown = (props) => {
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
+
   var ratingData = props.metaData.ratings;
   var totalStars = 0;
   var totalReviews = 0;
@@ -42,7 +44,6 @@ const BreakDown = (props) => {
     } else {
       if (filterdata.length === props.data.length) {
         var result = [];
-        console.log('this has been invoked');
       } else {
         var result = filterdata;
       }
@@ -55,6 +56,14 @@ const BreakDown = (props) => {
       record[number] = true;
       props.setfilterRecord(record);
     }
+  };
+
+  var filterFuc = () => {
+    var result = [];
+    for (var key in props.filterRecord) {
+      result.push(<div className="breakdown-filter">{key} star</div>);
+    }
+    return result;
   };
 
   var standardStyle = {
@@ -98,6 +107,15 @@ const BreakDown = (props) => {
         <span style={ratingStarStyle}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       </span>
       <div className="breakDownRatings">
+        <h2>Rating Breakdown</h2>
+        <div className="filter">
+          {filterFuc()}
+          {Object.keys(props.filterRecord).length === 0 ? null : (
+            <div className="clearAll" onClick={props.clearAll}>
+              clear all
+            </div>
+          )}
+        </div>
         <div className="stars">
           <span className="5star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;&#9733;
