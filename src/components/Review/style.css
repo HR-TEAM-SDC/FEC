@@ -24,6 +24,22 @@
   display: inline-block;
 }
 
+.breakdown-filter:hover {
+  cursor: pointer;
+}
+
+.stars:hover {
+  cursor: pointer;
+}
+
+.clearAll {
+  display: inline-block;
+}
+
+.clearAll:hover {
+  cursor: pointer;
+}
+
 .ReviewList {
   display: inline-block;
   width: 75%;

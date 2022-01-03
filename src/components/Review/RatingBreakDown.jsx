@@ -111,7 +111,7 @@ const BreakDown = (props) => {
         <div className="filter">
           {filterFuc()}
           {Object.keys(props.filterRecord).length === 0 ? null : (
-            <div style={{ display: 'inline-block' }} onClick={props.clearAll}>
+            <div className="clearAll" onClick={props.clearAll}>
               clear all
             </div>
           )}
