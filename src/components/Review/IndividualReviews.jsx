@@ -66,11 +66,16 @@ const IndividualReviews = (props) => {
 
   return (
     <div className="IndividualReviews">
-      {stars(props.data.rating)}
-      <div className="date">{dateConvert(props.data.date)}</div>
+      <div className="review-star">
+        {stars(props.data.rating)}
+        <div className="date" style={{ display: 'inline-block', float: 'right' }}>
+          {dateConvert(props.data.date)}
+        </div>
+      </div>
+
       <div className="summary">{props.data.summary}</div>
-      <div className="body">
-        {props.data.body}
+      <div className="body">{props.data.body}</div>
+      <div className="review-image">
         {props.data.photos.length === 0
           ? null
           : props.data.photos.map((photo) => <img src={photo.url} width="100" height="100"></img>)}

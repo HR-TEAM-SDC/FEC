@@ -72,9 +72,9 @@ const ReviewList = (props) => {
   var search = (e) => {
     var result = [];
     if (e.target.value.length >= 3) {
-      for (var i = 0; i < props.data.length; i++) {
-        if (props.data[i].body.indexOf(e.target.value) !== -1) {
-          result.push(props.data[i]);
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].body.indexOf(e.target.value) !== -1) {
+          result.push(data[i]);
         }
       }
     }

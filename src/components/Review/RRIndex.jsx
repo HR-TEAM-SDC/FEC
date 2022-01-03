@@ -63,6 +63,13 @@ const RRIndex = (props) => {
     forceUpdate();
   };
 
+  var clearAll = () => {
+    setfilterData(data);
+    var newRecord = {};
+    setfilterRecord(newRecord);
+    forceUpdate;
+  };
+
   var writeReviewClick = () => {
     writeReview ? setWriteReview(false) : setWriteReview(true);
   };
@@ -78,6 +85,7 @@ const RRIndex = (props) => {
           setfilterData={filterDataSet}
           setfilterRecord={filterRecordSet}
           data={data}
+          clearAll={clearAll}
         />
       ) : null}
       {<ReviewList data={filterData} count={filterData.length} id={currentProduct ? currentProduct.id : null} />}
