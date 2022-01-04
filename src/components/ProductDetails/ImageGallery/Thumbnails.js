@@ -34,6 +34,9 @@ const Thumbnails = (props) => {
       <span>
         {photos
           ? photos.map((photo, index) => {
+              // if (currentImage === photo.thumbnail_url) {
+              //   return null;
+              // }
               return (
                 <Thumbnail
                   handleThumbnailClick={handleThumbnailClick}
@@ -41,6 +44,8 @@ const Thumbnails = (props) => {
                   photo={photo}
                   index={index}
                   key={index}
+                  currentIndex={currentIndex}
+                  setCurrentIndex={setCurrentIndex}
                 />
               );
             })

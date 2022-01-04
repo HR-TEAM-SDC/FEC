@@ -24,12 +24,14 @@ const ProductDetails = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentStylePhotos, setCurrentStylePhotos] = useState(null);
+  const [enlargeMain, setEnlargeMain] = useState(false);
 
   const { currentProduct } = useContext(AppContext);
 
   useEffect(() => {
     if (currentProduct) {
       setCurrentSku(null);
+      setCurrentIndex(0);
       fetchData();
     }
   }, [currentProduct]);
@@ -51,14 +53,23 @@ const ProductDetails = () => {
     justifyContent: 'space-evenly',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '100%',
+    width: '90%',
     height: 'auto',
     margin: 'auto',
     padding: '10px',
   };
 
+  const enlargeStyles = {
+    width: '100%',
+    height: '100%',
+  };
+
+  const handlePhotoClick = () => {
+    setEnlargeMain(!enlargeMain);
+  };
+
   return (
-    <main style={detailStyles}>
+    <section style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
         <StylesContext.Provider value={styles}>
           <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>
@@ -68,8 +79,15 @@ const ProductDetails = () => {
                   <CurrentIndexContext.Provider value={{ currentIndex, setCurrentIndex }}>
                     <CurrentImageContext.Provider value={{ currentImage, setCurrentImage }}>
                       <CurrentStylePhotosContext.Provider value={{ currentStylePhotos, setCurrentStylePhotos }}>
+                        {/* {enlargeMain ?
+                          <img id="enlarge" style={enlargeStyles} onClick={handlePhotoClick} src={currentImage}></img>:
+                          <>
+                            <ImageGallery />
+                            <ProductInfo />
+                          </>} */}
                         <ImageGallery />
                         <ProductInfo />
+                        <div id="portal"></div>
                       </CurrentStylePhotosContext.Provider>
                     </CurrentImageContext.Provider>
                   </CurrentIndexContext.Provider>
@@ -79,7 +97,7 @@ const ProductDetails = () => {
           </CurrentSizeContext.Provider>
         </StylesContext.Provider>
       </ReviewsContext.Provider>
-    </main>
+    </section>
   );
 };
 

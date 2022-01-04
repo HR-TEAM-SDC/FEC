@@ -16,8 +16,22 @@ const StyleSelector = () => {
   const { setCurrentImage } = useContext(CurrentImageContext);
   const { setCurrentStylePhotos } = useContext(CurrentStylePhotosContext);
 
+  // useEffect(() => {
+  //   if (currentStyle) {
+  //     if (currentIndex > currentStyle.photos.length - 1) {
+  //       setCurrentIndex(0);
+  //     }
+  //   }
+  // }, [])
+
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
+    console.log('currentStyle:', currentStyle);
+    if (currentIndex > currentStyle.photos.length - 1) {
+      setCurrentIndex(0);
+    }
+    // console.log('currentStyle:', currentStyle)
+
     setCurrentStylePhotos(style.photos);
     setCurrentSize(null);
     setCurrentSku(null);
@@ -35,7 +49,7 @@ const StyleSelector = () => {
     <div>
       <h4>Current Style: {currentStyle.name}</h4> <br></br>
       <div style={thumbnailsStyle}>
-        {styles.map((style) => {
+        {styles.map((style, index) => {
           return (
             <Style
               style={style}
