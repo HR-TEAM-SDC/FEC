@@ -26,12 +26,10 @@ const StyleSelector = () => {
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
-    // console.log('currentStyle:', currentStyle);
-
     setCurrentStylePhotos(style.photos);
     setCurrentSku(null);
     setCurrentQuantity(null);
-    if (currentIndex > currentStyle.photos.length - 1) {
+    if (currentIndex > style.photos.length - 1) {
       setCurrentIndex(0);
       setCurrentImage(style.photos[0].thumbnail_url);
     } else {

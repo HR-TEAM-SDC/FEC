@@ -34,9 +34,6 @@ const Thumbnails = (props) => {
       <span>
         {photos
           ? photos.map((photo, index) => {
-              // if (currentImage === photo.thumbnail_url) {
-              //   return null;
-              // }
               return (
                 <Thumbnail
                   handleThumbnailClick={handleThumbnailClick}
