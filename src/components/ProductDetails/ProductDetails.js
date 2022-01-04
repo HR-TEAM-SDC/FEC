@@ -24,7 +24,6 @@ const ProductDetails = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentStylePhotos, setCurrentStylePhotos] = useState(null);
-  const [enlargeMain, setEnlargeMain] = useState(false);
 
   const { currentProduct } = useContext(AppContext);
 
@@ -32,6 +31,7 @@ const ProductDetails = () => {
     if (currentProduct) {
       setCurrentSku(null);
       setCurrentIndex(0);
+      setCurrentSize('Select Size');
       fetchData();
     }
   }, [currentProduct]);
@@ -59,15 +59,6 @@ const ProductDetails = () => {
     padding: '10px',
   };
 
-  const enlargeStyles = {
-    width: '100%',
-    height: '100%',
-  };
-
-  const handlePhotoClick = () => {
-    setEnlargeMain(!enlargeMain);
-  };
-
   return (
     <section style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
@@ -79,12 +70,6 @@ const ProductDetails = () => {
                   <CurrentIndexContext.Provider value={{ currentIndex, setCurrentIndex }}>
                     <CurrentImageContext.Provider value={{ currentImage, setCurrentImage }}>
                       <CurrentStylePhotosContext.Provider value={{ currentStylePhotos, setCurrentStylePhotos }}>
-                        {/* {enlargeMain ?
-                          <img id="enlarge" style={enlargeStyles} onClick={handlePhotoClick} src={currentImage}></img>:
-                          <>
-                            <ImageGallery />
-                            <ProductInfo />
-                          </>} */}
                         <ImageGallery />
                         <ProductInfo />
                         <div id="portal"></div>
