@@ -32,8 +32,6 @@ const StyleSelector = () => {
     setCurrentStylePhotos(style.photos);
     setCurrentSku(null);
     setCurrentQuantity(null);
-    console.log('currentIndex:', currentIndex);
-    console.log('style.photos.length:', style.photos.length - 1);
     if (currentIndex > style.photos.length - 1) {
       setCurrentIndex(0);
       setCurrentImage(style.photos[0].thumbnail_url);
