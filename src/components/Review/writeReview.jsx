@@ -64,10 +64,7 @@ const WriteReview = (props) => {
     };
     console.log(finalParam);
     axios
-      .post('reviews', {
-        params: finalParam,
-        type: 'application/json',
-      })
+      .post('reviews', finalParam)
       .then((res) => {
         console.log(res);
       })
@@ -163,7 +160,10 @@ const WriteReview = (props) => {
             No
           </label>
         </div>
-        <Characteristics CharacteristicsReview={CharacteristicsReview} />
+        <Characteristics
+          CharacteristicsReview={CharacteristicsReview}
+          metaData={props.metaData ? props.metaData : null}
+        />
         <Input
           summaryReview={summaryReview}
           bodyReview={bodyReview}

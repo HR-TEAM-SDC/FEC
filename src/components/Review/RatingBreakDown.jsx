@@ -87,7 +87,7 @@ const BreakDown = (props) => {
 
   var ratingBarStyle = (starNumber) => {
     var percentage = starPercentage(starNumber);
-    var style = { backgroundColor: 'green', height: '10px', width: percentage };
+    var style = { backgroundColor: 'green', height: '10px', width: percentage, borderRadius: '5px' };
     return style;
   };
 
@@ -120,17 +120,8 @@ const BreakDown = (props) => {
           <span className="5star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;&#9733;
           </span>
-          <div
-            className="bar"
-            style={{
-              backgroundColor: 'grey',
-              width: '100px',
-              height: '10px',
-              display: 'inline-block',
-              position: 'relative',
-            }}
-          >
-            <div style={ratingBarStyle(5)}></div>
+          <div className="bar">
+            <div className="breakdown-bar" style={ratingBarStyle(5)}></div>
           </div>
           <span>{ratingData[5]}</span>
         </div>
@@ -138,17 +129,8 @@ const BreakDown = (props) => {
           <span className="4star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;
           </span>
-          <div
-            className="bar"
-            style={{
-              backgroundColor: 'grey',
-              width: '100px',
-              height: '10px',
-              display: 'inline-block',
-              position: 'relative',
-            }}
-          >
-            <div style={ratingBarStyle(4)}></div>
+          <div className="bar">
+            <div className="breakdown-bar" style={ratingBarStyle(4)}></div>
           </div>
           <span>{ratingData[4]}</span>
         </div>
@@ -156,17 +138,8 @@ const BreakDown = (props) => {
           <span className="3star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;
           </span>
-          <div
-            className="bar"
-            style={{
-              backgroundColor: 'grey',
-              width: '100px',
-              height: '10px',
-              display: 'inline-block',
-              position: 'relative',
-            }}
-          >
-            <div style={ratingBarStyle(3)}></div>
+          <div className="bar">
+            <div className="breakdown-bar" style={ratingBarStyle(3)}></div>
           </div>
           <span>{ratingData[3]}</span>
         </div>
@@ -174,17 +147,8 @@ const BreakDown = (props) => {
           <span className="2star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;
           </span>
-          <div
-            className="bar"
-            style={{
-              backgroundColor: 'grey',
-              width: '100px',
-              height: '10px',
-              display: 'inline-block',
-              position: 'relative',
-            }}
-          >
-            <div style={ratingBarStyle(2)}></div>
+          <div className="bar">
+            <div className="breakdown-bar" style={ratingBarStyle(2)}></div>
           </div>
           <span>{ratingData[2]}</span>
         </div>
@@ -192,17 +156,8 @@ const BreakDown = (props) => {
           <span className="1star" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;
           </span>
-          <div
-            className="bar"
-            style={{
-              backgroundColor: 'grey',
-              width: '100px',
-              height: '10px',
-              display: 'inline-block',
-              position: 'relative',
-            }}
-          >
-            <div style={ratingBarStyle(1)}></div>
+          <div className="bar">
+            <div className="breakdown-bar" style={ratingBarStyle(1)}></div>
           </div>
           <span>{ratingData[1]}</span>
         </div>

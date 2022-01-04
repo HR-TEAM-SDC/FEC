@@ -74,6 +74,22 @@ const RRIndex = (props) => {
     writeReview ? setWriteReview(false) : setWriteReview(true);
   };
 
+  var fetchMoreData = (newNumber, sort) => {
+    var id = currentProduct.id;
+    axios
+      .get('reviews/', {
+        params: {
+          product_id: id,
+          sort: sort,
+          page: newNumber,
+        },
+      })
+      .then((res) => {
+        setData(res.data.results);
+        setfilterData(res.data.results);
+      });
+  };
+
   return (
     <div className="reviewList">
       <h2>RATINGS AND REVIEWS</h2>
@@ -88,7 +104,14 @@ const RRIndex = (props) => {
           clearAll={clearAll}
         />
       ) : null}
-      {<ReviewList data={filterData} count={filterData.length} id={currentProduct ? currentProduct.id : null} />}
+      {
+        <ReviewList
+          data={filterData}
+          count={metaData ? Number(metaData.recommended.false) + Number(metaData.recommended.true) : null}
+          id={currentProduct ? currentProduct.id : null}
+          fetchMoreData={fetchMoreData}
+        />
+      }
       <div className="writeReview">
         {writeReview ? null : (
           <button className="writeReviewButton" onClick={writeReviewClick}>
@@ -100,6 +123,7 @@ const RRIndex = (props) => {
             id={currentProduct ? currentProduct.id : null}
             name={currentProduct ? currentProduct.name : null}
             writeReviewClick={writeReviewClick}
+            metaData={metaData ? metaData : null}
           />
         ) : null}
       </div>
