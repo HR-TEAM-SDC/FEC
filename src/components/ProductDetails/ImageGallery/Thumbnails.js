@@ -44,6 +44,7 @@ const Thumbnails = (props) => {
   const slideLeft = () => {
     setFirstIndex(firstIndex - 1);
     setLastIndex(lastIndex - 1);
+    console.log('currentIndex on left click:', currentIndex);
   };
 
   const slideRight = () => {

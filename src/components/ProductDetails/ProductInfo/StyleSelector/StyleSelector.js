@@ -25,6 +25,7 @@ const StyleSelector = () => {
   }, [currentStyle]);
 
   const styleClickHandler = (style) => {
+    console.log(style);
     if (currentStyle === style) {
       return;
     }
@@ -38,8 +39,6 @@ const StyleSelector = () => {
     } else {
       setCurrentImage(style.photos[currentIndex].thumbnail_url);
     }
-    // setCurrentImage(style.photos[currentIndex].thumbnail_url);
-    // console.log('currentSize:', currentSize);
   };
 
   const thumbnailsStyle = {

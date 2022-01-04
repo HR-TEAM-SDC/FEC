@@ -25,7 +25,7 @@ const Thumbnail = (props) => {
   return (
     <img
       onClick={props.handleThumbnailClick}
-      style={props.currentIndex === props.index ? selectedThumbnailStyle : thumbnailStyle}
+      style={props.currentImage === props.photo.thumbnail_url ? selectedThumbnailStyle : thumbnailStyle}
       index={props.index}
       src={props.photo.thumbnail_url}
     ></img>
