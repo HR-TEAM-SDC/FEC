@@ -62,7 +62,6 @@ const WriteReview = (props) => {
       photos: photoURLs,
       characteristics: characteristics,
     };
-    console.log(finalParam);
     axios
       .post('reviews', finalParam)
       .then((res) => {
