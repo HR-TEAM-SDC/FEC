@@ -3,6 +3,8 @@ import { CurrentIndexContext, CurrentImageContext } from '../ProductDetails';
 import { CurrentStyleContext } from '../ProductDetails';
 import Thumbnails from './Thumbnails';
 import MainImageModal from './MainImageModal';
+import LeftArrow from './LeftArrow';
+import RightArrow from './RightArrow';
 
 const MainImage = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +20,17 @@ const MainImage = (props) => {
       }
     });
   }, []);
+
+  const containerStyle = {
+    position: 'relative',
+    width: '50%',
+  };
+
+  const buttonStyle = {
+    position: 'absolute',
+    top: '50%',
+    bottom: '50%',
+  };
 
   const mainImageStyle = {
     borderStyle: 'solid',

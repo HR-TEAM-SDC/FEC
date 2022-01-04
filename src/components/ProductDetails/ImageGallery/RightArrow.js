@@ -32,7 +32,10 @@ const RightArrow = (props) => {
     <div>
       {currentStylePhotos ? (
         currentIndex < currentStylePhotos.length - 1 ? (
-          <button onClick={handleClick}> Right </button>
+          <button style={props.style} onClick={handleClick}>
+            {' '}
+            Right{' '}
+          </button>
         ) : null
       ) : null}
     </div>

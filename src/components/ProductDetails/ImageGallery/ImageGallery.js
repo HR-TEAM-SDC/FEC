@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from 'react';
 import MainImage from './MainImage';
-import Thumbnails from './Thumbnails';
+import LeftArrow from './LeftArrow';
+import RightArrow from './RightArrow';
 import { StylesContext, CurrentStyleContext } from '../ProductDetails';
 
 export const CurrentImageContext = createContext();
@@ -14,11 +15,14 @@ const ImageGallery = () => {
     borderWidth: '1px',
     width: '45%',
     justifyContent: 'center',
+    alignItems: 'center',
   };
 
   return (
     <section style={imageGalleryStyle}>
+      <LeftArrow />
       <MainImage currentStyle={currentStyle} />
+      <RightArrow />
     </section>
   );
 };
