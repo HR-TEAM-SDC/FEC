@@ -12,7 +12,7 @@ const StyleSelector = () => {
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
   const { setCurrentQuantity } = useContext(CurrentQuantityContext);
-  const { currentIndex } = useContext(CurrentIndexContext);
+  const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { setCurrentImage } = useContext(CurrentImageContext);
   const { setCurrentStylePhotos } = useContext(CurrentStylePhotosContext);
 
@@ -32,6 +32,8 @@ const StyleSelector = () => {
     setCurrentStylePhotos(style.photos);
     setCurrentSku(null);
     setCurrentQuantity(null);
+    console.log('currentIndex:', currentIndex);
+    console.log('style.photos.length:', style.photos.length - 1);
     if (currentIndex > style.photos.length - 1) {
       setCurrentIndex(0);
       setCurrentImage(style.photos[0].thumbnail_url);
