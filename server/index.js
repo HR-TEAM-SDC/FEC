@@ -45,3 +45,8 @@ app.delete('/outfit/:id', (req, res) => {
 app.listen(3000, () => {
   console.log(`listening on port 3000`);
 });
+
+//Q&A section
+app.get('/newQuestion/:id', (res, req) => {
+  res.status(201).send('You got it');
+});
