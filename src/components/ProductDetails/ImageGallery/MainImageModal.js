@@ -65,10 +65,7 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, children 
         </button>
         <LeftArrow isOpen={isOpen} style={leftArrowStyles} />
         <RightArrow isOpen={isOpen} style={rightArrowStyles} />
-        {/* <button style={leftArrowStyles}>Left</button> */}
-        {/* <button style={rightArrowStyles}>Right</button> */}
         <img style={imgStyles} src={currentImage}></img>
-        {/* <button>hey</button> */}
         {/* <img style={imgStyles} src='../imgs/left'></img> */}
       </div>
     </>,

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, createContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CurrentIndexContext, CurrentImageContext } from '../ProductDetails';
 import { CurrentStyleContext } from '../ProductDetails';
 import Thumbnails from './Thumbnails';

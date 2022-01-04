@@ -26,16 +26,7 @@ const LeftArrow = (props) => {
     );
   }
 
-  return (
-    <div>
-      {currentIndex > 0 ? (
-        <button onClick={handleClick} style={props.isOpen ? props.style : null}>
-          {' '}
-          Left
-        </button>
-      ) : null}
-    </div>
-  );
+  return <div>{currentIndex > 0 ? <button onClick={handleClick}> Left</button> : null}</div>;
 };
 
 export default LeftArrow;

@@ -26,16 +26,19 @@ const StyleSelector = () => {
 
   const styleClickHandler = (style) => {
     setCurrentStyle(style);
-    if (currentIndex > currentStyle.photos.length - 1) {
-      setCurrentIndex(0);
-    }
-    console.log('currentStyle:', currentStyle);
+    // console.log('currentStyle:', currentStyle);
 
     setCurrentStylePhotos(style.photos);
     setCurrentSku(null);
     setCurrentQuantity(null);
-    setCurrentImage(style.photos[currentIndex].thumbnail_url);
-    console.log('currentSize:', currentSize);
+    if (currentIndex > currentStyle.photos.length - 1) {
+      setCurrentIndex(0);
+      setCurrentImage(style.photos[0].thumbnail_url);
+    } else {
+      setCurrentImage(style.photos[currentIndex].thumbnail_url);
+    }
+    // setCurrentImage(style.photos[currentIndex].thumbnail_url);
+    // console.log('currentSize:', currentSize);
   };
 
   const thumbnailsStyle = {

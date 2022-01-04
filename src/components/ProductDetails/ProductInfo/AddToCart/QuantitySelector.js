@@ -52,7 +52,9 @@ const QuantitySelector = () => {
   return (
     <div>
       Quantity:
-      <select onChange={handleQuantityChange}>{renderQuantity()}</select>
+      <select id="quantity-menu" onChange={handleQuantityChange}>
+        {renderQuantity()}
+      </select>
     </div>
   );
 };

@@ -41,6 +41,8 @@ const SizeSelector = () => {
     // the next selected Sku's quantity (skus[currentSku].quantity)
     // Then set current quantity to 1, otherwise, dont change current quantity
     setCurrentQuantity(1);
+    let quantityMenu = document.getElementById('quantity-menu');
+    quantityMenu.value = 1;
   };
 
   if (currentStyle) {
