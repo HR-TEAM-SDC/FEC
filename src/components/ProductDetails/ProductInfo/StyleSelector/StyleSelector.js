@@ -25,6 +25,9 @@ const StyleSelector = () => {
   }, [currentStyle]);
 
   const styleClickHandler = (style) => {
+    if (currentStyle === style) {
+      return;
+    }
     setCurrentStyle(style);
     setCurrentStylePhotos(style.photos);
     setCurrentSku(null);
