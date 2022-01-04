@@ -19,7 +19,6 @@ const ImageGallery = () => {
   return (
     <section style={imageGalleryStyle}>
       <MainImage currentStyle={currentStyle} />
-      {/* <Thumbnails currentStyle={currentStyle} /> */}
     </section>
   );
 };

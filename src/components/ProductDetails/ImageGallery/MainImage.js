@@ -43,10 +43,8 @@ const MainImage = (props) => {
         }}
         setIsOpen={setIsOpen}
         currentImage={currentImage}
-      >
-        hey
-      </MainImageModal>
-      <img src="../imgs/checkmark.png"></img>
+      ></MainImageModal>
+      {/* <img src="../imgs/checkmark.png"></img> */}
     </div>
   );
 };

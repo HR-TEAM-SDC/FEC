@@ -3,8 +3,9 @@ import React from 'react';
 const Thumbnail = (props) => {
   const thumbnailStyle = {
     objectFit: 'cover',
-    width: '50px',
-    height: '50px',
+    width: '40px',
+    height: '40px',
+    padding: '1px',
   };
 
   const selectedThumbnailStyle = {
@@ -12,14 +13,15 @@ const Thumbnail = (props) => {
     borderWidth: '5px',
     borderColor: 'yellow',
     objectFit: 'cover',
-    width: '50px',
-    height: '50px',
+    width: '40px',
+    height: '40px',
   };
   // if (props.currentIndex) {
   //   if (props.currentIndex !== props.index) {
   //     props.setCurrentIndex(0);
   //   }
   // }
+
   return (
     <img
       onClick={props.handleThumbnailClick}

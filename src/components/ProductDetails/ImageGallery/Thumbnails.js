@@ -1,18 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Thumbnail from './Thumbnail';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import { CurrentImageContext } from '../ProductDetails';
 import { CurrentIndexContext } from '../ProductDetails';
+import { CurrentStylePhotosContext } from '../ProductDetails';
 
 const Thumbnails = (props) => {
+  const [firstIndex, setFirstIndex] = useState(0);
+  const [lastIndex, setLastIndex] = useState(null);
+
   let photos = props.currentStyle.photos;
   let { currentImage, setCurrentImage } = useContext(CurrentImageContext);
   let { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
+  let { currentStylePhotos } = useContext(CurrentStylePhotosContext);
+
+  useEffect(() => {
+    if (currentStylePhotos) {
+      setFirstIndex(0);
+      if (currentStylePhotos.length < 7) {
+        setLastIndex(currentStylePhotos.length - 1);
+      } else {
+        setLastIndex(6);
+      }
+    }
+  }, [currentStylePhotos]);
 
   const thumbnailsStyle = {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     borderStyle: 'solid',
     borderWidth: '1px',
@@ -21,19 +37,27 @@ const Thumbnails = (props) => {
   const handleThumbnailClick = () => {
     let index = event.target.getAttribute('index');
     let src = event.target.getAttribute('src');
-    // console.log("Thumbnail clicked...");
-    // console.log("src:", src);
-    // console.log("currentIndex:", currentIndex);
     setCurrentImage(src);
     setCurrentIndex(Number(index));
   };
 
+  const slideLeft = () => {
+    setFirstIndex(firstIndex - 1);
+    setLastIndex(lastIndex - 1);
+  };
+
+  const slideRight = () => {
+    setFirstIndex(firstIndex + 1);
+    setLastIndex(lastIndex + 1);
+  };
+
   return (
     <div style={thumbnailsStyle}>
-      <LeftArrow />
+      {/* <LeftArrow /> */}
+      {firstIndex === 0 ? null : <button onClick={slideLeft}>{'<<<'}</button>}
       <span>
         {photos
-          ? photos.map((photo, index) => {
+          ? photos.slice(firstIndex, lastIndex + 1).map((photo, index) => {
               return (
                 <Thumbnail
                   handleThumbnailClick={handleThumbnailClick}
@@ -48,7 +72,12 @@ const Thumbnails = (props) => {
             })
           : null}
       </span>
-      <RightArrow />
+      {currentStylePhotos ? (
+        lastIndex === currentStylePhotos.length - 1 ? null : (
+          <button onClick={slideRight}>{'>>>'}</button>
+        )
+      ) : null}
+      {/* <RightArrow /> */}
     </div>
   );
 };
