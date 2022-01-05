@@ -50,9 +50,13 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentSt
   };
 
   const thumbnailStyles = {
+    display: 'flex',
     position: 'fixed',
-    marginTop: '10px',
-    marginLeft: '10px',
+    bottom: 40,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   };
 
   if (!isOpen) {

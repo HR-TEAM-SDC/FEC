@@ -59,7 +59,6 @@ const MainImage = (props) => {
         currentImage={currentImage}
         currentStyle={currentStyle}
       ></MainImageModal>
-      {/* <img src="../imgs/checkmark.png"></img> */}
     </div>
   );
 };

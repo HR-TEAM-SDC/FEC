@@ -17,8 +17,30 @@ const Thumbnail = (props) => {
     height: '40px',
   };
 
+  const iconStyle = {
+    width: '20px',
+    height: '20px',
+    backgroundColor: 'white',
+    borderRadius: '50%',
+  };
+
+  const selectedStyle = {
+    width: '20px',
+    height: '20px',
+    backgroundColor: '#BBB',
+    borderRadius: '50%',
+  };
+
   if (props.isOpen) {
-    // Return icons instead of thumbnails
+    return (
+      // Return icons instead of thumbnails
+      <div
+        onClick={props.handleThumbnailClick}
+        style={props.currentImage === props.photo.thumbnail_url ? iconStyle : selectedStyle}
+        index={props.index}
+        src={props.photo.thumbnail_url}
+      ></div>
+    );
   }
 
   return (

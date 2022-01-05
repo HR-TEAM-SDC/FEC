@@ -52,23 +52,18 @@ const Thumbnails = (props) => {
     setLastIndex(lastIndex + 1);
   };
 
-  const columnStyle = {
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    borderColor: '#FFF',
-    alignItems: 'center',
+  const rowStyle = {
     display: 'flex',
-    flexDirection: 'column',
   };
 
   if (props.isOpen) {
     return (
       <div style={props.style}>
-        <div>
+        <div style={rowStyle}>
           {photos
-            ? photos.slice(firstIndex, lastIndex + 1).map((photo, index) => {
+            ? photos.map((photo, index) => {
                 return (
-                  <div style={columnStyle}>
+                  <div>
                     <Thumbnail
                       isOpen={props.isOpen}
                       handleThumbnailClick={handleThumbnailClick}
@@ -90,7 +85,6 @@ const Thumbnails = (props) => {
 
   return (
     <div style={thumbnailsStyle}>
-      {/* <LeftArrow /> */}
       {firstIndex === 0 ? null : <button onClick={slideLeft}>{'<<<'}</button>}
       <span>
         {photos
@@ -114,7 +108,6 @@ const Thumbnails = (props) => {
           <button onClick={slideRight}>{'>>>'}</button>
         )
       ) : null}
-      {/* <RightArrow /> */}
     </div>
   );
 };
