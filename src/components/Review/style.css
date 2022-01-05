@@ -4,6 +4,16 @@
   margin: auto;
 }
 
+.helpful:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.review-report:hover {
+  color: gold;
+  cursor: pointer;
+}
+
 .ratingSummary {
   display: inline-block;
   width: 20%;
@@ -16,6 +26,7 @@
   background-color: #21aeca;
   box-shadow: 2px 2px 5px;
   margin: 10px;
+  padding: 10px;
 }
 
 .breakdown-filter {
@@ -28,7 +39,17 @@
   cursor: pointer;
 }
 
+.bar {
+  background-color: white;
+  width: 100px;
+  height: 10px;
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+}
+
 .stars:hover {
+  color: gold;
   cursor: pointer;
 }
 
@@ -222,12 +243,12 @@
 .Characteristics-names {
   font-weight: bolder;
   font-size: 15px;
-  width: 75px;
+  width: 65px;
   display: block;
   margin: 5px;
 }
 
 .Characteristics-box {
-  width: 200px;
+  width: 165px;
   display: inline-block;
 }
