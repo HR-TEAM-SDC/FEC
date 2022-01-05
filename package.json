@@ -1,5 +1,10 @@
 {
   "name": "fec",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -46,6 +51,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.5",
     "prettier": "2.5.1",
     "pretty-quick": "^3.1.3",

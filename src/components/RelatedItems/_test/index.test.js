@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RelatedItems from '../index.jsx';
 import { providerProps, customRender } from './sample';
-import { testEnvironment } from '../../../../jest.config.js';
 
 describe('Related Items', () => {
   beforeEach(() => {

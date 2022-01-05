@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CardContainer from '../CardContainer.jsx';
 import { providerProps, customRender, relatedItems } from './sample';
-import { testEnvironment } from '../../../../jest.config.js';
 
 describe('Card Container', () => {
   beforeEach(() => {

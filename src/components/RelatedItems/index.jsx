@@ -3,7 +3,7 @@ import axios from '../../apis/atelier.js';
 import localhost from '../../apis/localhost.js';
 import CardContainer from './CardContainer.jsx';
 import { AppContext } from '../context';
-// import './styles.css';
+import './styles.css';
 
 const RelatedItems = () => {
   const [relatedItems, setRelatedItems] = useState(null);
