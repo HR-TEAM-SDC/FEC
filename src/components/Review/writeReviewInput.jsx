@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import './style.css';
 
 const Input = (props) => {
   const [minimumLength, setMinimumLength] = useState(null);
@@ -13,10 +12,6 @@ const Input = (props) => {
 
   var uploadMultiplePhotos = (e) => {
     var photoArray = photoURLs;
-    // var test = URL.createObjectURL(e.target.files[0])
-    // for (var i = 0; i < e.target.files; i++) {
-    //   photoArray.push(URL.createObjectURL(e.target.files[i]))
-    // }
     photoArray.push(URL.createObjectURL(e.target.files[0]));
     setPhotoURLs(photoArray);
     props.photoReview(photoArray);
@@ -70,7 +65,7 @@ const Input = (props) => {
         maxLength="60"
         onChange={props.nicknameReview}
       ></input>
-      <p>For authentication reasons, you will not be emailed</p>
+      <p>For privacy reasons, do not use your full name or email address</p>
       <p>Your email</p>
       <input
         id="email"
@@ -80,6 +75,7 @@ const Input = (props) => {
         maxLength="60"
         onChange={props.emailReview}
       ></input>
+      <p>For authentication reasons, you will not be emailed</p>
     </div>
   );
 };

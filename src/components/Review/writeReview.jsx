@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import './style.css';
 import Characteristics from './Characteristics.jsx';
 import Input from './writeReviewInput.jsx';
 import axios from '../../apis/atelier.js';
@@ -62,12 +61,8 @@ const WriteReview = (props) => {
       photos: photoURLs,
       characteristics: characteristics,
     };
-    console.log(finalParam);
     axios
-      .post('reviews', {
-        params: finalParam,
-        type: 'application/json',
-      })
+      .post('reviews', finalParam)
       .then((res) => {
         console.log(res);
       })
@@ -163,7 +158,10 @@ const WriteReview = (props) => {
             No
           </label>
         </div>
-        <Characteristics CharacteristicsReview={CharacteristicsReview} />
+        <Characteristics
+          CharacteristicsReview={CharacteristicsReview}
+          metaData={props.metaData ? props.metaData : null}
+        />
         <Input
           summaryReview={summaryReview}
           bodyReview={bodyReview}

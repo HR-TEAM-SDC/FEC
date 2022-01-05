@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import IndividualReviews from './IndividualReviews.jsx';
 import axios from '../../apis/atelier.js';
-import './style.css';
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
   const [addMoreTracker, setaddMoreTracker] = useState(2);
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [currentDataLengthTracker, setcurrentDataLengthTracker] = useState(props.data.length);
+  const [sortTrack, setSortTrack] = useState('relevant');
 
   useEffect(() => setData(props.data), [props.data]);
 
   useEffect(() => {
     setcurrentDataLengthTracker(props.data.length);
     forceUpdate();
-  }, [props.data]);
+  }, []);
 
   useEffect(() => {
     if (props.data.length <= 2) {
@@ -23,12 +23,6 @@ const ReviewList = (props) => {
       setaddMoreTracker(props.data.length);
     }
   }, [props.data]);
-  // useEffect(
-  //   () => {
-  //     // setaddMoreTracker(2)
-  //     setData(props.data.slice(0, addMoreTracker))},
-  //   [props.data, addMoreTracker]
-  // );
 
   var sort = (e) => {
     if (e.target.value === 'relevant') {
@@ -37,9 +31,11 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'relevant',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
+      setSortTrack('relevant');
     }
 
     if (e.target.value === 'helpful') {
@@ -48,9 +44,11 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'helpful',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
+      setSortTrack('helpful');
     }
     if (e.target.value === 'newest') {
       axios
@@ -58,15 +56,23 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'newest',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
+      setSortTrack('newest');
     }
   };
 
   var showmoreOnclick = () => {
     var number = addMoreTracker + 2;
+    console.log(number);
     setaddMoreTracker(number);
+    if (number >= props.data.length) {
+      number = number + 20;
+      props.fetchMoreData(number, sortTrack);
+      forceUpdate();
+    }
   };
 
   var search = (e) => {
