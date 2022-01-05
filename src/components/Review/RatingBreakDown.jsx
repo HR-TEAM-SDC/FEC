@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import ProductBreakDown from './productBreakDown.jsx';
-import './style.css';
 
 const BreakDown = (props) => {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);

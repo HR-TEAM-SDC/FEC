@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import './style.css';
 import Characteristics from './Characteristics.jsx';
 import Input from './writeReviewInput.jsx';
 import axios from '../../apis/atelier.js';

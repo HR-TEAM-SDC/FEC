@@ -86,9 +86,10 @@ const IndividualReviews = (props) => {
       <div className="helpfulness">
         Helpful?
         <span className="helpful" onClick={helpfulOnClick}>
-          Yes ({helpfulness}) |{' '}
+          Yes ({helpfulness})
         </span>
-        <span id="report" onClick={reportOnClick}>
+        <span> | </span>
+        <span className="review-report" onClick={reportOnClick}>
           Report
         </span>
       </div>

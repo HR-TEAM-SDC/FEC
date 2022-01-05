@@ -4,6 +4,16 @@
   margin: auto;
 }
 
+.helpful:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.review-report:hover {
+  color: gold;
+  cursor: pointer;
+}
+
 .ratingSummary {
   display: inline-block;
   width: 20%;
@@ -16,6 +26,7 @@
   background-color: #21aeca;
   box-shadow: 10px 10px 18px;
   margin: 10px;
+  padding: 10px;
 }
 
 .breakdown-filter {
@@ -38,6 +49,7 @@
 }
 
 .stars:hover {
+  color: gold;
   cursor: pointer;
 }
 

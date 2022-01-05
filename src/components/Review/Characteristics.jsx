@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 
 const Characteristics = (props) => {
   var size = ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'];

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import IndividualReviews from './IndividualReviews.jsx';
 import axios from '../../apis/atelier.js';
-import './style.css';
 
 const ReviewList = (props) => {
   const [data, setData] = useState(props.data.slice(0, 2));
@@ -32,6 +31,7 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'relevant',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
@@ -44,6 +44,7 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'helpful',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
@@ -55,6 +56,7 @@ const ReviewList = (props) => {
           params: {
             product_id: props.id, // need to change, will import data from main part.
             sort: 'newest',
+            count: 20,
           },
         })
         .then((res) => setData(res.data.results));
@@ -64,11 +66,11 @@ const ReviewList = (props) => {
 
   var showmoreOnclick = () => {
     var number = addMoreTracker + 2;
+    console.log(number);
     setaddMoreTracker(number);
     if (number >= props.data.length) {
-      var newNumber = Math.ceil(addMoreTracker / 5);
-      console.log(addMoreTracker);
-      props.fetchMoreData(newNumber, sortTrack);
+      number = number + 20;
+      props.fetchMoreData(number, sortTrack);
       forceUpdate();
     }
   };

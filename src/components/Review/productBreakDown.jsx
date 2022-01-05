@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
 
 const ProductBreakDown = (props) => {
   var percentage = (num) => {

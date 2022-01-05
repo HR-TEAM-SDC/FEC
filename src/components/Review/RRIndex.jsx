@@ -15,13 +15,13 @@ const RRIndex = (props) => {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const { currentProduct } = useContext(AppContext);
 
-  //JAKE CHANGE THIS PART TO WHAT YOU WANT TO DO, A
-
   useEffect(() => {
     if (currentProduct) {
       initialReview();
     }
   }, [currentProduct]);
+
+  // var currentProduct = { id: 40344};
 
   var initialReview = () => {
     var id = currentProduct.id;
@@ -30,6 +30,7 @@ const RRIndex = (props) => {
         params: {
           product_id: id,
           sort: 'relevant',
+          count: 20,
         },
       })
       .then((res) => {
@@ -44,14 +45,10 @@ const RRIndex = (props) => {
       })
       .then((res) => setMetaData(res.data));
   };
+
   useEffect(() => {
     setfilterData(filterData);
   }, [filterData]);
-
-  // const divStyle = {
-  //   color: "black",
-  //   border: "1px solid rgba(0, 0, 0, 0.05)",
-  // };
 
   var filterDataSet = (result) => {
     setfilterData(result);
@@ -81,7 +78,7 @@ const RRIndex = (props) => {
         params: {
           product_id: id,
           sort: sort,
-          page: newNumber,
+          count: newNumber,
         },
       })
       .then((res) => {
