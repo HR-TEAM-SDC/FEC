@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from '../apis/atelier';
 import ProductDetails from './ProductDetails/ProductDetails';
 import RelatedItems from './RelatedItems/index.jsx';
@@ -9,10 +9,16 @@ import './styles.css';
 
 const App = () => {
   const [currentProduct, setCurrentProduct] = useState(null);
+  const thisRef = useRef();
 
   useEffect(() => {
     fetchCurrentProduct();
+    thisRef.current.addEventListener('click', analytics);
   }, []);
+
+  const analytics = (e) => {
+    console.log(e);
+  };
 
   const fetchCurrentProduct = async () => {
     const { data: products } = await axios.get('products');
@@ -21,7 +27,7 @@ const App = () => {
   };
 
   return (
-    <main>
+    <main ref={thisRef}>
       <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
         <ProductDetails />
         <RelatedItems />
