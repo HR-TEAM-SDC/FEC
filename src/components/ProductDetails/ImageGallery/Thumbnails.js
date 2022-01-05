@@ -54,6 +54,7 @@ const Thumbnails = (props) => {
 
   const rowStyle = {
     display: 'flex',
+    gap: '3px',
   };
 
   if (props.isOpen) {

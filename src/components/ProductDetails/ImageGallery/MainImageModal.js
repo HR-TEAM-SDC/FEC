@@ -57,6 +57,7 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentSt
     right: 0,
     justifyContent: 'center',
     flexWrap: 'wrap',
+    gap: '10px',
   };
 
   if (!isOpen) {
