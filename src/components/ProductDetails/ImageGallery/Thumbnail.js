@@ -16,11 +16,10 @@ const Thumbnail = (props) => {
     width: '40px',
     height: '40px',
   };
-  // if (props.currentIndex) {
-  //   if (props.currentIndex !== props.index) {
-  //     props.setCurrentIndex(0);
-  //   }
-  // }
+
+  if (props.isOpen) {
+    // Return icons instead of thumbnails
+  }
 
   return (
     <img

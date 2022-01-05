@@ -39,6 +39,7 @@ const MainImage = (props) => {
     width: '400px',
     height: '500px',
   };
+
   return (
     <div>
       <img
@@ -56,6 +57,7 @@ const MainImage = (props) => {
         }}
         setIsOpen={setIsOpen}
         currentImage={currentImage}
+        currentStyle={currentStyle}
       ></MainImageModal>
       {/* <img src="../imgs/checkmark.png"></img> */}
     </div>

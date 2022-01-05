@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
+import Thumbnails from './Thumbnails';
 
-const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, children }) => {
+const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentStyle, children }) => {
   const modalStyles = {
     position: 'fixed',
-    width: '500px',
+    width: '650px',
     height: '650px',
     top: '50%',
     left: '50%',
@@ -48,6 +49,12 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, children 
     right: 0,
   };
 
+  const thumbnailStyles = {
+    position: 'fixed',
+    marginTop: '10px',
+    marginLeft: '10px',
+  };
+
   if (!isOpen) {
     return null;
   }
@@ -65,6 +72,7 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, children 
         </button>
         <LeftArrow isOpen={isOpen} style={leftArrowStyles} />
         <RightArrow isOpen={isOpen} style={rightArrowStyles} />
+        <Thumbnails isOpen={isOpen} style={thumbnailStyles} currentStyle={currentStyle} />
         <img style={imgStyles} src={currentImage}></img>
         {/* <img style={imgStyles} src='../imgs/left'></img> */}
       </div>
