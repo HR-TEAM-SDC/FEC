@@ -1,4 +1,4 @@
 node_modules
 src/apis/config.js
 yarn.lock
-config.js
+dist
