@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from '../../apis/atelier';
 import { Context } from '../context/context.js';
-import './styles.css';
+// import './styles.css';
 
 const AddAnswerForm = ({ question, handleAddAnswer }) => {
   const { product } = useContext(Context);

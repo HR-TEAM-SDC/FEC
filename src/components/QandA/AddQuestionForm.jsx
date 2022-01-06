@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from '../../apis/atelier';
-import './styles.css';
+// import './styles.css';
 
 const AddQuestionForm = ({ product, handleAddQuestion }) => {
   return (

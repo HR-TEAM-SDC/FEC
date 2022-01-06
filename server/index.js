@@ -47,6 +47,14 @@ app.listen(3000, () => {
 });
 
 //Q&A section
-app.get('/newQuestion/:id', (res, req) => {
-  res.status(201).send('You got it');
+app.get('/new_question/:id', (req, res) => {
+  let productId = req.params.id;
+
+  db.getQuestion(productId, (err, results) => {
+    if (err) {
+      res.status(500).send('Server Error: Failed to get quetions data.', err);
+    } else {
+      res.send(results);
+    }
+  });
 });

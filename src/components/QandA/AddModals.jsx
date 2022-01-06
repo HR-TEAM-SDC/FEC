@@ -1,7 +1,7 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import axios from '../../apis/atelier';
 import { createPortal } from 'react-dom';
-import './styles.css';
+// import './styles.css';
 
 const AddQuestionsModal = ({ children }, ref) => {
   //Open the modal
@@ -41,7 +41,7 @@ const AddQuestionsModal = ({ children }, ref) => {
         <div className="modal-body">{children}</div>
       </div>
     ) : null,
-    document.getElementById('AddModal')
+    document.getElementById('AddModal') || document.createElement('div')
   );
 };
 

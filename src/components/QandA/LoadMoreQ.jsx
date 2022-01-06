@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../apis/atelier';
 import QuestionEntry from './QuestionEntry.jsx';
-import './styles.css';
+// import './styles.css';
 
 const LoadMoreQ = ({ questions }) => {
   return (
