@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CurrentIndexContext, CurrentImageContext } from '../ProductDetails';
 import { CurrentStylePhotosContext } from '../ProductDetails';
 
-const LeftArrow = () => {
+const LeftArrow = (props) => {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { setCurrentImage } = useContext(CurrentImageContext);
   const { currentStylePhotos } = useContext(CurrentStylePhotosContext);
@@ -13,7 +13,28 @@ const LeftArrow = () => {
     setCurrentImage(currentStylePhotos[decrementIndex].thumbnail_url);
   };
 
-  return <div>{currentIndex > 0 ? <button onClick={handleClick}> Left </button> : null}</div>;
+  if (props.isOpen) {
+    return (
+      <div>
+        {currentIndex > 0 ? (
+          <button class="slider" onClick={handleClick} style={props.style}>
+            {'<'}
+          </button>
+        ) : null}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {currentIndex > 0 ? (
+        <button class="slider" style={props.style} onClick={handleClick}>
+          {' '}
+          {'<'}
+        </button>
+      ) : null}
+    </div>
+  );
 };
 
 export default LeftArrow;

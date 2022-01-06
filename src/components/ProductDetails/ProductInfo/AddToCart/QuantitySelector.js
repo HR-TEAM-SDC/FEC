@@ -33,7 +33,6 @@ const QuantitySelector = () => {
     let quantity = 1;
 
     if (currentSku) {
-      // console.log("currentStyle.skus[currentSku]:", currentStyle.skus[currentSku]);
       if (currentStyle.skus[currentSku].quantity > 15) {
         for (let i = 0; i < 15; i++) {
           content.push(<QuantityOption key={quantity} quantity={quantity} />);
@@ -52,7 +51,9 @@ const QuantitySelector = () => {
   return (
     <div>
       Quantity:
-      <select onChange={handleQuantityChange}>{renderQuantity()}</select>
+      <select id="quantity-menu" onChange={handleQuantityChange}>
+        {renderQuantity()}
+      </select>
     </div>
   );
 };

@@ -11,13 +11,6 @@ const SizeSelector = () => {
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { setCurrentQuantity } = useContext(CurrentQuantityContext);
 
-  // useEffect(() => {
-  //   console.log('currentStyle in useEffect:', currentStyle.skus)
-  //   let skus = Object.keys(currentStyle.skus);
-  //   console.log('skus:', skus);
-  //   setCurrentSku(skus[0])
-  // }, [currentSize]);
-
   const renderSizes = () => {
     let content = [];
     let index = 0;
@@ -33,14 +26,10 @@ const SizeSelector = () => {
     let index = event.target.selectedIndex;
     let sku = event.target.childNodes[index].getAttribute('sku');
     setCurrentSku(sku);
-    let prevSize = currentSize;
     setCurrentSize(event.target.value);
-    // console.log('currentSize:', currentSize);
-    let curSize = currentSize;
-    // If previous selected quantity is greater than
-    // the next selected Sku's quantity (skus[currentSku].quantity)
-    // Then set current quantity to 1, otherwise, dont change current quantity
     setCurrentQuantity(1);
+    let quantityMenu = document.getElementById('quantity-menu');
+    quantityMenu.value = 1;
   };
 
   if (currentStyle) {

@@ -13,7 +13,9 @@ const ProductRating = () => {
   return (
     <h4>
       Product Rating {averageRating}
-      <span>[Reviews Link that jumps to review section on click]</span>
+      <span>
+        <a href="#reviewList">See Reviews</a>
+      </span>
     </h4>
   );
 };
