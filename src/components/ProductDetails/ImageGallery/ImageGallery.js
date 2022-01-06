@@ -5,6 +5,7 @@ import RightArrow from './RightArrow';
 import { StylesContext, CurrentStyleContext } from '../ProductDetails';
 
 export const CurrentImageContext = createContext();
+export const CurrentIndexContext = createContext();
 
 const ImageGallery = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
