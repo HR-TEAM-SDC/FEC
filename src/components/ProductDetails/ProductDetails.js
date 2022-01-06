@@ -29,6 +29,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (currentProduct) {
+      setCurrentSku(null);
       fetchData();
     }
   }, [currentProduct]);
@@ -50,14 +51,14 @@ const ProductDetails = () => {
     justifyContent: 'space-evenly',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '100%',
+    width: '90%',
     height: 'auto',
     margin: 'auto',
     padding: '10px',
   };
 
   return (
-    <section style={detailStyles}>
+    <section className="product-detail" style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
         <StylesContext.Provider value={styles}>
           <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>

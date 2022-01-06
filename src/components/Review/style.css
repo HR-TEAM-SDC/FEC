@@ -1,6 +1,6 @@
 .reviewList {
   text-align: center;
-  width: 75%;
+  width: 90%;
   margin: auto;
 }
 
@@ -40,7 +40,7 @@
   border-radius: 10px;
   border-color: #21aeca;
   background-color: #21aeca;
-  box-shadow: 10px 10px 18px;
+  box-shadow: 2px 2px 5px;
   margin: 10px;
   padding: 10px;
 }
@@ -118,7 +118,7 @@
   border-radius: 10px;
   border-color: #21aeca;
   background-color: white;
-  box-shadow: 10px 10px 18px;
+  box-shadow: 2px 2px 5px;
   margin: 20px;
 }
 
@@ -146,7 +146,7 @@
   border-radius: 10px;
   border-color: #21aeca;
   background-color: white;
-  box-shadow: 10px 10px 18px;
+  box-shadow: 2px 2px 5px;
 }
 
 .writeReviewButton:hover {
