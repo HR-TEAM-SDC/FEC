@@ -5,6 +5,7 @@ import RightArrow from './RightArrow';
 import { CurrentImageContext } from '../ProductDetails';
 import { CurrentIndexContext } from '../ProductDetails';
 import { CurrentStylePhotosContext } from '../ProductDetails';
+import '../styles.css';
 
 const Thumbnails = (props) => {
   const [firstIndex, setFirstIndex] = useState(0);
@@ -28,7 +29,7 @@ const Thumbnails = (props) => {
 
   const thumbnailsStyle = {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderStyle: 'solid',
     borderWidth: '1px',
@@ -41,13 +42,12 @@ const Thumbnails = (props) => {
     setCurrentIndex(Number(index));
   };
 
-  const slideLeft = () => {
+  const scrollLeft = () => {
     setFirstIndex(firstIndex - 1);
     setLastIndex(lastIndex - 1);
-    console.log('currentIndex on left click:', currentIndex);
   };
 
-  const slideRight = () => {
+  const scrollRight = () => {
     setFirstIndex(firstIndex + 1);
     setLastIndex(lastIndex + 1);
   };
@@ -86,7 +86,13 @@ const Thumbnails = (props) => {
 
   return (
     <div style={thumbnailsStyle}>
-      {firstIndex === 0 ? null : <button onClick={slideLeft}>{'<<<'}</button>}
+      {firstIndex === 0 ? (
+        <div class="scroll-null"></div>
+      ) : (
+        <button class="scroll" onClick={scrollLeft}>
+          {'<'}
+        </button>
+      )}
       <span>
         {photos
           ? photos.slice(firstIndex, lastIndex + 1).map((photo, index) => {
@@ -105,8 +111,12 @@ const Thumbnails = (props) => {
           : null}
       </span>
       {currentStylePhotos ? (
-        lastIndex === currentStylePhotos.length - 1 ? null : (
-          <button onClick={slideRight}>{'>>>'}</button>
+        lastIndex === currentStylePhotos.length - 1 ? (
+          <div class="scroll-null"></div>
+        ) : (
+          <button class="scroll" onClick={scrollRight}>
+            {'>'}
+          </button>
         )
       ) : null}
     </div>

@@ -1,52 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import Thumbnails from './Thumbnails';
+import '../styles.css';
 
 const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentStyle, children }) => {
-  const modalStyles = {
-    position: 'fixed',
-    width: '650px',
-    height: '650px',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#FFF',
-    zIndex: 1000,
-  };
+  const [backgroundPos, setBackgroundPos] = useState(null);
 
-  const overlayStyles = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    zIndex: 100,
-  };
+  const handleMouseMove = (event) => {
+    let modalContainer = document.getElementById('modal-container');
+    let modalImage = document.getElementById('modal-image');
 
-  const imgStyles = {
-    objectFit: 'cover',
-    width: '100%',
-    height: '100%',
-  };
+    let offsetX = event.nativeEvent.offsetX - modalContainer.offsetLeft;
+    let offsetY = event.nativeEvent.offsetY - modalContainer.offsetTop;
+    let width = modalContainer.offsetWidth;
+    let height = modalContainer.offsetHeight;
 
-  const buttonStyles = {
-    position: 'fixed',
-    top: 0,
-    right: 0,
+    offsetX = (offsetX / width) * 100;
+    offsetY = (offsetY / height) * 100;
+
+    // modalImage.style.transform = 'translate(-' + offsetX + '%, -' + offsetY + '%) scale(2)';
+    // modalImage.style.transform = 'scale(2)';
+  };
+  const handleMouseLeave = (event) => {
+    let modalContainer = document.getElementById('modal-container');
+    let modalImage = document.getElementById('modal-image');
+
+    // modalImage.style.transform = 'translate(-' + offsetX + '%, -' + offsetY + '%) scale(1)';
+    // modalImage.style.transform = 'translate(-50%, -50%) scale(1)';
+    // modalImage.style.transform = 'scale(1)';
   };
 
   const leftArrowStyles = {
     position: 'fixed',
     marginTop: '325px',
+    zIndex: 100,
   };
 
   const rightArrowStyles = {
     position: 'fixed',
     marginTop: '325px',
     right: 0,
+    zIndex: 100,
   };
 
   const thumbnailStyles = {
@@ -57,7 +53,6 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentSt
     right: 0,
     justifyContent: 'center',
     flexWrap: 'wrap',
-    gap: '10px',
   };
 
   if (!isOpen) {
@@ -66,21 +61,20 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentSt
   return ReactDom.createPortal(
     <>
       <div
-        style={overlayStyles}
+        id="modal-overlay"
         onClick={() => {
           setIsOpen(false);
         }}
       ></div>
-      <div style={modalStyles}>
-        <button style={buttonStyles} onClick={closeModal}>
-          Close Modal
+      <figure id="modal-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+        <button class="slider" id="close-modal" onClick={closeModal}>
+          X
         </button>
         <LeftArrow isOpen={isOpen} style={leftArrowStyles} />
         <RightArrow isOpen={isOpen} style={rightArrowStyles} />
         <Thumbnails isOpen={isOpen} style={thumbnailStyles} currentStyle={currentStyle} />
-        <img style={imgStyles} src={currentImage}></img>
-        {/* <img style={imgStyles} src='../imgs/left'></img> */}
-      </div>
+        <img id="modal-image" src={currentImage}></img>
+      </figure>
     </>,
     document.getElementById('portal')
   );

@@ -43,6 +43,7 @@ const MainImage = (props) => {
   return (
     <div>
       <img
+        id="main-image"
         onClick={() => {
           setIsOpen(true);
         }}
