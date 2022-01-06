@@ -14,7 +14,6 @@ const AddToCartButton = () => {
       sku_id: currentSku,
       count: currentQuantity,
     });
-    console.log(postCart);
   };
 
   const buttonOnClick = () => {

@@ -18,9 +18,8 @@ const RightArrow = (props) => {
       <div>
         {currentStylePhotos ? (
           currentIndex < currentStylePhotos.length - 1 ? (
-            <button onClick={handleClick} style={props.style}>
-              {' '}
-              Right{' '}
+            <button class="slider" onClick={handleClick} style={props.style}>
+              {'>'}
             </button>
           ) : null
         ) : null}
@@ -32,9 +31,8 @@ const RightArrow = (props) => {
     <div>
       {currentStylePhotos ? (
         currentIndex < currentStylePhotos.length - 1 ? (
-          <button style={props.style} onClick={handleClick}>
-            {' '}
-            Right{' '}
+          <button class="slider" style={props.style} onClick={handleClick}>
+            {'>'}
           </button>
         ) : null
       ) : null}

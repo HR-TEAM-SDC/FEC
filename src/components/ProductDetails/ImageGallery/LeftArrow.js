@@ -17,9 +17,8 @@ const LeftArrow = (props) => {
     return (
       <div>
         {currentIndex > 0 ? (
-          <button onClick={handleClick} style={props.style}>
-            {' '}
-            Left
+          <button class="slider" onClick={handleClick} style={props.style}>
+            {'<'}
           </button>
         ) : null}
       </div>
@@ -29,9 +28,9 @@ const LeftArrow = (props) => {
   return (
     <div>
       {currentIndex > 0 ? (
-        <button style={props.style} onClick={handleClick}>
+        <button class="slider" style={props.style} onClick={handleClick}>
           {' '}
-          Left
+          {'<'}
         </button>
       ) : null}
     </div>
