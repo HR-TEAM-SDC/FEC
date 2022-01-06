@@ -58,7 +58,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <section style={detailStyles}>
+    <section className="product-detail" style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
         <StylesContext.Provider value={styles}>
           <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>
