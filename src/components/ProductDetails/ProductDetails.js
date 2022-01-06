@@ -51,7 +51,7 @@ const ProductDetails = () => {
     justifyContent: 'space-evenly',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '100%',
+    width: '90%',
     height: 'auto',
     margin: 'auto',
     padding: '10px',
