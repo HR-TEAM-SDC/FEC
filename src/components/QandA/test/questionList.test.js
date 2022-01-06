@@ -13,7 +13,7 @@ describe('Questions', () => {
   it('should initially render up to 2 questions', () => {
     // screen.debug();
     // screen.getByRole('');
-    screen.debug();
+    // screen.debug();
     expect(document.querySelectorAll('.accordion-item').length).toBeLessThanOrEqual(2);
   });
 });

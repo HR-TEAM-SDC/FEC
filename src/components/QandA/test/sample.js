@@ -37,6 +37,8 @@ export const providerProps = {
     //   },
     // ],
   },
+  counter: { counter: 0 },
+  QuesArrayLength: { QuesArrayLength: 3 },
 };
 
 export const customRender = (ui, { providerProps, ...renderOptions }) => {

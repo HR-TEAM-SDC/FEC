@@ -41,6 +41,8 @@ export default function QAapp() {
         setQuestion(res.data.results);
         setSave(res.data.results);
         setLength(res.data.results.length);
+        setCount(0);
+        setLoadQ(false);
         console.log(res.data);
       })
       .catch((err) => {
