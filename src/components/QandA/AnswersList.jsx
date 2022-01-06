@@ -3,7 +3,7 @@ import axios from '../../apis/atelier';
 import AddModal from './AddModals.jsx';
 import Image from './Image.jsx';
 import { Context } from '../context/context.js';
-// import './styles.css';
+import './styles.css';
 
 const AnswersList = ({ answers }) => {
   const [reportStatus, setReport] = useState(false);

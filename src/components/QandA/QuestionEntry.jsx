@@ -6,7 +6,7 @@ import AddModal from './AddModals.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 import Highlighter from 'react-highlight-words';
 import { Context } from '../context/context.js';
-// import './styles.css';
+import './styles.css';
 
 const QuestionEntry = ({ question, answersList }) => {
   const [answers, setAnswer] = useState([]);

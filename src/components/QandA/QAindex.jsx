@@ -8,7 +8,7 @@ import AddQuestionForm from './AddQuestionForm.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 import { Context } from '../context/context.js';
 import { AppContext } from '../context';
-// import './styles.css';
+import './styles.css';
 const productId = 40348;
 
 //Please check README.md in QA folder
