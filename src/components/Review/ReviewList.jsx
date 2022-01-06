@@ -104,11 +104,14 @@ const ReviewList = (props) => {
           <option value="helpful">helpful</option>
           <option value="newest">newest</option>
         </select>
+        <input type="text" id="search" placeholder="search" style={{ float: 'right' }} onChange={search}></input>
       </div>
-      <input type="text" id="search" placeholder="search" style={{ float: 'right' }} onChange={search}></input>
-      {data.slice(0, addMoreTracker).map((data) => (
-        <IndividualReviews key={key++} data={data} />
-      ))}
+
+      <div className="individual-review-box">
+        {data.slice(0, addMoreTracker).map((data) => (
+          <IndividualReviews key={key++} data={data} />
+        ))}
+      </div>
       {addMoreTracker < props.data.length ? (
         <button className="morereviews" onClick={showmoreOnclick}>
           More reviews

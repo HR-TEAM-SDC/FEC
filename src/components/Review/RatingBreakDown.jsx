@@ -22,7 +22,7 @@ const BreakDown = (props) => {
   var percentage = String((summaryRating / 5) * 100) + '%';
 
   var starFiler = (e) => {
-    var number = Number(e.target.className[0]);
+    var number = Number(e.target.className[4]);
     var record = props.filterRecord;
     var filterdata = props.filterData;
 
@@ -91,7 +91,6 @@ const BreakDown = (props) => {
   };
 
   var breakDownStarStyle = {
-    color: 'black',
     width: '100px',
     display: 'inline-block',
   };
@@ -116,7 +115,7 @@ const BreakDown = (props) => {
           )}
         </div>
         <div className="stars">
-          <span className="5star" style={breakDownStarStyle} onClick={starFiler}>
+          <span className="star5" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;&#9733;
           </span>
           <div className="bar">
@@ -125,7 +124,7 @@ const BreakDown = (props) => {
           <span>{ratingData[5]}</span>
         </div>
         <div className="stars">
-          <span className="4star" style={breakDownStarStyle} onClick={starFiler}>
+          <span className="star4" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;&#9733;
           </span>
           <div className="bar">
@@ -134,7 +133,7 @@ const BreakDown = (props) => {
           <span>{ratingData[4]}</span>
         </div>
         <div className="stars">
-          <span className="3star" style={breakDownStarStyle} onClick={starFiler}>
+          <span className="star3" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;&#9733;
           </span>
           <div className="bar">
@@ -143,7 +142,7 @@ const BreakDown = (props) => {
           <span>{ratingData[3]}</span>
         </div>
         <div className="stars">
-          <span className="2star" style={breakDownStarStyle} onClick={starFiler}>
+          <span className="star2" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;&#9733;
           </span>
           <div className="bar">
@@ -152,7 +151,7 @@ const BreakDown = (props) => {
           <span>{ratingData[2]}</span>
         </div>
         <div className="stars">
-          <span className="1star" style={breakDownStarStyle} onClick={starFiler}>
+          <span className="star1" style={breakDownStarStyle} onClick={starFiler}>
             &#9733;
           </span>
           <div className="bar">

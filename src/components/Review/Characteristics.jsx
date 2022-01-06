@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const Characteristics = (props) => {
-  var size = ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'];
+  var Size = ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'];
 
-  var width = ['Too narrow ', 'Slightly narrow ', 'Perfect ', 'Slightly wide ', 'Too wide '];
+  var Width = ['Too narrow ', 'Slightly narrow ', 'Perfect ', 'Slightly wide ', 'Too wide '];
 
   var Comfort = ['Uncomfortable ', 'Slightly uncomfortable ', 'Ok ', 'Comfortable ', 'Perfect '];
 
@@ -27,7 +27,7 @@ const Characteristics = (props) => {
       result.push(
         <div className="Characteristics-box">
           <input type="radio" id={id ? id : null} value={num} name={name} onClick={Characteristics} />
-          <label for={id} title="text">
+          <label htmlFor={id} title="text">
             {array[i]}
           </label>
         </div>
@@ -45,37 +45,37 @@ const Characteristics = (props) => {
       {metaDataID.Size ? (
         <div>
           <div className="Characteristics-names">Size </div>
-          {eachCharacteristics(size, metaDataID.Size.id, 'Size')}
+          {eachCharacteristics(Size, metaDataID.Size.id, 'Size')}
         </div>
       ) : null}
       {metaDataID.Width ? (
         <div>
-          <div className="Characteristics-names">Width </div>
-          {eachCharacteristics(size, metaDataID.Width.id, 'Width')}
+          <div>Width </div>
+          {eachCharacteristics(Width, metaDataID.Width.id, 'Width')}
         </div>
       ) : null}
       {metaDataID.Comfort ? (
         <div>
           <div className="Characteristics-names">Comfort </div>
-          {eachCharacteristics(size, metaDataID.Comfort.id, 'Comfort')}
+          {eachCharacteristics(Comfort, metaDataID.Comfort.id, 'Comfort')}
         </div>
       ) : null}
       {metaDataID.Quality ? (
         <div>
           <div className="Characteristics-names">Quality </div>
-          {eachCharacteristics(size, metaDataID.Quality.id, 'Quality')}
+          {eachCharacteristics(Quality, metaDataID.Quality.id, 'Quality')}
         </div>
       ) : null}
       {metaDataID.Length ? (
         <div>
           <div className="Characteristics-names">Length </div>
-          {eachCharacteristics(size, metaDataID.Length.id, 'Length')}
+          {eachCharacteristics(Length, metaDataID.Length.id, 'Length')}
         </div>
       ) : null}
       {metaDataID.Fit ? (
         <div>
           <div className="Characteristics-names">Fit </div>
-          {eachCharacteristics(size, metaDataID.Fit.id, 'Fit')}
+          {eachCharacteristics(Fit, metaDataID.Fit.id, 'Fit')}
         </div>
       ) : null}
     </div>
