@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CurrentIndexContext, CurrentImageContext } from '../ProductDetails';
 import { CurrentStylePhotosContext } from '../ProductDetails';
+import '../styles.css';
 
 const LeftArrow = (props) => {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
@@ -32,7 +33,9 @@ const LeftArrow = (props) => {
           {' '}
           {'<'}
         </button>
-      ) : null}
+      ) : (
+        <div class="slider-null"></div>
+      )}
     </div>
   );
 };
