@@ -34,7 +34,9 @@ const RightArrow = (props) => {
           <button class="slider" style={props.style} onClick={handleClick}>
             {'>'}
           </button>
-        ) : null
+        ) : (
+          <div class="slider-null"></div>
+        )
       ) : null}
     </div>
   );
