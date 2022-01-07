@@ -60,7 +60,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  height: 415px;
+  height: 350px;
   margin: 0px;
   padding: 10px;
   scroll-behavior: smooth;
@@ -68,7 +68,7 @@
 
 .card {
   height: 100%;
-  width: 275px;
+  width: 215px;
   position: relative;
   flex-shrink: 0;
   margin: 0px 10px;
