@@ -43,7 +43,13 @@ const Input = (props) => {
         maxLength="1000"
         onChange={WriteReviewBody}
       ></textarea>
-      <p>{minimumLength >= 50 ? 'Minimum reached' : 'Minimum required characters left: ' + (50 - minimumLength)}</p>
+      <p>
+        {minimumLength >= 50 ? (
+          <span style={{ color: 'green' }}>Minimum reached</span>
+        ) : (
+          <span style={{ color: 'red' }}>Minimum required characters left: {50 - minimumLength}</span>
+        )}
+      </p>
       <div className="form-group multi-preview">
         {photoURLs.map((url) => (
           <img src={url} alt="..." style={{ height: '100px', width: '100px' }} />
@@ -51,7 +57,7 @@ const Input = (props) => {
       </div>
       {photoURLs.length < 5 ? (
         <form action="/action_page.php">
-          <label for="img">Select image:</label>
+          <label htmlFor="img">Select image:</label>
           <input type="file" id="img" name="img" accept="image/*" onChange={uploadMultiplePhotos} multiple />
         </form>
       ) : null}

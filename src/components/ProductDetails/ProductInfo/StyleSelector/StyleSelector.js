@@ -12,17 +12,33 @@ const StyleSelector = () => {
   const { currentSize, setCurrentSize } = useContext(CurrentSizeContext);
   const { currentSku, setCurrentSku } = useContext(CurrentSkuContext);
   const { setCurrentQuantity } = useContext(CurrentQuantityContext);
-  const { currentIndex } = useContext(CurrentIndexContext);
+  const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { setCurrentImage } = useContext(CurrentImageContext);
   const { setCurrentStylePhotos } = useContext(CurrentStylePhotosContext);
 
+  useEffect(() => {
+    setCurrentSize('Select Size');
+    let sizeMsg = document.getElementById('size-msg');
+    let sizeMenu = document.getElementById('size-menu');
+    sizeMsg.innerHTML = '';
+    sizeMenu.size = 1;
+  }, [currentStyle]);
+
   const styleClickHandler = (style) => {
+    console.log(style);
+    if (currentStyle === style) {
+      return;
+    }
     setCurrentStyle(style);
     setCurrentStylePhotos(style.photos);
-    setCurrentSize(null);
     setCurrentSku(null);
     setCurrentQuantity(null);
-    setCurrentImage(style.photos[currentIndex].thumbnail_url);
+    if (currentIndex > style.photos.length - 1) {
+      setCurrentIndex(0);
+      setCurrentImage(style.photos[0].thumbnail_url);
+    } else {
+      setCurrentImage(style.photos[currentIndex].thumbnail_url);
+    }
   };
 
   const thumbnailsStyle = {

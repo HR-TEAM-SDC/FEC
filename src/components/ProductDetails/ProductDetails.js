@@ -30,6 +30,8 @@ const ProductDetails = () => {
   useEffect(() => {
     if (currentProduct) {
       setCurrentSku(null);
+      setCurrentIndex(0);
+      setCurrentSize('Select Size');
       fetchData();
     }
   }, [currentProduct]);
@@ -58,7 +60,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <section style={detailStyles}>
+    <section className="product-detail" style={detailStyles}>
       <ReviewsContext.Provider value={reviews}>
         <StylesContext.Provider value={styles}>
           <CurrentSizeContext.Provider value={{ currentSize, setCurrentSize }}>
@@ -70,6 +72,7 @@ const ProductDetails = () => {
                       <CurrentStylePhotosContext.Provider value={{ currentStylePhotos, setCurrentStylePhotos }}>
                         <ImageGallery />
                         <ProductInfo />
+                        <div id="portal"></div>
                       </CurrentStylePhotosContext.Provider>
                     </CurrentImageContext.Provider>
                   </CurrentIndexContext.Provider>

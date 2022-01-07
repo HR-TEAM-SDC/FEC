@@ -17,13 +17,25 @@ const App = () => {
   }, []);
 
   const analytics = (e) => {
-    console.log(e);
+    const element = e.srcElement.localName;
+    const widget = e.path.slice(-7)[0].className || 'body';
+    const time = new Date().toISOString();
+    const body = { element, widget, time };
+    try {
+      axios.post('interactions', body);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchCurrentProduct = async () => {
-    const { data: products } = await axios.get('products');
-    const { data: initialProductDetail } = await axios.get(`products/${products[0].id}`);
-    setCurrentProduct(initialProductDetail);
+    try {
+      const { data: products } = await axios.get('products');
+      const { data: initialProductDetail } = await axios.get(`products/${products[0].id}`);
+      setCurrentProduct(initialProductDetail);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

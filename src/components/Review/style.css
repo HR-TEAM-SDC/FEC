@@ -4,13 +4,29 @@
   margin: auto;
 }
 
+.review-summary {
+  margin: 20px 0 20px 0;
+}
+
+.review-body {
+  margin: 20px 0 20px 0;
+}
+
+.review-image {
+  margin: 20px 0 20px 0;
+}
+
+.review-Reviewer-name {
+  margin: 20px 0 20px 0;
+}
+
 .helpful:hover {
-  color: gold;
+  color: green;
   cursor: pointer;
 }
 
 .review-report:hover {
-  color: gold;
+  color: red;
   cursor: pointer;
 }
 
@@ -48,7 +64,27 @@
   border-radius: 5px;
 }
 
-.stars:hover {
+.star5:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.star4:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.star3:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.star2:hover {
+  color: gold;
+  cursor: pointer;
+}
+
+.star1:hover {
   color: gold;
   cursor: pointer;
 }
@@ -68,6 +104,10 @@
   padding: 0%;
   max-height: 600px;
   overflow: scroll;
+}
+
+.ReviewList::-webkit-scrollbar {
+  display: none;
 }
 
 .morereviews {
@@ -114,6 +154,7 @@
 }
 
 .write-review {
+  font-family: Montserrat, sans-serif;
   position: fixed;
   top: 0;
   right: 0;
@@ -148,6 +189,12 @@
   border-width: 20px;
   border-color: #21aeca;
   overflow: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.writeReviewBox::-webkit-scrollbar {
+  display: none;
 }
 
 .write-review-submit {
@@ -182,6 +229,14 @@
   text-align: left;
   border-top: 20px solid rgb(220, 245, 253);
   border-bottom: 1px solid black;
+}
+
+.individual-review-box {
+  overflow: scroll;
+}
+
+.individual-review-box::-webkit-scrollbar {
+  display: none;
 }
 
 * {
@@ -224,21 +279,6 @@
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
-/* .rate #star5:checked ~ .result:before{
-  content: "Great";
-}
-.rate #star4:checked ~ .result:before{
-  content: "Good";
-}
-.rate #star3:checked ~ .result:before{
-  content: "Average";
-}
-.rate #star2:checked ~ .result:before{
-  content: "Fair";
-}
-.rate #star1:checked ~ .result:before{
-  content: "Poor";
-} */
 
 .Characteristics-names {
   font-weight: bolder;

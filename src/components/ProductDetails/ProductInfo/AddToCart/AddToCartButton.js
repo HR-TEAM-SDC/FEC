@@ -9,16 +9,11 @@ const AddToCartButton = () => {
   const { currentQuantity } = useContext(CurrentQuantityContext);
   const { currentSku } = useContext(CurrentSkuContext);
 
-  // console.log("currentSize:", currentSize);
-  // console.log("currentQuantity:", currentQuantity);
-  // console.log("currentSku:", currentSku);
-
   const addToCart = async () => {
     let postCart = await axios.post('/cart', {
       sku_id: currentSku,
       count: currentQuantity,
     });
-    console.log(postCart);
   };
 
   const buttonOnClick = () => {

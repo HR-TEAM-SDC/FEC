@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { providerProps, customRender, questions } from './sample.js';
-import { testEnvironment } from '../../../../jest.config.js';
 import QuestionsList from '../QuestionsList.jsx';
 
 describe('Questions', () => {

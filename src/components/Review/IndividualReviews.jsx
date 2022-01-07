@@ -73,15 +73,21 @@ const IndividualReviews = (props) => {
         </div>
       </div>
 
-      <div className="summary">{props.data.summary}</div>
-      <div className="body">{props.data.body}</div>
+      <div className="review-summary">{props.data.summary}</div>
+      <div className="review-body">{props.data.body}</div>
       <div className="review-image">
         {props.data.photos.length === 0
           ? null
           : props.data.photos.map((photo) => <img src={photo.url} width="100" height="100"></img>)}
       </div>
-      <div className="Recommend">{props.data.recommend ? 'Recommend!' : null}</div>
-      <div className="Reviewer_name ">{props.data.reviewer_name}</div>
+      <div className="review-Recommend">
+        {props.data.recommend ? (
+          <span style={{ color: 'green' }}>Recommend!</span>
+        ) : (
+          <span style={{ color: 'red' }}>Not recommend</span>
+        )}
+      </div>
+      <div className="review-Reviewer-name">{props.data.reviewer_name}</div>
       <div className="response">{props.data.response}</div>
       <div className="helpfulness">
         Helpful?
