@@ -31,7 +31,6 @@
 }
 
 .ratingSummary {
-  display: inline-block;
   width: 20%;
   float: left;
   overflow: hidden;
