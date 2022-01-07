@@ -28,15 +28,14 @@
 
 .compare-modal-body {
   font-family: Montserrat, sans-serif;
-  background-color: pink;
-  color: white;
+  background-image: linear-gradient(180deg, #f88379, pink);
+  color: black;
   min-width: 350px;
   width: 75%;
   max-width: 600px;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border: 5px solid #29f756ad;
   border-radius: 10px;
   overflow: auto;
   display: flex;
@@ -54,7 +53,6 @@
 }
 .compare-table {
   border-spacing: 20px;
-  background: rgba(163, 168, 170, 0.199);
 }
 
 .card-container {
