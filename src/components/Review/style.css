@@ -39,7 +39,7 @@
   border-width: 5px;
   border-radius: 10px;
   border-color: #21aeca;
-  background-color: #21aeca;
+  background-color: #29f756ad;
   box-shadow: 2px 2px 5px;
   margin: 10px;
   padding: 10px;
@@ -53,6 +53,10 @@
 
 .breakdown-filter:hover {
   cursor: pointer;
+}
+
+.review-rating-data {
+  margin: 0 0 0 10px;
 }
 
 .bar {
@@ -142,6 +146,7 @@
 .writeReviewButton {
   height: 70px;
   width: 400px;
+  margin-right: 50px;
   border-width: 5px;
   border-radius: 10px;
   border-color: #29f756ad;
@@ -151,7 +156,6 @@
 
 .writeReviewButton:hover {
   background-color: #29f756ad;
-}
 
 .write-review {
   font-family: Montserrat, sans-serif;
@@ -183,11 +187,10 @@
   height: 80%;
   width: 80%;
   z-index: 2;
-  background-color: #21aeca;
-  padding: 20px 20px 20px 20px;
+  background-color: white;
+  padding: 30px;
   border-radius: 20px;
   border-width: 20px;
-  border-color: #21aeca;
   overflow: scroll;
   overflow-x: auto;
   overflow-y: auto;
@@ -227,8 +230,9 @@
 
 .IndividualReviews {
   text-align: left;
-  border-top: 20px solid rgb(220, 245, 253);
-  border-bottom: 1px solid black;
+  border-top: 20px;
+  border-bottom: 1px solid #29f756ad;
+  background: rgba(163, 168, 170, 0.199);
 }
 
 .individual-review-box {
@@ -266,19 +270,21 @@
   content: '★';
 }
 .rate > input:checked ~ label {
-  color: #ffc700;
+  color: black;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;
+  color: black;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
+  color: black;
 }
+
+/* #c59b08 */
 
 .Characteristics-names {
   font-weight: bolder;

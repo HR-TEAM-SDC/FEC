@@ -115,7 +115,7 @@ const WriteReview = (props) => {
     <div className="write-review">
       <div className="write-review-close" onClick={props.writeReviewClick}></div>
       <div className="writeReviewBox">
-        <h2>Write Your Review</h2>
+        <h2 style={{ backgroundColor: 'pink' }}>Write Your Review</h2>
         <h5> About the {props.name}</h5>
         <div className="rateBox">
           <div className="rate" onClick={starRate}>

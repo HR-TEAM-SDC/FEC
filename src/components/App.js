@@ -40,6 +40,7 @@ const App = () => {
 
   return (
     <main ref={thisRef}>
+      <header>Team Woody</header>
       <AppContext.Provider value={{ currentProduct, setCurrentProduct }}>
         <ProductDetails />
         <RelatedItems />
