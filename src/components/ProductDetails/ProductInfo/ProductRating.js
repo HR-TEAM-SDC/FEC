@@ -12,7 +12,7 @@ const ProductRating = () => {
 
   return (
     <h4>
-      Product Rating {averageRating}
+      Rating: {averageRating + '/5'}{' '}
       <span>
         <a href="#reviewList">See Reviews</a>
       </span>

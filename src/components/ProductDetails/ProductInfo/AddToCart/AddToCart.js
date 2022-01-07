@@ -3,25 +3,27 @@ import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
 import AddToCartButton from './AddToCartButton';
 import { CurrentSkuContext } from '../../ProductDetails';
+import '../../styles.css';
 
 const AddToCart = () => {
   const { currentSku } = useContext(CurrentSkuContext);
 
   return (
     <div>
-      <h4>Add To Cart</h4>
       <div id="size-msg"></div>
       <SizeSelector />
+      <br></br>
       {currentSku ? (
         <QuantitySelector />
       ) : (
         <div>
           Quantity:
-          <select disabled>
+          <select class="menu" disabled>
             <option> - </option>
           </select>
         </div>
       )}
+      <br></br>
       <AddToCartButton />
     </div>
   );

@@ -3,7 +3,7 @@ import { AppContext } from '../../context';
 const ProductCategory = () => {
   const { currentProduct } = useContext(AppContext);
 
-  return currentProduct ? <h4>Product Category: {currentProduct.category}</h4> : null;
+  return currentProduct ? <h4>Category: {currentProduct.category}</h4> : null;
 };
 
 export default ProductCategory;
