@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { CurrentStyleContext } from '../ProductDetails';
+
 const ProductPrice = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
 
