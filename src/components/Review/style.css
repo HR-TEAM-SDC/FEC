@@ -39,7 +39,7 @@
   border-width: 5px;
   border-radius: 10px;
   border-color: #21aeca;
-  background-color: #21aeca;
+  background-color: #29f756ad;
   box-shadow: 2px 2px 5px;
   margin: 10px;
   padding: 10px;
@@ -120,14 +120,14 @@
   width: 400px;
   border-width: 5px;
   border-radius: 10px;
-  border-color: #21aeca;
+  border-color: #29f756ad;
   background-color: white;
   box-shadow: 2px 2px 5px;
   margin: 20px;
 }
 
 .morereviews:hover {
-  background-color: #21aeca;
+  background-color: pink;
 }
 
 .writeReview {
@@ -146,15 +146,16 @@
 .writeReviewButton {
   height: 70px;
   width: 400px;
+  margin-right: 50px;
   border-width: 5px;
   border-radius: 10px;
-  border-color: #21aeca;
+  border-color: #29f756ad;
   background-color: white;
   box-shadow: 2px 2px 5px;
 }
 
 .writeReviewButton:hover {
-  background-color: #21aeca;
+  background-color: pink;
 }
 
 .write-review {
@@ -231,7 +232,8 @@
 .IndividualReviews {
   text-align: left;
   border-top: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #29f756ad;
+  background: rgba(163, 168, 170, 0.199);
 }
 
 .individual-review-box {

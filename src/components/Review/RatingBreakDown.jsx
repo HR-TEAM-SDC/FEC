@@ -73,7 +73,7 @@ const BreakDown = (props) => {
   };
 
   var ratingStarStyle = {
-    color: 'black',
+    color: 'white',
     position: 'absolute',
     width: percentage,
     top: '0',
@@ -159,7 +159,7 @@ const BreakDown = (props) => {
           </div>
           <span className="review-rating-data">{ratingData[1]}</span>
         </div>
-        <p style={{ fontSize: '15px' }}>
+        <p style={{ fontSize: '20px', marginBottom: '10px', marginTop: '10px' }}>
           {' '}
           {Math.round((props.metaData.recommended.true / totalReviews) * 1000) / 10}% of reviews recommend this product
         </p>
