@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  background-color: rgb(245 242 224 / 21%);
 }
 
 .compare-modal-overlay {
@@ -28,14 +28,15 @@
 
 .compare-modal-body {
   font-family: Montserrat, sans-serif;
-  background-color: rgb(220, 245, 253);
+  background-color: pink;
+  color: white;
   min-width: 350px;
   width: 75%;
   max-width: 600px;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border: 1px solid black;
+  border: 5px solid #29f756ad;
   border-radius: 10px;
   overflow: auto;
   display: flex;
@@ -53,6 +54,7 @@
 }
 .compare-table {
   border-spacing: 20px;
+  background: rgba(163, 168, 170, 0.199);
 }
 
 .card-container {
@@ -60,7 +62,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  height: 415px;
+  height: 350px;
   margin: 0px;
   padding: 10px;
   scroll-behavior: smooth;
@@ -68,7 +70,7 @@
 
 .card {
   height: 100%;
-  width: 275px;
+  width: 215px;
   position: relative;
   flex-shrink: 0;
   margin: 0px 10px;
