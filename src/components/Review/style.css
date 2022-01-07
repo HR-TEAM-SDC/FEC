@@ -213,6 +213,10 @@
   margin: 20px;
 }
 
+.write-review-characteristics-breakdown {
+  padding: 0 0 0 5px;
+}
+
 .write-review-submit:hover {
   background-color: #21aeca;
 }

@@ -27,7 +27,7 @@ const Characteristics = (props) => {
       result.push(
         <div className="Characteristics-box">
           <input type="radio" id={id ? id : null} value={num} name={name} onClick={Characteristics} />
-          <label htmlFor={id} title="text">
+          <label htmlFor={id} title="text" className="write-review-characteristics-breakdown">
             {array[i]}
           </label>
         </div>
