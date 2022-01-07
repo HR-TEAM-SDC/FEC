@@ -39,7 +39,7 @@ const AnswersList = ({ answers }) => {
 
   var helpfulStyle = {
     textDecoration: 'underline',
-    color: helpfulStatus ? 'orange' : 'black',
+    color: helpfulStatus ? `#E75480` : 'black',
   };
 
   const handleHelp = () => {

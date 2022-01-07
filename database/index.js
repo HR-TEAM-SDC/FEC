@@ -3,10 +3,21 @@ const mysqlConfig = require('./config');
 
 const connection = mysql.createConnection(mysqlConfig);
 
-const sendQuery = (query, cb) =>
-  connection.query(query, (err, data) => {
-    err ? cb(err, null) : cb(null, data);
-  });
+connection.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected to MySQL!');
+  }
+});
+
+const getOutfit = (cb) => {
+  const query = 'SELECT * FROM outfits';
+  const sendQuery = (query, cb) =>
+    connection.query(query, (err, data) => {
+      err ? cb(err, null) : cb(null, data);
+    });
+};
 
 const getOutfit = (cb) => {
   const query = 'SELECT * FROM outfits';
@@ -23,8 +34,22 @@ const removeFromOutfit = (productId, cb) => {
   sendQuery(query, cb);
 };
 
+//Q&A section:
+const getQuestion = (productId, cb) => {
+  let queryString = `SELECT * FROM questions WHERE productId = ${productId} `;
+
+  connection.query(queryString, (err, results) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  });
+};
+
 module.exports = {
   getOutfit,
   addToOutfit,
   removeFromOutfit,
+  getQuestion,
 };

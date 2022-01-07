@@ -41,6 +41,8 @@ export default function QAapp() {
         setQuestion(res.data.results);
         setSave(res.data.results);
         setLength(res.data.results.length);
+        setCount(0);
+        setLoadQ(false);
         console.log(res.data);
       })
       .catch((err) => {
@@ -111,7 +113,7 @@ export default function QAapp() {
     if (moreQ === false) {
       setLoadQ(!moreQ);
     }
-    setCount(counter + 2);
+    setCount(counter + questions.length);
   };
 
   const handleCloseQModal = () => modal.current.close();
@@ -160,7 +162,7 @@ export default function QAapp() {
       <div>
         {moreQ ? (
           <Context.Provider value={{ handleQHelpfulness }}>
-            <LoadMoreQ questions={questions.slice(counter, counter + 2)} />
+            <LoadMoreQ questions={questions.slice(2)} />
           </Context.Provider>
         ) : null}
       </div>

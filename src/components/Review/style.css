@@ -127,7 +127,7 @@
 }
 
 .morereviews:hover {
-  background-color: pink;
+  background-color: #29f756ad;
 }
 
 .writeReview {
@@ -155,8 +155,7 @@
 }
 
 .writeReviewButton:hover {
-  background-color: pink;
-}
+  background-color: #29f756ad;
 
 .write-review {
   font-family: Montserrat, sans-serif;

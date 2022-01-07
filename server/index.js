@@ -45,3 +45,16 @@ app.delete('/outfit/:id', (req, res) => {
 app.listen(3000, () => {
   console.log(`listening on port 3000`);
 });
+
+//Q&A section
+app.get('/new_question/:id', (req, res) => {
+  let productId = req.params.id;
+
+  db.getQuestion(productId, (err, results) => {
+    if (err) {
+      res.status(500).send('Server Error: Failed to get quetions data.', err);
+    } else {
+      res.send(results);
+    }
+  });
+});

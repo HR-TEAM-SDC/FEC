@@ -41,7 +41,7 @@ const AddQuestionsModal = ({ children }, ref) => {
         <div className="modal-body">{children}</div>
       </div>
     ) : null,
-    document.getElementById('AddModal')
+    document.getElementById('AddModal') || document.createElement('div')
   );
 };
 
