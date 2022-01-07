@@ -73,7 +73,7 @@ const QuestionEntry = ({ question, answersList }) => {
 
   const helpLinkStyle = {
     textDecoration: 'underline',
-    color: helpQuesStatus ? 'orange' : 'black',
+    color: helpQuesStatus ? `#E75480` : 'black',
   };
 
   const addAnswerStyle = {

@@ -116,14 +116,14 @@
   width: 400px;
   border-width: 5px;
   border-radius: 10px;
-  border-color: #21aeca;
+  border-color: #29f756ad;
   background-color: white;
   box-shadow: 2px 2px 5px;
   margin: 20px;
 }
 
 .morereviews:hover {
-  background-color: #21aeca;
+  background-color: #29f756ad;
 }
 
 .writeReview {
@@ -144,13 +144,13 @@
   width: 400px;
   border-width: 5px;
   border-radius: 10px;
-  border-color: #21aeca;
+  border-color: #29f756ad;
   background-color: white;
   box-shadow: 2px 2px 5px;
 }
 
 .writeReviewButton:hover {
-  background-color: #21aeca;
+  background-color: #29f756ad;
 }
 
 .write-review {
