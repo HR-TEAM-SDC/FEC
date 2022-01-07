@@ -29,7 +29,7 @@ const ProductRating = () => {
       )}
       <span>
         <a style={style} href="#reviewList">
-          See Reviews ({reviews.length})
+          See Reviews
         </a>
       </span>
     </div>
