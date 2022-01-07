@@ -68,7 +68,7 @@ const RelatedItemCard = ({ item, selectedItem }) => {
           <h3 className="card-info title">{item.name.length > 17 ? `${item.name.slice(0, 15)}...` : item.name}</h3>
           <p className="card-info">${item.default_price}</p>
           <p className="card-info">
-            <Rating style={{ color: 'black' }} defaultValue={item.avgRating || 0} precision={0.25} readOnly />
+            <Rating style={{ color: 'white' }} defaultValue={item.avgRating || 0} precision={0.25} readOnly />
           </p>
         </div>
       </section>
