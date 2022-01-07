@@ -25,7 +25,6 @@ const StyleSelector = () => {
   }, [currentStyle]);
 
   const styleClickHandler = (style) => {
-    console.log(style);
     if (currentStyle === style) {
       return;
     }
@@ -45,11 +44,12 @@ const StyleSelector = () => {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    gap: '5px',
   };
 
   return (
     <div>
-      <h4>Current Style: {currentStyle.name}</h4> <br></br>
+      <h4>Style: {currentStyle.name}</h4> <br></br>
       <div style={thumbnailsStyle}>
         {styles.map((style) => {
           return (

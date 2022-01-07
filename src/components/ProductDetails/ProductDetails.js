@@ -51,8 +51,6 @@ const ProductDetails = () => {
   const detailStyles = {
     display: 'flex',
     justifyContent: 'space-evenly',
-    borderStyle: 'solid',
-    borderWidth: '1px',
     width: '90%',
     height: 'auto',
     margin: 'auto',

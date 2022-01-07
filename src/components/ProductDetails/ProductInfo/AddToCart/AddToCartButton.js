@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import axios from '../../../../apis/atelier';
 import { CurrentSizeContext, CurrentQuantityContext } from '../../ProductDetails';
 import { CurrentSkuContext, CurrentStyleContext } from '../../ProductDetails';
+import '../../styles.css';
 
 const AddToCartButton = () => {
   const { currentStyle } = useContext(CurrentStyleContext);
@@ -37,7 +38,10 @@ const AddToCartButton = () => {
   }
   return (
     <div>
-      <button onClick={buttonOnClick}> Add To Cart </button>
+      <button id="cart-button" onClick={buttonOnClick}>
+        {' '}
+        Add To Cart{' '}
+      </button>
     </div>
   );
 };

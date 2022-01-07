@@ -6,15 +6,17 @@ const Thumbnail = (props) => {
     width: '40px',
     height: '40px',
     padding: '1px',
+    borderRadius: '10%',
   };
 
   const selectedThumbnailStyle = {
     borderStyle: 'solid',
-    borderWidth: '5px',
-    borderColor: 'yellow',
+    borderWidth: '4px',
+    borderColor: '#29f756ad',
     objectFit: 'cover',
     width: '40px',
     height: '40px',
+    borderRadius: '10%',
   };
 
   const iconStyle = {

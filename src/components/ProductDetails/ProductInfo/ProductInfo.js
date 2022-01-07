@@ -10,21 +10,25 @@ import AddToCart from './AddToCart/AddToCart';
 
 const ProductInfo = () => {
   const infoStyles = {
-    borderStyle: 'solid',
-    borderWidth: '1px',
     width: '45%',
   };
 
   return (
     <section style={infoStyles}>
-      <h3>Product Info</h3>
       <ProductTitle />
+      <br></br>
       <ProductCategory />
+      <br></br>
       <ProductRating />
+      <br></br>
       <ProductPrice />
+      <br></br>
       <ProductOverview />
+      <br></br>
       <StyleSelector />
+      <br></br>
       <AddToCart />
+      <br></br>
       <ShareProduct />
     </section>
   );
