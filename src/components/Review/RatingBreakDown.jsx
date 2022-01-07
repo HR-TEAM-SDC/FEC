@@ -121,7 +121,7 @@ const BreakDown = (props) => {
           <div className="bar">
             <div className="breakdown-bar" style={ratingBarStyle(5)}></div>
           </div>
-          <span>{ratingData[5]}</span>
+          <span className="review-rating-data">{ratingData[5]}</span>
         </div>
         <div className="stars">
           <span className="star4" style={breakDownStarStyle} onClick={starFiler}>
@@ -130,7 +130,7 @@ const BreakDown = (props) => {
           <div className="bar">
             <div className="breakdown-bar" style={ratingBarStyle(4)}></div>
           </div>
-          <span>{ratingData[4]}</span>
+          <span className="review-rating-data">{ratingData[4]}</span>
         </div>
         <div className="stars">
           <span className="star3" style={breakDownStarStyle} onClick={starFiler}>
@@ -139,7 +139,7 @@ const BreakDown = (props) => {
           <div className="bar">
             <div className="breakdown-bar" style={ratingBarStyle(3)}></div>
           </div>
-          <span>{ratingData[3]}</span>
+          <span className="review-rating-data">{ratingData[3]}</span>
         </div>
         <div className="stars">
           <span className="star2" style={breakDownStarStyle} onClick={starFiler}>
@@ -148,7 +148,7 @@ const BreakDown = (props) => {
           <div className="bar">
             <div className="breakdown-bar" style={ratingBarStyle(2)}></div>
           </div>
-          <span>{ratingData[2]}</span>
+          <span className="review-rating-data">{ratingData[2]}</span>
         </div>
         <div className="stars">
           <span className="star1" style={breakDownStarStyle} onClick={starFiler}>
@@ -157,7 +157,7 @@ const BreakDown = (props) => {
           <div className="bar">
             <div className="breakdown-bar" style={ratingBarStyle(1)}></div>
           </div>
-          <span>{ratingData[1]}</span>
+          <span className="review-rating-data">{ratingData[1]}</span>
         </div>
         <p style={{ fontSize: '15px' }}>
           {' '}
