@@ -3,6 +3,7 @@ import SizeOption from './SizeOption';
 import { StylesContext, CurrentStyleContext } from '../../ProductDetails';
 import { CurrentSkuContext, CurrentSizeContext } from '../../ProductDetails';
 import { CurrentQuantityContext } from '../../ProductDetails';
+import '../../styles.css';
 
 const SizeSelector = () => {
   const styles = useContext(StylesContext);
@@ -52,8 +53,8 @@ const SizeSelector = () => {
   }
   return (
     <div>
-      Select Size:
-      <select id="size-menu" onChange={handleSizeChange}>
+      Size:
+      <select class="menu" id="size-menu" onChange={handleSizeChange}>
         {renderSizes()}
       </select>
     </div>

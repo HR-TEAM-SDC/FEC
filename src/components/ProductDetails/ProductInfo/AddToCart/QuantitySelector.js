@@ -3,6 +3,7 @@ import QuantityOption from './QuantityOption';
 import { StylesContext, CurrentStyleContext } from '../../ProductDetails';
 import { CurrentSkuContext, CurrentSizeContext } from '../../ProductDetails';
 import { CurrentQuantityContext } from '../../ProductDetails';
+import '../../styles.css';
 
 const QuantitySelector = () => {
   const styles = useContext(StylesContext);
@@ -51,7 +52,7 @@ const QuantitySelector = () => {
   return (
     <div>
       Quantity:
-      <select id="quantity-menu" onChange={handleQuantityChange}>
+      <select class="menu" id="quantity-menu" onChange={handleQuantityChange}>
         {renderQuantity()}
       </select>
     </div>
