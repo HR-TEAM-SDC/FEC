@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
@@ -8,9 +8,17 @@ import '../styles.css';
 const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentStyle, children }) => {
   const [backgroundPos, setBackgroundPos] = useState(null);
 
+  // let modalContainer = document.getElementById('modal-container');
+  // useEffect(() => {
+  //   if (currentImage && modalContainer) {
+  //     let modalContainer = document.getElementById('modal-container');
+  //     modalContainer.style.background = `url(${currentImage})`;
+  //   }
+  // }, [currentImage, modalContainer]);
+
   const handleMouseMove = (event) => {
     let modalContainer = document.getElementById('modal-container');
-    let modalImage = document.getElementById('modal-image');
+    // let modalImage = document.getElementById('modal-image');
 
     let offsetX = event.nativeEvent.offsetX - modalContainer.offsetLeft;
     let offsetY = event.nativeEvent.offsetY - modalContainer.offsetTop;
@@ -20,13 +28,16 @@ const MainImageModal = ({ isOpen, setIsOpen, closeModal, currentImage, currentSt
     offsetX = (offsetX / width) * 100;
     offsetY = (offsetY / height) * 100;
 
+    // modalContainer.style.backgroundSize = '250%';
+    // modalContainer.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
     // modalImage.style.transform = 'translate(-' + offsetX + '%, -' + offsetY + '%) scale(2)';
     // modalImage.style.transform = 'scale(2)';
   };
   const handleMouseLeave = (event) => {
     let modalContainer = document.getElementById('modal-container');
-    let modalImage = document.getElementById('modal-image');
-
+    // let modalImage = document.getElementById('modal-image');
+    modalContainer.style.backgroundSize = '100%';
+    modalContainer.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
     // modalImage.style.transform = 'translate(-' + offsetX + '%, -' + offsetY + '%) scale(1)';
     // modalImage.style.transform = 'translate(-50%, -50%) scale(1)';
     // modalImage.style.transform = 'scale(1)';
