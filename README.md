@@ -1,5 +1,9 @@
 React based application for a team project at HackReactor.
 
+## Demo
+
+![Alt Text](https://im5.ezgif.com/tmp/ezgif-5-a3ba92e49e.gif)
+
 ## Server StartUp
 
 -npm run serve
