@@ -5,13 +5,10 @@ React based application for a team project at HackReactor.
 -npm run serve
 -set to load on `port 3000`
 
-<<<<<<< HEAD
 ## Product Overview (Derek Wing) [![Linkedin](https://www.linkedin.com/in/derek-wing-a9a181152/) [![GitHub](https://github.com/derekwing)](https://github.com/derekwing)
 
 The Product Overview Widget allows users to explore different styles, price, and description of a product. The image gallery is created as a carousel which gives users an easy and friendly experience. It also allows users to scroll through the different images of a style and the ability zoom in for a closer observation of the images
 
-=======
->>>>>>> 71bb9af (Edit overall README x2)
 ## Questions and Answer (Shuwen Liang) [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/ryangrantrhoads/)](https://www.linkedin.com/in/shuwen-liang-855067194/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/rgrhoads)](https://github.com/midolake)
 
 The questions and answers widget displays the questions and their answers which are related to a specific product displayed by overview and change it accordingly. The widget allow users to search existing questions, simultaneously it will highlight the matching results for a clear view. If Users find some specific quetions or answers useful, they can mark those quetions or answers to be "helpful" and it will increase the count of helpfulness. Users can report an issue if they believe some Q/A violate the rules. Each user has only one chance to vote or report. Users have options to contribute their own questions or answers through a form.
