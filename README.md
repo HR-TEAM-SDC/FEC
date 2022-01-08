@@ -2,7 +2,8 @@ React based application for a team project at HackReactor.
 
 ## Demo
 
-![Alt Text](https://im5.ezgif.com/tmp/ezgif-5-a3ba92e49e.gif)
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Demo](https://media.giphy.com/media/cbOk6o1rQ9CPbSIQvf/giphy.gif)
 
 ## Server StartUp
 
