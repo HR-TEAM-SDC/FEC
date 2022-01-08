@@ -6,7 +6,7 @@
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
 
-![Demo](https://media1.giphy.com/media/n3EDcw6LBN6ggdX38Y/giphy.gif?cid=790b761115d29d81df9220c4afe8d586739cccb181c4de38&rid=giphy.gif&ct=g)
+![Demo](https://im5.ezgif.com/tmp/ezgif-5-a3ba92e49e.gif)
 
 React based application for a team project at HackReactor.
 
