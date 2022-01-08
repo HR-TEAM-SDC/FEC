@@ -87,6 +87,83 @@
 .slider-null {
   background-color: transparent;
   height: 0px;
-  width: 10px;
+  width: 30px;
   margin: 10px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cc1212;
+  color: white;
+}
+
+.fa {
+  padding: 10px;
+  margin: 0 2px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+#style:hover {
+  cursor: pointer;
+}
+
+#product-name {
+  margin-left: 35%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#cart-button {
+  height: 30px;
+  width: 150px;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #29f756ad;
+  background-color: white;
+  box-shadow: 1px 1px 2px;
+}
+
+#cart-button:hover {
+  background-color: #29f756ad;
+  cursor: pointer;
+}
+
+.menu {
+  height: auto;
+  width: auto;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #29f756ad;
+  background-color: white;
+  box-shadow: 1px 1px 2px;
 }

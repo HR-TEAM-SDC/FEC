@@ -38,7 +38,7 @@ const ProductDetails = () => {
 
   const fetchData = async () => {
     const reviews = await axios.get('reviews', {
-      params: { product_id: currentProduct.id },
+      params: { product_id: currentProduct.id, count: 1000000 },
     });
     setReviews(reviews.data.results);
     const styles = await axios.get(`products/${currentProduct.id}/styles`);
@@ -51,8 +51,6 @@ const ProductDetails = () => {
   const detailStyles = {
     display: 'flex',
     justifyContent: 'space-evenly',
-    borderStyle: 'solid',
-    borderWidth: '1px',
     width: '90%',
     height: 'auto',
     margin: 'auto',

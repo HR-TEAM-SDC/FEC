@@ -1,7 +1,15 @@
 import React from 'react';
+import '../styles.css';
 
 const ShareProduct = () => {
-  return <h4>Share on Social Media: [Facebook] [Twitter] [Pinterest]</h4>;
+  return (
+    <div>
+      {'Share on Social Media: '}
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-pinterest"></a>
+    </div>
+  );
 };
 
 export default ShareProduct;

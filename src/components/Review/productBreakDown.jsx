@@ -23,11 +23,10 @@ const ProductBreakDown = (props) => {
 
   var greyBarStandardStyle = {
     backgroundColor: 'white',
-    width: '200px',
+    width: '80%',
     height: '15px',
     display: 'inline-block',
     position: 'relative',
-    margin: '5px',
     borderRadius: '7.5px',
   };
 

@@ -88,7 +88,7 @@ const RRIndex = (props) => {
   };
 
   return (
-    <div className="reviewList">
+    <div id="reviewList" className="reviewList">
       <h2>RATINGS AND REVIEWS</h2>
       {metaData ? (
         <BreakDown

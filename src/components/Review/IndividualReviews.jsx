@@ -46,7 +46,7 @@ const IndividualReviews = (props) => {
     var result = [];
     for (var i = 0; i < rating; i++) {
       var checkedStar = (
-        <code key={i} style={{ color: 'black', fontSize: '25px' }}>
+        <code key={i} style={{ color: 'white', fontSize: '25px' }}>
           &#9733;
         </code>
       );

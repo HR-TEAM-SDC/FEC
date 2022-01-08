@@ -10,14 +10,10 @@ connection.connect((err) => {
     console.log('Connected to MySQL!');
   }
 });
-
-const getOutfit = (cb) => {
-  const query = 'SELECT * FROM outfits';
-  const sendQuery = (query, cb) =>
-    connection.query(query, (err, data) => {
-      err ? cb(err, null) : cb(null, data);
-    });
-};
+const sendQuery = (query, cb) =>
+  connection.query(query, (err, data) => {
+    err ? cb(err, null) : cb(null, data);
+  });
 
 const getOutfit = (cb) => {
   const query = 'SELECT * FROM outfits';

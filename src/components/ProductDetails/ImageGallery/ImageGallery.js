@@ -12,8 +12,6 @@ const ImageGallery = () => {
 
   const imageGalleryStyle = {
     display: 'flex',
-    borderStyle: 'solid',
-    borderWidth: '1px',
     width: '45%',
     justifyContent: 'center',
     alignItems: 'center',
