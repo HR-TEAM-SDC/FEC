@@ -7,7 +7,7 @@ React based application for a team project at HackReactor.
 
 ## Product Overview (Derek Wing) [![Linkedin](https://www.linkedin.com/in/derek-wing-a9a181152/) [![GitHub](https://github.com/derekwing)](https://github.com/derekwing)
 
-The Product Overview Widget allows users to explore different styles, price, and description of a product. The image gallery is created as a carousel which gives users an easy and friendly experience. It also allows users to scroll through the different images of a style and the ability zoom in for a closer observation of the images
+The Product Overview Widget allows users to explore different styles, price, and description of a product. The image gallery is created as a carousel which gives users an easy and friendly experience. It also allows users to scroll through the different images of a style and the ability zoom in for a closer observation of the images.
 
 ## Questions and Answer (Shuwen Liang) [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/ryangrantrhoads/)](https://www.linkedin.com/in/shuwen-liang-855067194/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/rgrhoads)](https://github.com/midolake)
 
